@@ -1,0 +1,13 @@
+REQUISITI BASE:
+Login e Register -> DB
+Scegliere modalità -> Singolo o Co-Op (2 same screen)
+Leaderboard -> Amici e Globale -> DB Record in tabella Utente (Tempo o Punti?)
+Mappa isometrica con collisioni e dungeon Pre-creato
+Character che si muove 8 direzioni
+Tutorial 
+Aggiungere amici -> Ogni utente avrà un codice -> DB
+
+REQUISITI PRO:
+Dungeon autocreati con portali
+Co-Op online 2-4
+Skin acquistabili con credit in game (crediti ricevuti a fine livello)
