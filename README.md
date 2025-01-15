@@ -1,4 +1,4 @@
-# ![MagicPortal](Link)
+# ![MagicPortal](https://imgur.com/LRASFB9)
 
 > MagicPortal è un videogame ispirato ad un unione tra il titolo di Valve 'Portal 2' e il gioco da tavolo 'Labirinto Magico' di Max J. Kobbert.
 
