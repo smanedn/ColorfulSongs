@@ -4,7 +4,8 @@ CREATE TABLE user(
 	id int AUTO_INCREMENT PRIMARY KEY,
 	username VARCHAR(64) UNIQUE NOT NULL,
 	password VARCHAR(256) NOT NULL,
-	email VARCHAR(256) NOT NULL
+	email VARCHAR(256) NOT NULL,
+    friend_code VARCHAR(10) unique
 );
 
 CREATE TABLE dungeon(
@@ -13,11 +14,11 @@ CREATE TABLE dungeon(
 );
 
 CREATE TABLE friend(
-	player_user_id int,
-    friend_user_id int,
-    FOREIGN KEY (player_user_id) REFERENCES user(id),
-    FOREIGN KEY (friend_user_id) REFERENCES user(id),
-    PRIMARY KEY(player_user_id, friend_user_id)
+	user_id int,
+    user_friend_code varchar(10),
+    FOREIGN KEY (user_id) REFERENCES user(id),
+    FOREIGN KEY (user_friend_code) REFERENCES user(friend_code),
+    PRIMARY KEY(user_id, user_friend_code)
 );
 
 CREATE TABLE leaderboard(
