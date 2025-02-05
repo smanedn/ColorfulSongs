@@ -23,6 +23,9 @@ $dir = str_replace('\\','/',getcwd().'/');
 $final = $actual_link.str_replace($documentRoot,'',$dir);
 
 define('URL', $final);
-
-
+define('HOST','localhost');
+define('USERNAME','magicportal');
+define('PASSWORD','Admin$00');
+define('DATABASE','magicportal');
+define('PORT','3306');
 
