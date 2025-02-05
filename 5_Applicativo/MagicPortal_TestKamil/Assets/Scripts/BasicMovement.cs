@@ -24,14 +24,15 @@ public class BasicMovement : MonoBehaviour
         long vel = 1;
 
         //Quando premo W/S aumenta sia la x che la z
-        var dir = new Vector3(x+z, gravity, z-x);
+        var dir = new Vector3(x+z, 0, z-x);
 
-        if (dir.sqrMagnitude != 0)
+        if (dir.sqrMagnitude > 0.1)
         {
             //calcola l'angolo di rotazione del personaggio in base ai movimenti, poi cambia da rad2deg
             var targetAngle = Mathf.Atan2(x, z) * Mathf.Rad2Deg;
             //ruota il personaggio sull'asse Y verso la direzione in cui si sta muovendo
             transform.rotation = Quaternion.Euler(0, targetAngle, 0);
+            transform.position = new Vector3(transform.position.x, gravity, transform.position.z) ;
             crct.Move(dir * vel * Time.deltaTime);
         }
     }
