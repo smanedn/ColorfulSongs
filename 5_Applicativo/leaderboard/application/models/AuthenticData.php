@@ -19,13 +19,10 @@ class AuthenticData
         if(mysqli_num_rows($this->statement) === 1){ // controlla che ci siano risultati
             $row = mysqli_fetch_assoc($this->statement);// mette gli  elementi in un array associativo
             if (password_verify($password, $row["password"])) {
-                //echo "<pre>";
-                //var_dump($row);
-                //echo "</pre>";
                 return $row;
             }
         }
-
-
+        // password per i test: kY0#i}a8`3
+        //utente per i test: thatherley0
     }
 }
