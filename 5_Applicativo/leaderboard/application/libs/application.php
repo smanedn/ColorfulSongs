@@ -1,5 +1,5 @@
 <?php
-
+namespace libs;
 class Application
 {
     private $url_controller = null;
@@ -29,9 +29,9 @@ class Application
                 $this->url_controller->index();
             }
         } else {
-            require './application/controller/home.php';
-            $home = new Home();
-            $home->index();
+            require './application/controller/login.php';
+            $login = new \Login();
+            $login->index();
         }
     }
 

@@ -6,7 +6,7 @@ class Login
     public function __construct()
     {
         require_once "application/libs/validator.php";
-        $this->validator = new Validator();
+        $this->validator = new \libs\Validator();
     }
 
     public function index()
@@ -26,7 +26,7 @@ class Login
             $password = $this->validator->sanitizeInput($_POST['password']);
 
             require_once 'application/models/AuthenticData.php';
-            $authModel = new AuthenticData();
+            $authModel = new \models\AuthenticData();
             $result = $authModel->getData($username, $password);
             var_dump($result);
             if ($result) {
