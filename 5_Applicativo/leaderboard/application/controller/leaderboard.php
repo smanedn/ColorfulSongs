@@ -32,4 +32,8 @@ class leaderboard
 
         require_once 'application/views/leaderboard/index.php';
     }
+
+    public function radioFilter(){
+        echo $_POST['friendGlobal'];
+    }
 }
