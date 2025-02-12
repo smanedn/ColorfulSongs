@@ -4,7 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 3.0f;
     [SerializeField] private float gravity = 9.81f;
-    [SerializeField] private float jumpHeight = 1f;
+    [SerializeField] private float jumpHeight = 0.5f;
     private CharacterController characterController;
     private float veritcalVelocity;
     private float x;
