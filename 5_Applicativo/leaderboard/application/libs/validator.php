@@ -1,5 +1,5 @@
 <?php
-
+namespace libs;
 class Validator
 {
     function checkPosition($val)

@@ -1,4 +1,5 @@
 <?php
+namespace libs;
 class Database
 {
     private static $username = USERNAME;
@@ -15,8 +16,8 @@ class Database
     public static function getConnection(){
         if(is_null(self::$_connection)){
             try{
-                self::$_connection = new mysqli(self::$hostname, self::$username, self::$password, self::$database);
-            }catch (Exception $e){
+                self::$_connection = new \mysqli(self::$hostname, self::$username, self::$password, self::$database);
+            }catch (\Exception $e){
                 echo "Error: " . $e->getMessage();
                 die;
                 return false;

@@ -7,4 +7,4 @@ require 'application/config/config.php';
 require 'application/libs/application.php';
 
 // faccio partire l'applicazione
-$app = new Application();
+$app = new \libs\Application();

@@ -1,4 +1,5 @@
 <?php
+namespace models;
 require_once "application/libs/database.php";
 class AuthenticData
 {
@@ -7,7 +8,7 @@ class AuthenticData
 
     public function __construct()
     {
-        $this->conn = Database::getConnection();
+        $this->conn = \libs\Database::getConnection();
     }
 
     public function getData($username, $password)
