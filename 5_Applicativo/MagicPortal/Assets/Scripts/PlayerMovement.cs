@@ -27,18 +27,18 @@ public class PlayerMovement : MonoBehaviour
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
         y = VerticalForceCalculation();
+       
         position = new Vector3(x + z, y, z - x);
         characterController.Move(position * speed * Time.deltaTime);
     }
 
     private void Turn()
     {
-        Debug.Log("x: " + position.x);
+        
         if (Mathf.Abs(position.x) > 0.1 || Mathf.Abs(position.z) > 0.1)
         {
             var targetAngle = Mathf.Atan2(x, z) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, targetAngle, 0);
-            characterController.Move(position * speed * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(0, targetAngle, 0); 
         }
     }
     private float VerticalForceCalculation()
