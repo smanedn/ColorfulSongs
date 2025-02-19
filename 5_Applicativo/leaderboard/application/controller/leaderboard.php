@@ -20,19 +20,10 @@ class leaderboard
             require_once "application/models/LeaderboardMapper.php";
             $leaderboard_model = new \models\LeaderboardMapper();
             $leaderboard_data = $leaderboard_model->fetchAll();
-            $checked = "friend";
-            //$leaderboard_friend = $leaderboard_model->fetchFriend($_SESSION['UserId']);
+            $checked = "global";
 
             require_once 'application/views/leaderboard/index.php';
         }
-    }
-
-    public function showLeaderboardData(){
-        require_once "application/models/LeaderboardMapper.php";
-        $leaderboard_model = new \models\LeaderboardMapper();
-        $leaderboard_data = $leaderboard_model->fetchAll();
-
-        require_once 'application/views/leaderboard/index.php';
     }
 
     public function radioFilter(){
@@ -40,19 +31,18 @@ class leaderboard
             require_once 'application/models/LeaderboardMapper.php';
             $leaderboardMapper = new \models\LeaderboardMapper();
 
-            if (isset($_POST['friend'])) {
-                $leaderboard_data = $leaderboardMapper->fetchFriend($_SESSION["UserId"]);
-                $checked = "friend";
-                require_once 'application/views/leaderboard/index.php';
-                //header('location:' . URL . 'leaderboard');
+            if(isset($_POST['type'])) {
+                if ($_POST['type'] == 'global') {
+                    $leaderboard_data = $leaderboardMapper->fetchAll();
+                    $checked = "global";
+                    require_once 'application/views/leaderboard/index.php';
+                } else if ($_POST['type'] == 'friend') {
+                    $leaderboard_data = $leaderboardMapper->fetchFriend($_SESSION["UserId"]);
+                    $checked = "friend";
+                    require_once 'application/views/leaderboard/index.php';
+                }
             }
 
-            elseif(isset($_POST['global'])){
-                $leaderboard_data = $leaderboardMapper->fetchAll();
-                $checked = "global";
-                require_once 'application/views/leaderboard/index.php';
-                //header('location:' . URL . 'leaderboard');
-            }
         }
     }
 

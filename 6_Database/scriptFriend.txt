@@ -32,4 +32,13 @@ INSERT INTO friend VALUES(32,2,FALSE);
 INSERT INTO friend VALUES(40,50,FALSE);
 INSERT INTO friend VALUES(50,40,FALSE);
 INSERT INTO friend VALUES(1,40,TRUE);
-INSERT INTO leaderboard VALUES(1,40,TRUE);
+
+INSERT INTO leaderboard VALUES(1001,40,9);
+INSERT INTO leaderboard VALUES(2301,39,8);
+INSERT INTO leaderboard VALUES(5001,90,2);
+INSERT INTO leaderboard VALUES(11100,67,1);
+INSERT INTO leaderboard VALUES(69,32,14);
+
+UPDATE user SET username="admin" 
+and password = "$2y$10$UiXDIxYtzbFU4DV2dyoABuYzrUdJuc5tGV42pNyGwHZDoDtbq/atS" 
+WHERE username ="thatherley0";    

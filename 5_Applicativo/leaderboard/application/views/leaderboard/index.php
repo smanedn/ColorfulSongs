@@ -14,14 +14,14 @@
             <h1 class="fw-bold">Filter</h1>
             <form id="radioFilterForm" method="POST" action="<?php echo URL; ?>leaderboard/radioFilter">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="friend" id="friendRadio" value="friends" onchange="this.form.submit()"
+                    <input class="form-check-input" type="radio" name="type" id="friendRadio" value="friend" onchange="this.form.submit()"
                         <?php if($checked == "friend"){?> checked <?php }?>
                     >
                     <label class="form-check-label" for="friendRadio">Friends</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="global" id="globalRadio" value="global" onchange="this.form.submit()"
-                        <?php if($checked == "global"){?> checked <?php }?>
+                    <input class="form-check-input" type="radio" name="type" id="globalRadio" value="global" onchange="this.form.submit()"
+                        <?php if($checked == "global"){ ?> checked <?php }?>
                     >
                     <label class="form-check-label" for="globalRadio">Global</label>
                 </div>
@@ -39,7 +39,7 @@
 
         </div>
         <div class="col bg-dark bg-opacity-10 text-center text-white p-5">
-            <h1>Leaderboard</h1>
+            <h1>Leaderboard <?php echo $checked; ?></h1>
             <a href="<?php echo URL ?>login/logout" class="btn btn-outline-dark">Logout</a>
             <div class="container-md bg-dark bg-opacity-25 rounded-3 pt-4 pb-1">
                 <table class="table table-bordered">
