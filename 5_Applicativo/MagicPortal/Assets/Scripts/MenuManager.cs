@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class MenuManager : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class MenuManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("Game");
+    }
+
+    public void SettingsGame()
+    {
+
     }
 
     public void QuitGame()
