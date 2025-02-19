@@ -23,13 +23,8 @@ class LeaderboardMapper
     {
         $selectUserData = "select user.username, leaderboard.score, leaderboard.dungeon_id
                             from user JOIN leaderboard 
-<<<<<<< Updated upstream
                             on leaderboard.user_id = user.id
                             order by leaderboard.score desc";
-=======
-                            on leaderboard.user_id = user.id 
-                            ORDER BY leaderboard.score DESC";
->>>>>>> Stashed changes
         $userData = $this->connection->query($selectUserData);
         $allUserData = array();
         foreach ($userData as $line) {
@@ -40,8 +35,9 @@ class LeaderboardMapper
         return $allUserData;
     }
 
-<<<<<<< Updated upstream
-    public function getFriendData($userId){
+
+    public function getFriendData($userId)
+    {
         $selectUserData = "select user.id, friend.user_friend_code
                             from user JOIN friend
                             on friend.user_id = '" . $userId . "'";
@@ -49,7 +45,8 @@ class LeaderboardMapper
         $allUserData = array();
         foreach ($userData as $line) {
             $userData = new Leaderboard($line['id'], $line['user_friend_code']);
-=======
+        }
+    }
     public function fetchFriend($userId): array
     {
         $selectUserData = "SELECT user.username, user.id 
@@ -60,7 +57,6 @@ class LeaderboardMapper
         $allUserData = array();
         foreach ($userData as $line) {
             $userData = new Leaderboard($line['username'], $line['score'], $line['dungeon_id']);
->>>>>>> Stashed changes
             $allUserData[] = $userData;
             unset($userData);
         }
