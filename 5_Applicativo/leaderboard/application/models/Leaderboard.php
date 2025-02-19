@@ -4,6 +4,7 @@ namespace models;
 
 class Leaderboard
 {
+    private $id;
     private $username;
     private $score;
     private $friendCode;
@@ -12,15 +13,19 @@ class Leaderboard
     /**
      * @param $username
      * @param $score
-     * @param $friendCode
      * @param $mapCode
      */
-    public function __construct($username, $score, $friendCode, $mapCode)
+    public function __construct($username, $score, $mapCode)
     {
         $this->username = $username;
         $this->score = $score;
-        $this->friendCode = $friendCode;
         $this->mapCode = $mapCode;
+    }
+
+    public function __construct($id, $friendCode)
+    {
+        $this->id = $id;
+        $this->friendCode = $friendCode;
     }
 
     public function getUsername()
@@ -41,16 +46,6 @@ class Leaderboard
     public function setScore($score)
     {
         $this->score = $score;
-    }
-
-    public function getFriendCode()
-    {
-        return $this->friendCode;
-    }
-
-    public function setFriendCode($friendCode)
-    {
-        $this->friendCode = $friendCode;
     }
 
     public function getMapCode()

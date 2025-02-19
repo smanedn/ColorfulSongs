@@ -12,7 +12,6 @@
     <div class="container-fluid p-0 row mx-auto mt-5 bg-dark bg-opacity-50">
         <div class="col-2 p-3 bg-success bg-opacity-50 text-start">
             <h1 class="fw-bold">Filter</h1>
-
             <form id="myForm" method="POST" action="<?php echo URL; ?>leaderboard/radioFilter">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="friendGlobal" id="friendRadio" value="friends" onchange="this.form.submit()">
@@ -35,13 +34,13 @@
         </div>
         <div class="col bg-dark bg-opacity-10 text-center text-white p-5">
             <h1>Leaderboard</h1>
+            <a href="<?php echo URL ?>login/logout" class="btn btn-outline-dark">Logout</a>
             <div class="container-md bg-dark bg-opacity-25 rounded-3 pt-4 pb-1">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Username</th>
                             <th>High Score</th>
-                            <th>Friend Code</th>
                             <th>Map Code</th>
                         </tr>
                     </thead>
@@ -50,7 +49,6 @@
                         <tr>
                             <td><?php echo $leaderboardValue->getUsername(); ?></td>
                             <td><?php echo $leaderboardValue->getScore(); ?></td>
-                            <td><?php echo $leaderboardValue->getFriendCode(); ?></td>
                             <td><?php echo $leaderboardValue->getMapCode(); ?></td>
                         </tr>
                     <?php endforeach; ?>

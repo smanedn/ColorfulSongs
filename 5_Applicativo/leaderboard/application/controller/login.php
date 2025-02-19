@@ -28,7 +28,6 @@ class Login
             require_once 'application/models/AuthenticData.php';
             $authModel = new \models\AuthenticData();
             $result = $authModel->getData($username, $password);
-            var_dump($result);
             if ($result) {
                 $_SESSION["UserId"] = $result['id'];
 

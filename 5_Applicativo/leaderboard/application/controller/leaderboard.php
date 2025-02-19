@@ -34,6 +34,14 @@ class leaderboard
     }
 
     public function radioFilter(){
-        echo $_POST['friendGlobal'];
+        if ($this->isAdmin()) {
+            if (isset($_POST['friendGlobal'])) {
+                require_once 'application/models/LeaderboardMapper.php';
+                $leaderboardMapper = new \models\LeaderboardMapper();
+                $leaderboard_data = $leaderboardMapper->getFriendData($_SESSION["UserId"]);
+
+                require_once 'application/views/leaderboard/index.php';
+            }
+        }
     }
 }
