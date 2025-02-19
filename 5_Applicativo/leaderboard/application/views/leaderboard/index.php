@@ -9,16 +9,21 @@
     <script src="https://kit.fontawesome.com/f7749cdce8.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <?php echo $checked;?>
     <div class="container-fluid p-0 row mx-auto mt-5 bg-dark bg-opacity-50">
         <div class="col-2 p-3 bg-success bg-opacity-50 text-start">
             <h1 class="fw-bold">Filter</h1>
             <form id="myForm" method="POST" action="<?php echo URL; ?>leaderboard/radioFilter">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="friendGlobal" id="friendRadio" value="friends" onchange="this.form.submit()">
+                    <input class="form-check-input" type="radio" name="friend" id="friendRadio" value="friends" onchange="this.form.submit()"
+                        <?php if($checked == "friend"){?> checked <?php }?>
+                    >
                     <label class="form-check-label" for="friendRadio">Friends</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="friendGlobal" id="globalRadio" value="global" onchange="this.form.submit()" checked>
+                    <input class="form-check-input" type="radio" name="global" id="globalRadio" value="global" onchange="this.form.submit()"
+                        <?php if($checked == "global"){?> checked <?php }?>
+                    >
                     <label class="form-check-label" for="globalRadio">Global</label>
                 </div>
 

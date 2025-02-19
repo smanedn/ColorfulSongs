@@ -36,22 +36,16 @@ class LeaderboardMapper
     }
 
 
-    public function getFriendData($userId)
-    {
-        $selectUserData = "select user.id, friend.user_friend_code
-                            from user JOIN friend
-                            on friend.user_id = '" . $userId . "'";
-        $userData = $this->connection->query($selectUserData);
-        $allUserData = array();
-        foreach ($userData as $line) {
-            $userData = new Leaderboard($line['id'], $line['user_friend_code']);
-        }
-    }
     public function fetchFriend($userId): array
     {
-        $selectUserData = "SELECT user.username, user.id 
+        $selectUserData = "SELECT user.username, leaderboard.score ,leaderboard.dungeon_id  
                             from user JOIN friend 
-                            ON friend.idUtente1 = $userId AND friend.pending = 0 AND friend.idUtente2 = user.id";
+                                ON friend.idUtente1 = '$userId' 
+                                AND friend.pending = 0 
+                                AND friend.idUtente2 = user.id
+                            JOIN leaderboard 
+                                ON friend.idUtente2 = leaderboard.user_id
+                            order by leaderboard.score desc;";
 
         $userData = $this->connection->query($selectUserData);
         $allUserData = array();

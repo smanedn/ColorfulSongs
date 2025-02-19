@@ -10,7 +10,16 @@ SELECT idUtente2 FROM friend WHERE idUtente1 = 1 AND pending = 0;
 
 SELECT user.username, user.id from user JOIN friend ON friend.idUtente1 = 1 AND friend.pending = 0 AND friend.idUtente2 = user.id;
 
-SELECT user.username, user.id from user JOIN friend ON friend.idUtente1 = $_SESSION['id'] AND friend.pending = 0 AND friend.idUtente2 = user.id;
+//TEST query
+SELECT user.username, leaderboard.score ,leaderboard.dungeon_id  from user JOIN friend ON friend.idUtente1 = 1 AND friend.pending = 0 AND friend.idUtente2 = user.id
+JOIN leaderboard ON friend.idUtente2 = leaderboard.user_id;
+
+// Seleziono tutti gli amici dell'utente loggato al sito
+SELECT user.username, leaderboard.score ,leaderboard.dungeon_id  from user JOIN friend ON friend.idUtente1 = $_SESSION['id'] AND friend.pending = 0 AND friend.idUtente2 = user.id
+JOIN leaderboard ON friend.idUtente2 = leaderboard.user_id;
+
+// Se un utente viene eliminato, eliminiamo tutti i record legati a lui
+DELETE FROM friend WHERE idUtente1 = 40 OR idUtente2 = 40;
 
 INSERT INTO friend VALUES(1,2,FALSE);
 INSERT INTO friend VALUES(2,1,FALSE);
@@ -21,3 +30,4 @@ INSERT INTO friend VALUES(32,2,FALSE);
 INSERT INTO friend VALUES(40,50,FALSE);
 INSERT INTO friend VALUES(50,40,FALSE);
 INSERT INTO friend VALUES(1,40,TRUE);
+INSERT INTO leaderboard VALUES(1,40,TRUE);

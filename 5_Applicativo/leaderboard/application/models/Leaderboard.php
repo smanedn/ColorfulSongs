@@ -21,11 +21,11 @@ class Leaderboard
         $this->mapCode = $mapCode;
     }
 
-    public function __construct($id, $friendCode)
+    /*public function __construct($id, $friendCode)
     {
         $this->id = $id;
         $this->friendCode = $friendCode;
-    }
+    }*/
 
     public function getUsername()
     {
