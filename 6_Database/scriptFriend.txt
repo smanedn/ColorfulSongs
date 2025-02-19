@@ -21,6 +21,8 @@ JOIN leaderboard ON friend.idUtente2 = leaderboard.user_id;
 // Se un utente viene eliminato, eliminiamo tutti i record legati a lui
 DELETE FROM friend WHERE idUtente1 = 40 OR idUtente2 = 40;
 
+update user set username = 'admin' and password = '$2y$10$ztfQboQXbSTSdAURcuWNCu15ezdz7eDZZq61F40fvHdjngmQH6twa' where id=1;
+
 INSERT INTO friend VALUES(1,2,FALSE);
 INSERT INTO friend VALUES(2,1,FALSE);
 INSERT INTO friend VALUES(32,1,FALSE);

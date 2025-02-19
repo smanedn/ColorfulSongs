@@ -55,4 +55,17 @@ class leaderboard
             }
         }
     }
+
+    public function searchFilter(){
+        if ($this->isAdmin()) {
+            require_once "application/models/LeaderboardMapper.php";
+            $leaderboardMapper = new \models\LeaderboardMapper();
+
+            if (isset($_POST['mapCode'])) {
+                $leaderboard_data = $leaderboardMapper->fetchMaps($_POST['mapCode']);
+                echo $_POST['mapCode'];
+                require_once 'application/views/leaderboard/index.php';
+            }
+        }
+    }
 }

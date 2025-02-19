@@ -9,11 +9,10 @@
     <script src="https://kit.fontawesome.com/f7749cdce8.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <?php echo $checked;?>
     <div class="container-fluid p-0 row mx-auto mt-5 bg-dark bg-opacity-50">
         <div class="col-2 p-3 bg-success bg-opacity-50 text-start">
             <h1 class="fw-bold">Filter</h1>
-            <form id="myForm" method="POST" action="<?php echo URL; ?>leaderboard/radioFilter">
+            <form id="radioFilterForm" method="POST" action="<?php echo URL; ?>leaderboard/radioFilter">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="friend" id="friendRadio" value="friends" onchange="this.form.submit()"
                         <?php if($checked == "friend"){?> checked <?php }?>
@@ -26,12 +25,14 @@
                     >
                     <label class="form-check-label" for="globalRadio">Global</label>
                 </div>
+            </form>
 
+            <form id="searchFilter" method="POST" action="<?php echo URL; ?>leaderboard/searchFilter">
                 <section class="mt-3">
                     <div>
                         <label for="searchMapCode" class="form-label fw-bold fs-6">Maps</label>
-                        <input class="form-control" id="searchMapCode" placeholder="Map Code">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input class="form-control" id="searchMapCode" placeholder="Map Code" onchange="this.form.submit()">
+                        <!--<i class="fa-solid fa-magnifying-glass"></i>-->
                     </div>
                 </section>
             </form>

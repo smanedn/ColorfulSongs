@@ -45,7 +45,24 @@ class LeaderboardMapper
                                 AND friend.idUtente2 = user.id
                             JOIN leaderboard 
                                 ON friend.idUtente2 = leaderboard.user_id
-                            order by leaderboard.score desc;";
+                            order by leaderboard.score desc";
+
+        $userData = $this->connection->query($selectUserData);
+        $allUserData = array();
+        foreach ($userData as $line) {
+            $userData = new Leaderboard($line['username'], $line['score'], $line['dungeon_id']);
+            $allUserData[] = $userData;
+            unset($userData);
+        }
+        return $allUserData;
+    }
+
+    public function fetchMaps($mapId): array
+    {
+        $selectUserData = "SELECT user.username, leaderboard.score ,leaderboard.dungeon_id  
+                            from dungeon JOIN leaderboard 
+                                ON dungeon.id = leaderboard.dungeon_id
+                            order by leaderboard.score desc";
 
         $userData = $this->connection->query($selectUserData);
         $allUserData = array();
