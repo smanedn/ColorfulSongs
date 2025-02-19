@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 3.0f;
+    [SerializeField] private float speed = 6.0f;
     [SerializeField] private float gravity = 9.81f;
     [SerializeField] private float jumpHeight = 0.5f;
     private CharacterController characterController;
@@ -29,12 +29,11 @@ public class PlayerMovement : MonoBehaviour
         y = VerticalForceCalculation();
        
         position = new Vector3(x + z, y, z - x);
-        characterController.Move(position * speed * Time.deltaTime);
+        characterController.Move(position * speed * Time.deltaTime);    //in caso non si voglia + speed in diagonale positino.normalized
     }
 
     private void Turn()
     {
-        
         if (Mathf.Abs(position.x) > 0.1 || Mathf.Abs(position.z) > 0.1)
         {
             var targetAngle = Mathf.Atan2(x, z) * Mathf.Rad2Deg;
