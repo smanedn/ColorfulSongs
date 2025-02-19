@@ -7,7 +7,8 @@
     <list default="true" id="f9c775b0-f6e2-48a8-a458-919996b2e743" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/controller/leaderboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controller/leaderboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/AuthenticData.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/AuthenticData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/libs/validator.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/libs/validator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/LeaderboardMapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/LeaderboardMapper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/leaderboard/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/leaderboard/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

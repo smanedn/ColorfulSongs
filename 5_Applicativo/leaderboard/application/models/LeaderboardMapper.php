@@ -61,10 +61,11 @@ class LeaderboardMapper
     {
         $selectUserData = "SELECT user.username, leaderboard.score ,leaderboard.dungeon_id  
                             from dungeon JOIN leaderboard 
-                                ON dungeon.id = leaderboard.dungeon_id
+                            ON leaderboard.dungeon_id = '$mapId'
                             order by leaderboard.score desc";
 
         $userData = $this->connection->query($selectUserData);
+        var_dump($userData);
         $allUserData = array();
         foreach ($userData as $line) {
             $userData = new Leaderboard($line['username'], $line['score'], $line['dungeon_id']);

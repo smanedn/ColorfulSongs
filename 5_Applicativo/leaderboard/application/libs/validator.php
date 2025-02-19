@@ -2,7 +2,7 @@
 namespace libs;
 class Validator
 {
-    function checkPosition($val)
+    function checkNumber($val)
     {
         return is_numeric($val) && $val > 0 && $val <= 9999;
     }

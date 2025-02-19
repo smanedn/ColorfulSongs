@@ -30,8 +30,8 @@
             <form id="searchFilter" method="POST" action="<?php echo URL; ?>leaderboard/searchFilter">
                 <section class="mt-3">
                     <div>
-                        <label for="searchMapCode" class="form-label fw-bold fs-6">Maps</label>
-                        <input class="form-control" id="searchMapCode" placeholder="Map Code" onchange="this.form.submit()">
+                        <label for="mapCode" class="form-label fw-bold fs-6">Maps</label>
+                        <input class="form-control" id="searchFilter" name="mapCode" placeholder="Map Code" onchange="this.form.submit()">
                         <!--<i class="fa-solid fa-magnifying-glass"></i>-->
                     </div>
                 </section>
