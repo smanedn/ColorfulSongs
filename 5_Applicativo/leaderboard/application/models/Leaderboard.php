@@ -7,7 +7,6 @@ class Leaderboard
     private $id;
     private $username;
     private $score;
-    private $friendCode;
     private $mapCode;
 
     /**

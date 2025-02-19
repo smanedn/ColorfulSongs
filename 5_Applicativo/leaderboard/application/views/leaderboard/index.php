@@ -18,7 +18,7 @@
                     <label class="form-check-label" for="friendRadio">Friends</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="friendGlobal" id="globalRadio" value="global" onchange="this.form.submit()">
+                    <input class="form-check-input" type="radio" name="friendGlobal" id="globalRadio" value="global" onchange="this.form.submit()" checked>
                     <label class="form-check-label" for="globalRadio">Global</label>
                 </div>
 
