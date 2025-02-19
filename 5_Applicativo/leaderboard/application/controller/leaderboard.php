@@ -38,7 +38,7 @@ class leaderboard
             if (isset($_POST['friendGlobal'])) {
                 require_once 'application/models/LeaderboardMapper.php';
                 $leaderboardMapper = new \models\LeaderboardMapper();
-                $leaderboard_data = $leaderboardMapper->getFriendData($_SESSION["UserId"]);
+                $leaderboard_data = $leaderboardMapper->fetchFriend($_SESSION["UserId"]);
 
                 require_once 'application/views/leaderboard/index.php';
             }

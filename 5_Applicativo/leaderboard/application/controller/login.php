@@ -11,7 +11,6 @@ class Login
 
     public function index()
     {
-        //require 'application/views/_templates/header.php';
         require_once 'application/views/login/index.php';
     }
 
@@ -34,10 +33,10 @@ class Login
                 header("Location:" . URL . "leaderboard");
                 exit();
             } else {
-                $this->index();
+                $error = "Username o Password sbagliati";
+                require_once 'application/views/login/index.php';
             }
         }
-
     }
 
     public function logout()

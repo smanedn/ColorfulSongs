@@ -28,25 +28,13 @@ class LeaderboardMapper
         $userData = $this->connection->query($selectUserData);
         $allUserData = array();
         foreach ($userData as $line) {
-            $userData = new Leaderboard($line['username'], $line['score'], $line['dungeon_id']);
+            $userData = new Leaderboard($line[''],$line['username'], $line['score'], $line['dungeon_id'],$line['']);
             $allUserData[] = $userData;
             unset($userData);
         }
         return $allUserData;
     }
 
-
-    public function getFriendData($userId)
-    {
-        $selectUserData = "select user.id, friend.user_friend_code
-                            from user JOIN friend
-                            on friend.user_id = '" . $userId . "'";
-        $userData = $this->connection->query($selectUserData);
-        $allUserData = array();
-        foreach ($userData as $line) {
-            $userData = new Leaderboard($line['id'], $line['user_friend_code']);
-        }
-    }
     public function fetchFriend($userId): array
     {
         $selectUserData = "SELECT user.username, user.id 
@@ -56,7 +44,7 @@ class LeaderboardMapper
         $userData = $this->connection->query($selectUserData);
         $allUserData = array();
         foreach ($userData as $line) {
-            $userData = new Leaderboard($line['username'], $line['score'], $line['dungeon_id']);
+            $userData = new Leaderboard($line['username'], $line['id'], $line['dungeon_id']);
             $allUserData[] = $userData;
             unset($userData);
         }
