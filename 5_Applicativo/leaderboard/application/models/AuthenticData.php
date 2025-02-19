@@ -25,5 +25,7 @@ class AuthenticData
         }
         // password per i test: kY0#i}a8`3
         //utente per i test: thatherley0
+
+        //password e utente TEST -> admin
     }
 }
