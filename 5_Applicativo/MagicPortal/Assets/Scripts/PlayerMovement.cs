@@ -11,6 +11,14 @@ public class PlayerMovement : MonoBehaviour
     private float y;
     private float z;
     private Vector3 position;
+
+    AudioManagerGame audioManager;
+
+    private void Awake()
+    {
+        audioManager = GetComponent<AudioManagerGame>();
+    }
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -53,7 +61,9 @@ public class PlayerMovement : MonoBehaviour
             veritcalVelocity = -1f;
             if (Input.GetButtonDown("Jump"))
             {
+                
                 veritcalVelocity = Mathf.Sqrt(jumpHeight * gravity * 2);
+                //audioManager.PlaySFX(audioManager.GetJump());
             }
         }
         else
