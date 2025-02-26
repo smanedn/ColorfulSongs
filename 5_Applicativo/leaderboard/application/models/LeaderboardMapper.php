@@ -7,13 +7,14 @@ class LeaderboardMapper
 {
     private $validator;
     private $connection;
-
+    private $logs;
     public function __construct()
     {
         require_once "application/libs/validator.php";
-
+        require_once "application/libs/log.php";
         $this->validator = new \libs\Validator();
         $this->connection = \libs\Database::getConnection();
+        $this->logs = new \libs\Log();
     }
 
     /**
@@ -21,11 +22,15 @@ class LeaderboardMapper
      */
     public function fetchAll(): array
     {
-        $selectUserData = "select user.username, leaderboard.score, leaderboard.dungeon_id
+        try {
+            $selectUserData = "select user.username, leaderboard.score, leaderboard.dungeon_id
                             from user JOIN leaderboard 
                             on leaderboard.user_id = user.id
                             order by leaderboard.score desc";
-        $userData = $this->connection->query($selectUserData);
+            $userData = $this->connection->query($selectUserData);
+        }catch (\Exception $e){
+            $this->logs->errorLog($e);
+        }
         $allUserData = array();
         foreach ($userData as $line) {
             $userData = new Leaderboard($line['username'], $line['score'], $line['dungeon_id']);
@@ -38,7 +43,8 @@ class LeaderboardMapper
 
     public function fetchFriend($userId): array
     {
-        $selectUserData = "SELECT user.username, leaderboard.score ,leaderboard.dungeon_id  
+        try {
+            $selectUserData = "SELECT user.username, leaderboard.score ,leaderboard.dungeon_id  
                             from user JOIN friend 
                                 ON friend.idUtente1 = '$userId' 
                                 AND friend.pending = 0 
@@ -47,7 +53,10 @@ class LeaderboardMapper
                                 ON friend.idUtente2 = leaderboard.user_id
                             order by leaderboard.score desc";
 
-        $userData = $this->connection->query($selectUserData);
+            $userData = $this->connection->query($selectUserData);
+        }catch (\Exception $e){
+            $this->logs->errorLog($e);
+        }
         $allUserData = array();
         foreach ($userData as $line) {
             $userData = new Leaderboard($line['username'], $line['score'], $line['dungeon_id']);
@@ -59,13 +68,18 @@ class LeaderboardMapper
 
     public function fetchMaps($mapId): array
     {
-        $selectUserData = "SELECT user.username, leaderboard.score ,leaderboard.dungeon_id  
-                            from dungeon JOIN leaderboard 
+        try{
+            $selectUserData = "SELECT DISTINCT user.username, leaderboard.score, leaderboard.dungeon_id
+                            from user JOIN leaderboard
+                            ON user.id = leaderboard.user_id
+                            JOIN dungeon
                             ON leaderboard.dungeon_id = '$mapId'
                             order by leaderboard.score desc";
 
-        $userData = $this->connection->query($selectUserData);
-        var_dump($userData);
+            $userData = $this->connection->query($selectUserData);
+        }catch (\Exception $e){
+            $this->logs->errorLog($e);
+        }
         $allUserData = array();
         foreach ($userData as $line) {
             $userData = new Leaderboard($line['username'], $line['score'], $line['dungeon_id']);

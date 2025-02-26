@@ -15,31 +15,35 @@
             <form id="radioFilterForm" method="POST" action="<?php echo URL; ?>leaderboard/radioFilter">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="type" id="friendRadio" value="friend" onchange="this.form.submit()"
-                        <?php if($checked == "friend"){?> checked <?php }?>
+                        <?php if(isset($checked) && $checked == "friend"){?> checked <?php }?>
                     >
                     <label class="form-check-label" for="friendRadio">Friends</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="type" id="globalRadio" value="global" onchange="this.form.submit()"
-                        <?php if($checked == "global"){ ?> checked <?php }?>
+                        <?php if(isset($checked) && $checked == "global"){ ?> checked <?php }?>
                     >
                     <label class="form-check-label" for="globalRadio">Global</label>
                 </div>
             </form>
 
-            <form id="searchFilter" method="POST" action="<?php echo URL; ?>leaderboard/searchFilter">
+            <form method="POST" action="<?php echo URL; ?>leaderboard/searchFilter">
                 <section class="mt-3">
                     <div>
                         <label for="mapCode" class="form-label fw-bold fs-6">Maps</label>
-                        <input class="form-control" id="searchFilter" name="mapCode" placeholder="Map Code" onchange="this.form.submit()">
-                        <!--<i class="fa-solid fa-magnifying-glass"></i>-->
+                        <div class="d-inline-flex">
+                            <input class="form-control w-75" name="mapCode" placeholder="Map Code">
+                            <button type="submit" class="btn btn-outline-dark ms-2" name="search" value="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
                     </div>
                 </section>
+
+
             </form>
 
         </div>
         <div class="col bg-dark bg-opacity-10 text-center text-white p-5">
-            <h1>Leaderboard <?php echo $checked; ?></h1>
+            <h1>Leaderboard <?php if (isset($checked)) echo $checked; ?></h1>
             <a href="<?php echo URL ?>login/logout" class="btn btn-outline-dark">Logout</a>
             <div class="container-md bg-dark bg-opacity-25 rounded-3 pt-4 pb-1">
                 <table class="table table-bordered">

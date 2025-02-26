@@ -49,16 +49,19 @@ class leaderboard
 
     public function searchFilter(){
         if ($this->isAdmin()) {
-            require_once 'application/libs/validator.php';
-            $this->validator = new \libs\Validator();
-            $mapCode = $this->validator->sanitizeInput($_POST['mapCode']);
-            $mapCode = $this->validator->checkNumber($mapCode);
+            if (isset($_POST['search'])) {
+                require_once 'application/libs/validator.php';
+                $this->validator = new \libs\Validator();
+                $mapCode = $this->validator->sanitizeInput($_POST['mapCode']);
+                $mapCode = $this->validator->checkNumber($mapCode);
 
-            require_once "application/models/LeaderboardMapper.php";
-            $leaderboardMapper = new \models\LeaderboardMapper();
+                require_once "application/models/LeaderboardMapper.php";
+                $leaderboardMapper = new \models\LeaderboardMapper();
 
-            $leaderboard_data = $leaderboardMapper->fetchMaps($mapCode);
-            require_once 'application/views/leaderboard/index.php';
+                $leaderboard_data = $leaderboardMapper->fetchMaps($mapCode);
+                require_once 'application/views/leaderboard/index.php';
+            }
+
             //if (isset($mapCode)) {
             //
             //}
