@@ -29,7 +29,13 @@ public class PlayerMovement : MonoBehaviour
         y = VerticalForceCalculation();
        
         position = new Vector3(x + z, y, z - x);
+        /*if(y == -1f)
+        {
+            position = position.normalized;
+        }*/
         characterController.Move(position * speed * Time.deltaTime);    //in caso non si voglia + speed in diagonale positino.normalized
+        Debug.Log(position);
+        Debug.Log(Time.deltaTime);
     }
 
     private void Turn()
