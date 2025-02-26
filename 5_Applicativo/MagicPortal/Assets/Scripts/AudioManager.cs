@@ -1,22 +1,20 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
+    [Header("----------Audio Source----------")]
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource SFXSource;
 
-    [SerializeField] Slider volumeSlider;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("----------Audio Clip----------")]
+    [SerializeField] private AudioClip backgroundMusic;
+    [SerializeField] private AudioClip death;
+    [SerializeField] private AudioClip jump;
+
     void Start()
     {
-        if (!PlayerPrefs.HasKey("musicVolume"))
-        {
-            PlayerPrefs.SetFloat("musicVolume", 1);
-            Load();
-        }
-        else
-        {
-            Load(); 
-        }
+        musicSource.clip = backgroundMusic;
+        musicSource.Play();
     }
 
     // Update is called once per frame
@@ -25,18 +23,14 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    public void ChangeVolume() { 
-        AudioListener.volume = volumeSlider.value;
-        Save();
+    public void PlaySFX(AudioClip clip)
+    {
+        SFXSource.PlayOneShot(clip);
     }
 
-    private void Load()
+    public AudioClip GetJump()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        return jump;
     }
 
-    private void Save()
-    {
-        PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
-    }
 }
