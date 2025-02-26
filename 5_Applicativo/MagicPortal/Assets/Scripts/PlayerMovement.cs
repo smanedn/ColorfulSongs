@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 6.0f;
+    [SerializeField] private float runningSpeed = 12.0f;
     [SerializeField] private float gravity = 9.81f;
     [SerializeField] private float jumpHeight = 0.5f;
     private CharacterController characterController;
@@ -33,9 +34,21 @@ public class PlayerMovement : MonoBehaviour
         {
             position = position.normalized;
         }*/
-        characterController.Move(position * speed * Time.deltaTime);    //in caso non si voglia + speed in diagonale positino.normalized
+        
         Debug.Log(position);
         Debug.Log(Time.deltaTime);
+
+        // Determina la velocità
+        float currentSpeed = speed;
+
+        
+        if (Input.GetButton("Fire3") && (Mathf.Abs(x) > 0.1f || Mathf.Abs(z) > 0.1f))
+        {
+            currentSpeed = runningSpeed;
+
+        }
+
+        characterController.Move(position * currentSpeed * Time.deltaTime);    //in caso non si voglia + speed in diagonale positino.normalized
     }
 
     private void Turn()
