@@ -1669,7 +1669,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2341,6 +2341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1864738342}
+  - component: {fileID: 1864738343}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Audio
@@ -2365,6 +2366,23 @@ Transform:
   - {fileID: 1531333723}
   m_Father: {fileID: 1503204084}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1864738343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864738341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb00ea27ba59cc4482cee5c1527c9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSource: {fileID: 1531333724}
+  SFXSource: {fileID: 794691565}
+  backgroundMusic: {fileID: 8300000, guid: 1d69a74e6cffefd41ac6e1702aa67aae, type: 3}
+  death: {fileID: 0}
+  jump: {fileID: 8300000, guid: 617b53c49dd189d4a8ec786c36b1ecb4, type: 3}
 --- !u!1 &2111224164 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d22005529f3a08f4db0b95583fb2e7af, type: 3}
