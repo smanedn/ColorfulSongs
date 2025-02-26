@@ -28,12 +28,13 @@ class Login
             $authModel = new \models\AuthenticData();
             $result = $authModel->getData($username, $password);
             if ($result) {
+                $_SESSION['username'] = $username;
                 $_SESSION["UserId"] = $result['id'];
 
                 header("Location:" . URL . "leaderboard");
                 exit();
             } else {
-                $error = "Username o Password sbagliati";
+                $error = "Username or Password incorrect";
                 require_once 'application/views/login/index.php';
             }
         }

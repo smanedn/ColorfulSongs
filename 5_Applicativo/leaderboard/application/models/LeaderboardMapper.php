@@ -88,4 +88,33 @@ class LeaderboardMapper
         }
         return $allUserData;
     }
+
+    public function fetchMapsFriends($mapId,$userId){
+        try{
+            $selectUserData = "SELECT DISTINCT user.username, leaderboard.score, leaderboard.dungeon_id
+                            from user JOIN leaderboard
+                            ON user.id = leaderboard.user_id
+                            JOIN dungeon
+                            ON leaderboard.dungeon_id = '$mapId'
+                            JOIN friend
+                            ON friend.idUtente1 = '$userId'
+                            AND friend.pending = 0
+                            AND friend.idUtente2 = user.id
+                            AND friend.idUtente2 = leaderboard.user_id
+                            order by leaderboard.score desc";
+
+            $userData = $this->connection->query($selectUserData);
+        }catch (\Error $e){
+            $this->logs->errorLog($e);
+        }
+        $allUserData = array();
+        foreach ($userData as $line) {
+            $userData = new Leaderboard($line['username'], $line['score'], $line['dungeon_id']);
+            $allUserData[] = $userData;
+            unset($userData);
+        }
+        return $allUserData;
+
+    }
+
 }
