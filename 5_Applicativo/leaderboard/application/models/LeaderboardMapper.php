@@ -7,13 +7,14 @@ class LeaderboardMapper
 {
     private $validator;
     private $connection;
-
+    private $logs;
     public function __construct()
     {
         require_once "application/libs/validator.php";
-
+        require_once "application/libs/log.php";
         $this->validator = new \libs\Validator();
         $this->connection = \libs\Database::getConnection();
+        $this->logs = new \libs\Log();
     }
 
     /**
@@ -21,14 +22,99 @@ class LeaderboardMapper
      */
     public function fetchAll(): array
     {
-        $selectUserData = "select user.username, leaderboard.score, leaderboard.dungeon_id, friend.user_friend_code from user JOIN leaderboard on leaderboard.user_id = user.id join friend on friend.user_id = user.id";
-        $userData = $this->connection->query($selectUserData);
+        try {
+            $selectUserData = "select user.username, leaderboard.score, leaderboard.dungeon_id
+                            from user JOIN leaderboard 
+                            on leaderboard.user_id = user.id
+                            order by leaderboard.score desc";
+            $userData = $this->connection->query($selectUserData);
+        }catch (\Exception $e){
+            $this->logs->errorLog($e);
+        }
         $allUserData = array();
         foreach ($userData as $line) {
-            $userData = new Leaderboard($line['username'], $line['score'], $line['user_friend_code'], $line['dungeon_id']);
+            $userData = new Leaderboard($line['username'], $line['score'], $line['dungeon_id']);
             $allUserData[] = $userData;
             unset($userData);
         }
         return $allUserData;
     }
+
+
+    public function fetchFriend($userId): array
+    {
+        try {
+            $selectUserData = "SELECT user.username, leaderboard.score ,leaderboard.dungeon_id  
+                            from user JOIN friend 
+                                ON friend.idUtente1 = '$userId' 
+                                AND friend.pending = 0 
+                                AND friend.idUtente2 = user.id
+                            JOIN leaderboard 
+                                ON friend.idUtente2 = leaderboard.user_id
+                            order by leaderboard.score desc";
+
+            $userData = $this->connection->query($selectUserData);
+        }catch (\Exception $e){
+            $this->logs->errorLog($e);
+        }
+        $allUserData = array();
+        foreach ($userData as $line) {
+            $userData = new Leaderboard($line['username'], $line['score'], $line['dungeon_id']);
+            $allUserData[] = $userData;
+            unset($userData);
+        }
+        return $allUserData;
+    }
+
+    public function fetchMaps($mapId): array
+    {
+        try{
+            $selectUserData = "SELECT DISTINCT user.username, leaderboard.score, leaderboard.dungeon_id
+                            from user JOIN leaderboard
+                            ON user.id = leaderboard.user_id
+                            JOIN dungeon
+                            ON leaderboard.dungeon_id = '$mapId'
+                            order by leaderboard.score desc";
+
+            $userData = $this->connection->query($selectUserData);
+        }catch (\Exception $e){
+            $this->logs->errorLog($e);
+        }
+        $allUserData = array();
+        foreach ($userData as $line) {
+            $userData = new Leaderboard($line['username'], $line['score'], $line['dungeon_id']);
+            $allUserData[] = $userData;
+            unset($userData);
+        }
+        return $allUserData;
+    }
+
+    public function fetchMapsFriends($mapId,$userId){
+        try{
+            $selectUserData = "SELECT DISTINCT user.username, leaderboard.score, leaderboard.dungeon_id
+                            from user JOIN leaderboard
+                            ON user.id = leaderboard.user_id
+                            JOIN dungeon
+                            ON leaderboard.dungeon_id = '$mapId'
+                            JOIN friend
+                            ON friend.idUtente1 = '$userId'
+                            AND friend.pending = 0
+                            AND friend.idUtente2 = user.id
+                            AND friend.idUtente2 = leaderboard.user_id
+                            order by leaderboard.score desc";
+
+            $userData = $this->connection->query($selectUserData);
+        }catch (\Error $e){
+            $this->logs->errorLog($e);
+        }
+        $allUserData = array();
+        foreach ($userData as $line) {
+            $userData = new Leaderboard($line['username'], $line['score'], $line['dungeon_id']);
+            $allUserData[] = $userData;
+            unset($userData);
+        }
+        return $allUserData;
+
+    }
+
 }

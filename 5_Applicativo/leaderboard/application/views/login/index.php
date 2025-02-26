@@ -10,8 +10,8 @@
 <body>
     <div class="container-sm p-0 row mx-auto mt-5 rounded-4 rounded-end-4 shadow-lg">
         <div class="col p-5">
-            <p class="text-center fw-bold">LOGIN</p>
-            <p class="text-center fw-bold">Are you new here? <a class="text-decoration-none text-danger" href="#">Sign In</a></p>
+            <p class="text-center fw-bold h3">LOGIN</p>
+            <p class="text-bg-danger text-center"><?php if(isset($error)) echo $error ?></p>
             <form method="POST" action="<?php echo URL; ?>login/logIn">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default"><i class="fa-regular fa-user"></i></span>

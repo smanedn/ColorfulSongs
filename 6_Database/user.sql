@@ -1,4 +1,4 @@
-insert into user (username, password, email, friend_code) values ('thatherley0', 'kY0#i}a8`3', 'kmalenfant0@jigsy.com', '67046-113');
+insert into user (username, password, email, friend_code) values ('thatherley0', '$2y$10$Uj/4y2sk3hjbR2Roh31tkOPc0dV4bqN/iThbUMQDkjmw336BZWdsa', 'kmalenfant0@jigsy.com', '67046-113');
 insert into user (username, password, email, friend_code) values ('twaleran1', 'zD8#pn(58Hqcd`', 'kglencrosche1@seattletimes.com', '66993-904');
 insert into user (username, password, email, friend_code) values ('wfullbrook2', 'eF1)ZaERL', 'froom2@google.pl', '53808-0346');
 insert into user (username, password, email, friend_code) values ('kcamplen3', 'pX9).y9+E', 'alyle3@mysql.com', '68405-680');

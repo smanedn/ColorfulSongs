@@ -11,7 +11,6 @@ class Login
 
     public function index()
     {
-        //require 'application/views/_templates/header.php';
         require_once 'application/views/login/index.php';
     }
 
@@ -28,17 +27,17 @@ class Login
             require_once 'application/models/AuthenticData.php';
             $authModel = new \models\AuthenticData();
             $result = $authModel->getData($username, $password);
-            var_dump($result);
             if ($result) {
+                $_SESSION['username'] = $username;
                 $_SESSION["UserId"] = $result['id'];
 
                 header("Location:" . URL . "leaderboard");
                 exit();
             } else {
-                $this->index();
+                $error = "Username or Password incorrect";
+                require_once 'application/views/login/index.php';
             }
         }
-
     }
 
     public function logout()

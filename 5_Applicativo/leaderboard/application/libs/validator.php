@@ -1,10 +1,18 @@
 <?php
 namespace libs;
+require_once "application/libs/log.php";
 class Validator
 {
-    function checkPosition($val)
+    private $logs;
+    function checkNumber($val)
     {
-        return is_numeric($val) && $val > 0 && $val <= 9999;
+        $this->logs = new \libs\Log();
+        if(is_numeric($val) && $val > 0 && $val <= 9999){
+            return $val;
+        }
+        else{
+            $this->logs->errorLog("Type is not a number");
+        }
     }
 
     function checkTextArea($val)
