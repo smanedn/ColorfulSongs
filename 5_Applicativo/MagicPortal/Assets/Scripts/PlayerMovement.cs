@@ -45,8 +45,8 @@ public class PlayerMovement : MonoBehaviour
             position = position.normalized;
         }*/
         
-        Debug.Log(position);
-        Debug.Log(Time.deltaTime);
+        //Debug.Log(position);
+        //Debug.Log(Time.deltaTime);
 
         // Determina la velocità
         float currentSpeed = speed;
