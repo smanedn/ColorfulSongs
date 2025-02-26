@@ -9,8 +9,8 @@
     <script src="https://kit.fontawesome.com/f7749cdce8.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container-fluid p-0 row mx-auto mt-5 bg-dark bg-opacity-50">
-        <div class="col-2 p-3 bg-success bg-opacity-50 text-start">
+    <div class="container-fluid p-0 row mx-auto mt-5">
+        <div class="col-2 p-3 text-start">
             <h1 class="fw-bold">Filter</h1>
             <form id="radioFilterForm" method="POST" action="<?php echo URL; ?>leaderboard/radioFilter">
                 <div class="form-check">
@@ -35,6 +35,7 @@
                             <input class="form-control w-75" name="mapCode" placeholder="Map Code">
                             <button type="submit" class="btn btn-outline-dark ms-2" name="search" value="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
+                        <p class="text-bg-danger text-center"><?php if(isset($error)) echo $error ?></p>
                     </div>
                 </section>
 
@@ -42,7 +43,7 @@
             </form>
 
         </div>
-        <div class="col bg-dark bg-opacity-10 text-center text-white p-5">
+        <div class="col bg-dark bg-opacity-50 text-center text-white p-5">
             <h1>Leaderboard <?php if (isset($checked)) echo $checked; ?></h1>
             <a href="<?php echo URL ?>login/logout" class="btn btn-outline-dark">Logout</a>
             <div class="container-md bg-dark bg-opacity-25 rounded-3 pt-4 pb-1">
@@ -55,13 +56,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($leaderboard_data as $leaderboardValue) : ?>
+                    <?php if (isset($error)) : echo "<p class='text-bg-danger text-center'>" . $error . "</p>" ?>
+                    <?php else :
+                        foreach ($leaderboard_data as $leaderboardValue) : ?>
                         <tr>
                             <td><?php echo $leaderboardValue->getUsername(); ?></td>
                             <td><?php echo $leaderboardValue->getScore(); ?></td>
                             <td><?php echo $leaderboardValue->getMapCode(); ?></td>
                         </tr>
                     <?php endforeach; ?>
+                    <?php endif; ?>
                     </tbody>
                 </table>
             </div>

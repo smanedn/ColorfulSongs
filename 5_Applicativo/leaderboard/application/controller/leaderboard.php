@@ -54,17 +54,16 @@ class leaderboard
                 $this->validator = new \libs\Validator();
                 $mapCode = $this->validator->sanitizeInput($_POST['mapCode']);
                 $mapCode = $this->validator->checkNumber($mapCode);
-
+                if ($mapCode == "") {
+                    $error = "Value must be numeric";
+                    require_once 'application/views/leaderboard/index.php';
+                }
                 require_once "application/models/LeaderboardMapper.php";
                 $leaderboardMapper = new \models\LeaderboardMapper();
 
                 $leaderboard_data = $leaderboardMapper->fetchMaps($mapCode);
                 require_once 'application/views/leaderboard/index.php';
             }
-
-            //if (isset($mapCode)) {
-            //
-            //}
         }
     }
 }
