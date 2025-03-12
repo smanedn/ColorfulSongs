@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9c775b0-f6e2-48a8-a458-919996b2e743" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controller/leaderboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controller/leaderboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/libs/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/libs/database.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/logs/errorLog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/application/logs/errorLog.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/leaderboard/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/leaderboard/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/login/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/login/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../7_Allegati/Gantt Preventivo.mpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../7_Allegati/Gantt Preventivo.mpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/AuthenticData.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/AuthenticData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +69,9 @@
       <recent name="D:\3°_anno\Modulo_306(Project_Manager)\MagicPortal\5_Applicativo\leaderboard\application\logs" />
       <recent name="D:\3°_anno\Modulo_306(Project_Manager)\MagicPortal\5_Applicativo\leaderboard\application\libs" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\3°_anno\Modulo_306(Project_Manager)\MagicPortal\5_Applicativo\leaderboard\application\models" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -92,7 +94,7 @@
       <workItem from="1738756552025" duration="376000" />
       <workItem from="1739959799630" duration="71000" />
       <workItem from="1740554996543" duration="19168000" />
-      <workItem from="1741768180565" duration="8682000" />
+      <workItem from="1741768180565" duration="12738000" />
     </task>
     <servers />
   </component>
