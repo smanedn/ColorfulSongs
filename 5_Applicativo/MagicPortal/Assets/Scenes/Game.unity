@@ -1699,7 +1699,7 @@ Transform:
   m_GameObject: {fileID: 589852319}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0.49, y: 0, z: -0.35}
+  m_LocalPosition: {x: 0.49, y: 0.13, z: -0.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5586,6 +5586,7 @@ MonoBehaviour:
   SFXSource: {fileID: 794691565}
   backgroundMusic: {fileID: 8300000, guid: 1d69a74e6cffefd41ac6e1702aa67aae, type: 3}
   death: {fileID: 8300000, guid: 617b53c49dd189d4a8ec786c36b1ecb4, type: 3}
+  hit: {fileID: 8300000, guid: 1b3ca3db8cbf7524a888df175ddb2951, type: 3}
   jump: {fileID: 8300000, guid: 617b53c49dd189d4a8ec786c36b1ecb4, type: 3}
 --- !u!1 &1909006498
 GameObject:

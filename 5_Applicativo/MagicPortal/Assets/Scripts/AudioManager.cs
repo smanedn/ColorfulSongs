@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     [Header("----------Audio Clip----------")]
     [SerializeField] private AudioClip backgroundMusic;
     [SerializeField] private AudioClip death;
+    [SerializeField] private AudioClip hit;
     [SerializeField] private AudioClip jump;
 
     void Start()
