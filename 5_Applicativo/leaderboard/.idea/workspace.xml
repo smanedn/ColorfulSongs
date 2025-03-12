@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9c775b0-f6e2-48a8-a458-919996b2e743" name="Changes" comment="" />
+    <list default="true" id="f9c775b0-f6e2-48a8-a458-919996b2e743" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/libs/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/libs/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/logs/errorLog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/application/logs/errorLog.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/AuthenticData.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/AuthenticData.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,20 +45,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/3°_anno/Modulo_306(Project_Manager)/MagicPortal/5_Applicativo/leaderboard",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;php__leaderboard&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/3°_anno/Modulo_306(Project_Manager)/MagicPortal/5_Applicativo/leaderboard/application/logs&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\3°_anno\Modulo_306(Project_Manager)\MagicPortal\5_Applicativo\leaderboard\application\logs" />
+      <recent name="D:\3°_anno\Modulo_306(Project_Manager)\MagicPortal\5_Applicativo\leaderboard\application\libs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\3°_anno\Modulo_306(Project_Manager)\MagicPortal\5_Applicativo\leaderboard\application\models" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -72,6 +92,9 @@
       <workItem from="1738749029722" duration="501000" />
       <workItem from="1738749535191" duration="2175000" />
       <workItem from="1738756552025" duration="376000" />
+      <workItem from="1739959799630" duration="71000" />
+      <workItem from="1740554996543" duration="19168000" />
+      <workItem from="1741768180565" duration="12738000" />
     </task>
     <servers />
   </component>
