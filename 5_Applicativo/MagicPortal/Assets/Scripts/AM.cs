@@ -1,22 +1,23 @@
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class AM : MonoBehaviour
 {
 
-    [SerializeField] Slider volumeSlider;
+    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private string volumeCategory;
+    [SerializeField] private string audioMixerCategory;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (!PlayerPrefs.HasKey("musicVolume"))
+        if (!PlayerPrefs.HasKey(volumeCategory))
         {
-            PlayerPrefs.SetFloat("musicVolume", 1);
-            Load();
+            PlayerPrefs.SetFloat(volumeCategory, 1);  
         }
-        else
-        {
-            Load(); 
-        }
+        Load();
     }
 
     // Update is called once per frame
@@ -25,18 +26,23 @@ public class AM : MonoBehaviour
         
     }
 
-    public void ChangeVolume() { 
-        AudioListener.volume = volumeSlider.value;
+    public void ChangeVolume() {
+        if (volumeSlider.value == 0)
+        {
+            volumeSlider.value = 0.00001f;  // piccolo controllo per evitare Log10(0)
+        }
+        audioMixer.SetFloat(audioMixerCategory, Mathf.Log10(volumeSlider.value) * 20);   //conversione (0.1-1) a db
         Save();
+        
     }
 
     private void Load()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        volumeSlider.value = PlayerPrefs.GetFloat(volumeCategory);
     }
 
-    private void Save()
+    private void Save() 
     {
-        PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
+        PlayerPrefs.SetFloat(volumeCategory, volumeSlider.value);
     }
 }
