@@ -26,14 +26,12 @@
             <form id="radioFilterForm" method="POST" action="<?php echo URL; ?>leaderboard/radioFilter">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="type" id="friendRadio" value="friend" onchange="this.form.submit()"
-                        <?php if(isset($_SESSION['type']) && $_SESSION['type'] == "friend"){?> checked <?php }?>
-                    >
+                        <?php if(isset($_SESSION['type']) && $_SESSION['type'] == "friend"){?> checked <?php }?>>
                     <label class="form-check-label" for="friendRadio">Friends</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="type" id="globalRadio" value="global" onchange="this.form.submit()"
-                        <?php if(isset($_SESSION['type']) && $_SESSION['type'] == "global"){ ?> checked <?php }?>
-                    >
+                        <?php if(isset($_SESSION['type']) && $_SESSION['type'] == "global"){ ?> checked <?php }?>>
                     <label class="form-check-label" for="globalRadio">Global</label>
                 </div>
             </form>
@@ -46,8 +44,10 @@
                             <input class="form-control w-75" name="mapCode" placeholder="Map Code">
                             <button type="submit" class="btn btn-outline-dark ms-2" name="search" value="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
-                        <p class="text-bg-danger text-center w-50"><?php if(isset($error)) echo $error ?></p>
+                        <p class="text-danger w-75"><?php if(isset($error)) echo $error ?></p>
                     </div>
+
+                    <button type="submit" class="btn btn-outline-dark ms-2" name="deleteFilter" value="deleteFilter">Delete Filter</button>
                 </section>
 
 

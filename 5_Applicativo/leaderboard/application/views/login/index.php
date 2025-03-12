@@ -28,7 +28,7 @@
             </form>
         </div>
         <div class="col bg-info text-center rounded-end-4 text-white p-5">
-            <h1>MagicPortal</h1>
+            <h1>Colorful Songs</h1>
         </div>
     </div>
 
