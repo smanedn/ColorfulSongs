@@ -24,8 +24,8 @@ $final = $actual_link.str_replace($documentRoot,'',$dir);
 
 define('URL', $final);
 define('HOST','localhost');
-define('USERNAME','magicportal');
+define('USERNAME','colorfulsongs');
 define('PASSWORD','Admin$00');
-define('DATABASE','magicportal');
+define('DATABASE','colorfulsongs');
 define('PORT','3306');
 

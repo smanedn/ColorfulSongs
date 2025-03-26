@@ -46,11 +46,11 @@ class LeaderboardMapper
         try {
             $selectUserData = "SELECT user.username, leaderboard.score ,leaderboard.dungeon_id  
                             from user JOIN friend 
-                                ON friend.idUtente1 = '$userId' 
+                                ON friend.userId1 = '$userId' 
                                 AND friend.pending = 0 
-                                AND friend.idUtente2 = user.id
+                                AND friend.userId2 = user.id
                             JOIN leaderboard 
-                                ON friend.idUtente2 = leaderboard.user_id
+                                ON friend.userId2 = leaderboard.user_id
                             order by leaderboard.score desc";
 
             $userData = $this->connection->query($selectUserData);
@@ -97,10 +97,10 @@ class LeaderboardMapper
                             JOIN dungeon
                             ON leaderboard.dungeon_id = '$mapId'
                             JOIN friend
-                            ON friend.idUtente1 = '$userId'
+                            ON friend.userId1 = '$userId'
                             AND friend.pending = 0
-                            AND friend.idUtente2 = user.id
-                            AND friend.idUtente2 = leaderboard.user_id
+                            AND friend.userId2 = user.id
+                            AND friend.userId2 = leaderboard.user_id
                             order by leaderboard.score desc";
 
             $userData = $this->connection->query($selectUserData);

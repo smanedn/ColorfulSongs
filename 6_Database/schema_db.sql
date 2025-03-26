@@ -1,5 +1,5 @@
-CREATE DATABASE magicportal;
-USE magicportal;
+CREATE DATABASE colorfulsongs;
+USE colorfulsongs;
 CREATE TABLE user(
 	id int AUTO_INCREMENT PRIMARY KEY,
 	username VARCHAR(64) UNIQUE NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE leaderboard(
     FOREIGN KEY (dungeon_id) REFERENCES dungeon(id)
 );
 
-CREATE USER 'magicportal'@'localhost' IDENTIFIED BY 'Admin$00';
-GRANT ALL PRIVILEGES ON magicportal.* TO 'magicportal'@'localhost';
+CREATE USER 'colorfulsongs'@'%' IDENTIFIED BY 'Admin$00';
+GRANT ALL PRIVILEGES ON colorfulsongs.* TO 'colorfulsongs'@'%';
 FLUSH PRIVILEGES;
-EXIT;
+
