@@ -1,9 +1,10 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 6.0f;
-    [SerializeField] private float runningSpeed = 8.0f;
+    [SerializeField] private float runningSpeed = 6.5f;
     [SerializeField] private float gravity = 9.81f;
     [SerializeField] private float jumpHeight = 0.5f;
     [SerializeField] private GameObject rightArm;
@@ -33,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         Movement();
         Turn();
     }
+
     private void Movement()
     {
         x = Input.GetAxis("Horizontal");
@@ -55,25 +57,9 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButton("Fire3") && (Mathf.Abs(x) > 0.1f || Mathf.Abs(z) > 0.1f))
         {
             currentSpeed = runningSpeed;
-
         }
 
-        if (!characterController.isGrounded)
-        {
-            rightArm.transform.localPosition = new Vector3(0.459f, 0.7f, -0.459f);
-            rightArm.transform.localRotation = Quaternion.Euler(0, 45, -15f);
-            leftArm.transform.localPosition = new Vector3(-0.459f, 0.7f, 0.459f);
-            leftArm.transform.localRotation = Quaternion.Euler(0, 45, 15f);
-        }
-        else
-        {
-            rightArm.transform.localPosition = new Vector3(0.459f, 0.02f, -0.459f);
-            rightArm.transform.localRotation = Quaternion.Euler(0, 45, 15f);
-            leftArm.transform.localPosition = new Vector3(-0.459f, 0.02f, 0.459f);
-            leftArm.transform.localRotation = Quaternion.Euler(0, 45, -15f);
-        }
-
-            characterController.Move(position * currentSpeed * Time.deltaTime);    //in caso non si voglia + speed in diagonale positino.normalized
+        characterController.Move(position * currentSpeed * Time.deltaTime);    //in caso non si voglia + speed in diagonale positino.normalized
     }
 
     private void Turn()
@@ -93,15 +79,63 @@ public class PlayerMovement : MonoBehaviour
             {
                 veritcalVelocity = Mathf.Sqrt(jumpHeight * gravity * 2);
                 audioManager.PlaySFX(audioManager.GetJump());
-
-                
             }
+
+            MoveArm("down");
         }
         else
         {
             veritcalVelocity -= gravity * Time.deltaTime;
+
+            MoveArm("up");
+            if (IsVoid())
+            {
+                print("Void");
+                GetComponent<PlayerCollision>().Teleport(0, 2f, 0);
+                
+            }
         }
         return veritcalVelocity;
+    }
+    private bool IsVoid()
+    {
+        if (transform.position.y < -1)
+        {
+            return true;
+        }
+        return false;
+    }
 
+    private void MoveArm(string direction)
+    {
+        float zPositionLeft = -0.459f;
+        float zPositionRight = 0.459f;
+        
+        float zRotationLeft = -15f;
+        float zRotationRight = 15f;
+
+        float y = 0.7f; 
+
+        if(direction == "down")
+        { 
+            zPositionLeft *= -1;
+            zPositionRight *= -1;
+            y = 0.2f;
+        }
+        else if(direction == "up")
+        {
+            zPositionLeft *= -1;
+            zPositionRight *= -1;
+            zRotationRight = 135;
+            zRotationLeft = 225;
+        }
+
+        float xPositionRight = zPositionLeft;
+        float xPositionLeft = zPositionRight;
+
+        rightArm.transform.localPosition = new Vector3(xPositionRight, y, zPositionRight);
+        rightArm.transform.localRotation = Quaternion.Euler(0, 45, zRotationRight);
+        leftArm.transform.localPosition = new Vector3(xPositionLeft, y, zPositionLeft);
+        leftArm.transform.localRotation = Quaternion.Euler(0, 45, zRotationLeft);
     }
 }

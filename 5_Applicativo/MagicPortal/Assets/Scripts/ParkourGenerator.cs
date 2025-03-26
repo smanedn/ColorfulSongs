@@ -12,7 +12,6 @@ public class ParkourGenerator : MonoBehaviour
     [SerializeField] private int endingZ;     //= 12
     [SerializeField] private int startingY;   //= 0;
     
-
     private CharacterController characterController;
 
     [SerializeField] private GameObject parkour;
@@ -25,7 +24,7 @@ public class ParkourGenerator : MonoBehaviour
         int x = 0;
         bool first = true;
 
-        while(x<endingX)
+        while(x < endingX)
         {
             if (first){
                 x = startingX + Random.Range(0,3);

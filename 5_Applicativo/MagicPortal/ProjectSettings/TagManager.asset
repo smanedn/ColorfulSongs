@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Audio
   - Enemy
+  - Portal
   layers:
   - Default
   - TransparentFX

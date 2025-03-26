@@ -7,7 +7,7 @@ public class HealthManager : MonoBehaviour
 
 
     [SerializeField] private GameObject healthBar;
-    public static int health; // 0-5
+    private static int health; // 0-5
     private Transform[] heartImages;
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private GameObject deathGUI;
@@ -43,6 +43,7 @@ public class HealthManager : MonoBehaviour
     {
         string currentLastHeart = "Heart " + health;
         GameObject.Find(currentLastHeart).SetActive(false);
+        health -= 1;
     }
 
     public static void DeathScreen()
@@ -50,5 +51,10 @@ public class HealthManager : MonoBehaviour
        Time.timeScale = 0f;
        Instance.musicSource?.Pause();
        Instance.deathGUI.gameObject?.SetActive(true);
+    }
+
+    public static int GetHealth()
+    {
+        return health; 
     }
 }
