@@ -8,10 +8,11 @@ class UserGateway{
 
     public function findAll()
     {
-        $statement = "select * from user";
+        $statement = "select * from leaderboard";
 
         try{
             $statement = $this->db->prepare($statement);
+            $statement->execute();
             $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
             return $result;
         }catch(\PDOException $e){
@@ -22,10 +23,9 @@ class UserGateway{
     public function find($id)
     {
         $statement = "select * from user where id = ?";
-        $statement->execute(array($id));
-        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
         try{
             $statement = $this->db->prepare($statement);
+            $statement->execute(array($id));
             $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
             return $result;
         }catch(\PDOException $e){

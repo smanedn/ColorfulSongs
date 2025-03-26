@@ -46,6 +46,7 @@ class UserController
 
     private function getAllUsers()
     {
+
         $result = $this->userGateway->findAll();
         $response['status_code_header'] = 'HTTP/1.1 200 OK';
         $response['body'] = json_encode($result);
@@ -66,6 +67,7 @@ class UserController
     private function createUserFromRequest()
     {
         $input = (array) json_decode(file_get_contents('php://input'), true);
+//        var_dump($input);
         if (! $this->validateUser($input)){
             return $this->unprocessableEntityResponse();
         }
@@ -108,7 +110,7 @@ class UserController
         if (! isset($input['username'])){
             return false;
         }
-        if (! isser($input['email'])){
+        if (! isset($input['email'])){
             return false;
         }
         return true;

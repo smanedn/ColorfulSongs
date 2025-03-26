@@ -1,5 +1,5 @@
 <?php
-namespace src\System
+namespace Src\System;
 ;
 class Database
 {

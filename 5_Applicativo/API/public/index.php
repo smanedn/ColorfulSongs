@@ -1,5 +1,5 @@
 <?php
-require '../bootstrap.php';
+require_once '../bootstrap.php';
 use Src\Controller\UserController;
 
 header('Access-Control-Allow-Origin: *');
@@ -13,15 +13,15 @@ $uri = explode('/', $uri);
 
 // all of our endpoints start with /person
 // everything else results in a 404 Not Found
-if ($uri[1] !== 'user') {
+if ($uri[3] !== 'user') {
     header('HTTP/1.1 404 Not Found');
     exit();
 }
 
 // the user id is, of course, optional and must be a number:
 $userId = null;
-if (isset($uri[2])) {
-    $userId = (int) $uri[2];
+if (isset($uri[4])) {
+    $userId = (int) $uri[4];
 }
 
 $requestMethod = $_SERVER['REQUEST_METHOD'];
