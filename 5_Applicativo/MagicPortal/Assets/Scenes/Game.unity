@@ -7879,10 +7879,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03195dd52e3ed1e4c9439bebfa4c562d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 40
-  column: 12
-  y: -2
-  startingX: 5
+  row: 0
+  column: 0
+  y: 0
+  startingX: 0
   startingZ: 0
   wallHeight: 0
   xEnigma: 0
@@ -8534,7 +8534,9 @@ MonoBehaviour:
   startingZ: 0
   endingZ: 8
   startingY: 0
+  ladder: {fileID: 1219712586384628110, guid: 5688e4b769d117a43bc005974bd5e919, type: 3}
   pedana: {fileID: 709262350618453701, guid: 41973e0e34b053e4a80ea3449cf6aa2e, type: 3}
+  griglia: {fileID: 7071275311211430607, guid: 0875708a2ad3f9a48a5acc506f7d51b6, type: 3}
   wall: {fileID: 7932817789950506644, guid: 287c4999efb6e7441a621436bdad4109, type: 3}
   parent: {fileID: 1075973606}
 --- !u!1 &1838536179
