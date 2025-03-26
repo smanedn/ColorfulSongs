@@ -1,5 +1,5 @@
 <?php
-namespace Src\models;
+namespace Src\UserGateways;
 class UserGateway{
     private $db = null;
     public function __construct($db){

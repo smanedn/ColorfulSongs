@@ -1,0 +1,3 @@
+username: user
+password: Admin$00
+nome macchina: T-sv01PuzzleGame 10.100.1.16

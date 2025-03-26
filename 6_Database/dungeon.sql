@@ -1,3 +1,4 @@
+use colorfulsongs;
 insert into dungeon (id) values ('45080');
 insert into dungeon (id) values ('1');
 insert into dungeon (id) values ('99014');

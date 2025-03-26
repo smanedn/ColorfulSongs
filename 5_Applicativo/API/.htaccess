@@ -1,4 +1,4 @@
-# Necessary to prevent problems when using a controller named "index" and having a root index.php
+# Necessary to prevent problems when using a Controller named "index" and having a root index.php
 # more here: http://httpd.apache.org/docs/2.2/content-negotiation.html
 
 #Esempio: se la cartella configurazione/ e il file configuration.php si trovano nella root del sito e si tenta di raggiungere

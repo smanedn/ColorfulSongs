@@ -1,8 +1,9 @@
 <?php
-namespace src\libs;
+namespace src\System
+;
 class Database
 {
-    private $_connection = null;
+    private $dbConnection = null;
 
     public function __construct()
     {
@@ -13,7 +14,7 @@ class Database
         $pass = getenv('DB_PASSWORD');
 
         try {
-            $this->_connection = new \PDO(
+            $this->dbConnection = new \PDO(
                 "mysql:host=$host;port=$port;charset=utf8mb4;dbname=$db",
                 $user,
                 $pass
@@ -24,7 +25,7 @@ class Database
     }
 
     public function getConnection(){
-        return $this->_connection;
+        return $this->dbConnection;
     }
 
 
