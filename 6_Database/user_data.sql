@@ -1,0 +1,10 @@
+use colorfulsongs;
+insert into user (username, password, email) values ('msans1', '$2a$04$JCmjW/tfXDd68b2etgVZfOzskcIs0ZtdzVNTNDIfMw4FmXqgfSLKG', 'hfortun1@adobe.com');
+insert into user (username, password, email) values ('adelleschi2', '$2a$04$xJB1xrjOu6U3ZoSs0vDm1.p520A6c.az9/O7dnP7M0ltU4SDOV.pq', 'tchesman2@bandcamp.com');
+insert into user (username, password, email) values ('gcoucher3', '$2a$04$g2/XfDWmY9aTmPqZaMgt5.ViVpey/fb59tGzZmC4HXSQ96fkYUqAC', 'ebottrill3@artisteer.com');
+insert into user (username, password, email) values ('pmayman4', '$2a$04$ghv8rpdFgGJdhGLyrwDwDOoDCUetFP8sgvNOTDU.ouY6NS/x.bb/q', 'rakenhead4@123-reg.co.uk');
+insert into user (username, password, email) values ('pchadbourne5', '$2a$04$WQ/np1ZnxkNuDyTCy7hweeU3rFYS.icgoO2dit.VqfTZ3x4A1TAAS', 'jponceford5@theglobeandmail.com');
+insert into user (username, password, email) values ('hpengilley6', '$2a$04$MwhAGGIIXISMqqlcg8lIr.nseiKnI0jzWTFnfl6IZngbEJdoaoID2', 'lmcbain6@craigslist.org');
+insert into user (username, password, email) values ('tfibbens7', '$2a$04$.0aU8eubWa1svKAp9qlO1.NdPe5SUGRJ4qqKiKmjM0Pk.3SuLYczq', 'adukelow7@amazon.de');
+insert into user (username, password, email) values ('sbrentnall8', '$2a$04$DMLsCV.VkFSbSQowbg4.Lu1YurlcHGoPJZ9/5SOHJx6dvC121J8h.', 'rstorer8@ocn.ne.jp');
+insert into user (username, password, email) values ('nstretton9', '$2a$04$UMeCdoFZ0ltgN5H9H92Xruuv5C3K0kZWgFeiaRe8JBRhqDyZqeoyK', 'mphizacklea9@sbwire.com');

@@ -4,8 +4,7 @@ CREATE TABLE user(
 	id int AUTO_INCREMENT PRIMARY KEY,
 	username VARCHAR(64) UNIQUE NOT NULL,
 	password VARCHAR(256) NOT NULL,
-	email VARCHAR(256) NOT NULL,
-    friend_code VARCHAR(10) unique
+	email VARCHAR(256) NOT NULL
 );
 
 CREATE TABLE dungeon(
@@ -14,19 +13,20 @@ CREATE TABLE dungeon(
 );
 
 CREATE TABLE friend(
-	user_id int,
-    user_friend_code varchar(10),
-    FOREIGN KEY (user_id) REFERENCES user(id),
-    FOREIGN KEY (user_friend_code) REFERENCES user(friend_code),
-    PRIMARY KEY(user_id, user_friend_code)
+    userId1 int,
+    userId2 int,
+    pending boolean,
+    FOREIGN KEY (userId1) REFERENCES user(id) ON DELETE no action,
+    FOREIGN KEY (userId2) REFERENCES user(id) ON DELETE no action,
+    PRIMARY KEY(userId1, userId2)
 );
 
 CREATE TABLE leaderboard(
 	score int PRIMARY KEY,
     user_id int,
     dungeon_id int,
-    FOREIGN KEY (user_id) REFERENCES user(id),
-    FOREIGN KEY (dungeon_id) REFERENCES dungeon(id)
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
+    FOREIGN KEY (dungeon_id) REFERENCES dungeon(id) ON DELETE CASCADE
 );
 
 CREATE USER 'colorfulsongs'@'%' IDENTIFIED BY 'Admin$00';
