@@ -6,4 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
+    'Src\\' => array($baseDir . '/src'),
+    'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
 );

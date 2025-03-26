@@ -6,10 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Application' => $baseDir . '/application/libs/application.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'DBMysql' => $baseDir . '/application/models/database.php',
-    'LoginModel' => $baseDir . '/application/models/loginmodel.php',
-    'Scrittore' => $baseDir . '/application/models/Scrittore.php',
-    'ScrittoriModel' => $baseDir . '/application/models/scrittorimodel.php',
 );

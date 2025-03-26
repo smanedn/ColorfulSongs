@@ -6,18 +6,46 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit8b0801153801e3e8932a78836d94b702
 {
+    public static $files = array (
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+    );
+
+    public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Ctype\\' => 23,
+            'Src\\' => 4,
+        ),
+        'D' => 
+        array (
+            'Dotenv\\' => 7,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Src\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
+        'Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
+        ),
+    );
+
     public static $classMap = array (
-        'Application' => __DIR__ . '/../..' . '/application/libs/application.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'DBMysql' => __DIR__ . '/../..' . '/application/models/database.php',
-        'LoginModel' => __DIR__ . '/../..' . '/application/models/loginmodel.php',
-        'Scrittore' => __DIR__ . '/../..' . '/application/models/Scrittore.php',
-        'ScrittoriModel' => __DIR__ . '/../..' . '/application/models/scrittorimodel.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit8b0801153801e3e8932a78836d94b702::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit8b0801153801e3e8932a78836d94b702::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit8b0801153801e3e8932a78836d94b702::$classMap;
 
         }, null, ClassLoader::class);
