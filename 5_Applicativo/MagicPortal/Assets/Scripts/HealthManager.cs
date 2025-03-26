@@ -44,13 +44,19 @@ public class HealthManager : MonoBehaviour
         string currentLastHeart = "Heart " + health;
         GameObject.Find(currentLastHeart).SetActive(false);
         health -= 1;
+        if (health == 0)
+        {
+            print("dead");
+            DeathScreen();
+        }
     }
 
     public static void DeathScreen()
     {
-       Time.timeScale = 0f;
-       Instance.musicSource?.Pause();
-       Instance.deathGUI.gameObject?.SetActive(true);
+        Time.timeScale = 0f;
+        Instance.musicSource?.Pause();
+        Instance.deathGUI.gameObject?.SetActive(true);
+        GameObject.Find("Body").GetComponent<PlayerMovement>().enabled = false;
     }
 
     public static int GetHealth()

@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 print("Void");
                 GetComponent<PlayerCollision>().Teleport(0, 2f, 0);
-                
+                HealthManager.LooseOneHeart();
             }
         }
         return veritcalVelocity;
