@@ -24,11 +24,6 @@ public class PlayerCollision : MonoBehaviour
             //Destroy(other.gameObject);
             HealthManager.LooseOneHeart();
             print(HealthManager.GetHealth());
-            if (HealthManager.GetHealth() == 0)
-            {
-                print("dead");
-                HealthManager.DeathScreen();
-            }
         }
     }
 
