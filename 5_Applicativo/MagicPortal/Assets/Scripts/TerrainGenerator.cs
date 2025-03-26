@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
@@ -8,6 +10,9 @@ public class TerrainGenerator : MonoBehaviour
     private int z;
     private int h;
     private bool empty;
+    private int firstEnigma;
+    private int secondEnigma;
+  
 
     [SerializeField] private int row;         //= 30  //f=20
     [SerializeField] private int column;      //= 12
@@ -26,9 +31,21 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private GameObject floor;
     [SerializeField] private GameObject wall;
     [SerializeField] private GameObject parent;
-    
+
+    public GameObject[] enigmasFirst;
+    public GameObject[] enigmasSecond;
+
     void Start()
     {
+        do
+        {
+            firstEnigma = Random.Range(0, 4);
+            secondEnigma = Random.Range(0, 4);
+        } while (firstEnigma == secondEnigma);
+
+        enigmasFirst[firstEnigma].SetActive(true);
+        enigmasSecond[secondEnigma].SetActive(true);
+
         for (int r = startingX; r <= row; r++)
         {
             x = r;

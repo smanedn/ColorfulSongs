@@ -1,30 +1,52 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using static Unity.Collections.AllocatorManager;
+using System.Linq;
 
 public class CannonGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject cannonPrefab;
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject parent;
+    [SerializeField] private GameObject floor;
     [SerializeField] private int cannonCount;
     [SerializeField] private float fireInterval;
     [SerializeField] private float fireSpeed;
     [SerializeField] private float fireHeight;
     [SerializeField] private Vector3 startingPosition = new Vector3(0, 0, 0);
     [SerializeField] private float bulletLifetime;
+    [SerializeField] private int startingX;
+    [SerializeField] private int endingX;
+    [SerializeField] private int startingZ;
+    [SerializeField] private int endingZ;
+    [SerializeField] private int startingY;
 
     private GameObject[] cannons;
     private List<GameObject> bullets = new List<GameObject>();
 
     void Start()
     {
+        int[] posX = new int[cannonCount];
         cannons = new GameObject[cannonCount];
         for (int i = 0; i < cannonCount; i++)
         {
-            Vector3 cannonPosition = startingPosition + new Vector3(i * 2.0f, fireHeight, 0); //distanza fra i cannoni
+            Vector3 cannonPosition = startingPosition + new Vector3(i * 2.0f, fireHeight, 0); //distanza fra i cannoni (2.0f)
             cannons[i] = Instantiate(cannonPrefab, cannonPosition, Quaternion.identity);
+            cannons[i].name = "Cannone" + i;
+            cannons[i].transform.SetParent(parent.transform);
         }
         StartCoroutine(ShootCannons());
+
+        for (int x = startingX; x < endingX; x++)
+        {
+            for (int z = startingZ; z <= endingZ; z++)
+            {
+                var cube = Instantiate(floor, new Vector3(x, startingY, z), Quaternion.identity);
+                cube.name = "floor[" + x + "; " + z + "]";
+                cube.transform.SetParent(parent.transform);                     
+            }
+        }
     }
 
     void Update()
@@ -34,6 +56,7 @@ public class CannonGenerator : MonoBehaviour
             if (bullets[i] != null)
             {
                 bullets[i].transform.Translate(Vector3.back * fireSpeed * Time.deltaTime);
+                bullets[i].transform.SetParent(parent.transform);
                 if (bullets[i].transform.position.z < -20f)
                 {
                     Destroy(bullets[i]);
