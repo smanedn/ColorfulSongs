@@ -68,4 +68,11 @@ public class HealthManager : MonoBehaviour
     {
         return health <= 0;
     }
+
+    
+
+    public static void Revive()
+    {
+        health = 5;
+    }
 }

@@ -28,8 +28,6 @@ public class PauseMenu : MonoBehaviour
             {
                 PauseGame();
             }
-            
-
         }
     }
 
@@ -60,5 +58,12 @@ public class PauseMenu : MonoBehaviour
     public bool IsPaused()
     {
         return isPaused;
+    }
+
+    public void Restart()
+    {
+        HealthManager.Revive();
+        GameObject.Find("Body").GetComponent<PlayerCollision>().Teleport(0, 2f, 0);
+
     }
 }

@@ -96,7 +96,6 @@ public class PlayerMovement : MonoBehaviour
                 {
                     GetComponent<PlayerCollision>().Teleport(0, 2f, 0);
                 }
-                
             }
         }
         return veritcalVelocity;
