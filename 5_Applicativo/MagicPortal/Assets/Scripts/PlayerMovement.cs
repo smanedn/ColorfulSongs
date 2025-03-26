@@ -81,13 +81,13 @@ public class PlayerMovement : MonoBehaviour
                 audioManager.PlaySFX(audioManager.GetJump());
             }
 
-            MoveArm("down");
+            //MoveArm("down");
         }
         else
         {
             veritcalVelocity -= gravity * Time.deltaTime;
 
-            MoveArm("up");
+            //MoveArm("up");
             if (IsVoid())
             {
                 print("Void");
@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
         }
         return false;
     }
-
+    /**
     private void MoveArm(string direction)
     {
         float zPositionLeft = -0.459f;
@@ -138,4 +138,5 @@ public class PlayerMovement : MonoBehaviour
         leftArm.transform.localPosition = new Vector3(xPositionLeft, y, zPositionLeft);
         leftArm.transform.localRotation = Quaternion.Euler(0, 45, zRotationLeft);
     }
+    */
 }
