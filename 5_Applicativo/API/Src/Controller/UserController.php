@@ -66,8 +66,8 @@ class UserController
 
     private function createUserFromRequest()
     {
+
         $input = (array) json_decode(file_get_contents('php://input'), true);
-//        var_dump($input);
         if (! $this->validateUser($input)){
             return $this->unprocessableEntityResponse();
         }
@@ -87,7 +87,7 @@ class UserController
         if (! $this->validateUser($input)){
             return $this->unprocessableEntityResponse();
         }
-        $this->userGateway->update($input, $userId);
+        $this->userGateway->update($userId, $input);
         $response['status_code_header'] = 'HTTP/1.1 200 OK';
         $response['body'] = null;
         return $response;
