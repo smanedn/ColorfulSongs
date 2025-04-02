@@ -34,6 +34,13 @@ public class PlayerCollision : MonoBehaviour
             print("tp");
             Teleport(0, 2f, 0);
         }
+
+        if (other.gameObject.CompareTag("BadPortal"))
+        {
+            print("badPortal");
+            Teleport(0, 2f, 0);
+            HealthManager.LooseOneHeart();
+        }
     }
 
     public async void Teleport(float x, float y, float z)

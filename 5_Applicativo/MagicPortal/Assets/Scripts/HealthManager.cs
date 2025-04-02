@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
@@ -36,7 +37,7 @@ public class HealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public static void LooseOneHeart()
@@ -44,7 +45,7 @@ public class HealthManager : MonoBehaviour
         string currentLastHeart = "Heart " + health;
         GameObject.Find(currentLastHeart).SetActive(false);
         health -= 1;
-        if (health == 0)
+        if (IsDead())
         {
             print("dead");
             DeathScreen();
@@ -56,11 +57,21 @@ public class HealthManager : MonoBehaviour
         Time.timeScale = 0f;
         Instance.musicSource?.Pause();
         Instance.deathGUI.gameObject?.SetActive(true);
-        GameObject.Find("Body").GetComponent<PlayerMovement>().enabled = false;
+        GameObject.Find("Character").GetComponent<PlayerMovement>().enabled = false;
     }
 
     public static int GetHealth()
     {
-        return health; 
+        return health;
+    }
+
+    public static bool IsDead()
+    {
+        return health <= 0;
+    }
+
+    public static void Revive()
+    {
+        health = 5;
     }
 }
