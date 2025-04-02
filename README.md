@@ -5,9 +5,9 @@
 <br>
 
 ## 📑 Indice dei contenuti
-- [Autori](#-autori)
+- [Autori](#%EF%B8%8F-autori)
 - [Funzionalità](#-funzionalità)
-- [Tecnologie utilizzate](#-tecnologie-utilizzate)
+- [Tecnologie utilizzate](#%EF%B8%8F-tecnologie-utilizzate)
 
 ## ✍️ Autori
 
