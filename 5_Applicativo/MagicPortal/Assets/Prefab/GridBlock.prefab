@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 9212724608373871560}
   - component: {fileID: 6498605989313712787}
   m_Layer: 0
-  m_Name: Griglia
+  m_Name: GridBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

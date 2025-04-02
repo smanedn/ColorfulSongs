@@ -6,19 +6,22 @@ using UnityEngine;
 
 public class ParkourGenerator : MonoBehaviour
 {
-    [SerializeField] private int startingX;   //= 5
-    [SerializeField] private int endingX;     //= 20
-    [SerializeField] private int startingZ;   //= 0
-    [SerializeField] private int endingZ;     //= 12
-    [SerializeField] private int startingY;   //= 0;
-    
+    private int startingX;   //= 5
+    private int endingX;     //= 20
+    private int startingZ;   //= 0
+    private int endingZ;     //= 8
+    private int startingY;   //= 0;
+
     private CharacterController characterController;
 
     [SerializeField] private GameObject parkour;
     [SerializeField] private GameObject parent;
+    [SerializeField] private GameObject generator;
 
     void Start()
     {
+        generator.GetComponent<TerrainGenerator>().setVariable(startingX, startingZ, endingX, endingZ, startingY, "ParkourGenerator");
+
         int oldZ = -1;
         int z = 0;
         int x = 0;
@@ -50,7 +53,7 @@ public class ParkourGenerator : MonoBehaviour
             x += Random.Range(2,4);
             z = -1;
         }
-    }
 
-    
+        print("Parkour Generator:[X start: " + startingX + " X fine: " + endingX + "] && [Z start: " + startingZ + " Z fine: " + endingZ + "]");
+    } 
 }

@@ -6,6 +6,7 @@ using System.Linq;
 
 public class CannonGenerator : MonoBehaviour
 {
+    [SerializeField] private GameObject generator;
     [SerializeField] private GameObject cannonPrefab;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject parent;
@@ -14,24 +15,25 @@ public class CannonGenerator : MonoBehaviour
     [SerializeField] private float fireInterval;
     [SerializeField] private float fireSpeed;
     [SerializeField] private float fireHeight;
-    [SerializeField] private Vector3 startingPosition = new Vector3(0, 0, 0);
     [SerializeField] private float bulletLifetime;
-    [SerializeField] private int startingX;
-    [SerializeField] private int endingX;
-    [SerializeField] private int startingZ;
-    [SerializeField] private int endingZ;
-    [SerializeField] private int startingY;
+    private int startingX;
+    private int endingX;
+    private int startingZ;
+    private int endingZ;
+    private int startingY;
 
     private GameObject[] cannons;
     private List<GameObject> bullets = new List<GameObject>();
 
     void Start()
     {
+        generator.GetComponent<TerrainGenerator>().setVariable(startingX, startingZ, endingX, endingZ, startingY, "CannonGenerator");
+
         int[] posX = new int[cannonCount];
         cannons = new GameObject[cannonCount];
         for (int i = 0; i < cannonCount; i++)
         {
-            Vector3 cannonPosition = startingPosition + new Vector3(i * 2.0f, fireHeight, 0); //distanza fra i cannoni (2.0f)
+            Vector3 cannonPosition = new Vector3(startingX, startingY, endingZ) + new Vector3(i * 2.0f, fireHeight, 0); //distanza fra i cannoni (2.0f)
             cannons[i] = Instantiate(cannonPrefab, cannonPosition, Quaternion.identity);
             cannons[i].name = "Cannone" + i;
             cannons[i].transform.SetParent(parent.transform);
@@ -47,6 +49,8 @@ public class CannonGenerator : MonoBehaviour
                 cube.transform.SetParent(parent.transform);                     
             }
         }
+        print("[X start: " + startingX + " X fine: " + endingX + "]");
+        print("[Z start: " + startingZ + " Z fine: " + endingZ + "]");
     }
 
     void Update()
