@@ -1,4 +1,6 @@
 <?php
+require_once 'vendor/autoload.php';
+
 class leaderboard
 {
     private $validator;
@@ -18,9 +20,8 @@ class leaderboard
     public function index()
     {
         if($this->isAdmin()){
-            require_once "application/models/LeaderboardMapper.php";
-            $leaderboard_model = new \models\LeaderboardMapper();
-            $leaderboard_data = $leaderboard_model->fetchAll();
+            new Database();
+            $leaderboard_data = Leaderboard2::getData();
             if (isset($_SESSION['type'])){
                 $_SESSION['type'] = $_POST['type'];
                 require_once 'application/views/leaderboard/index.php';
@@ -34,23 +35,25 @@ class leaderboard
 
     public function radioFilter(){
         if ($this->isAdmin()) {
-            require_once 'application/models/LeaderboardMapper.php';
-            $leaderboardMapper = new \models\LeaderboardMapper();
+            new Database();
+//            require_once 'application/models/LeaderboardMapper.php';
+//            $leaderboardMapper = new \models\LeaderboardMapper();
+            $leaderboardMapper = Leaderboard2::getData();
             if(isset($_POST['type'])) {
                 if ($_POST['type'] == 'global') {
                     if (isset($_COOKIE['mapCode'])) {
-                        $leaderboard_data = $leaderboardMapper->fetchMaps($_COOKIE['mapCode']);
+                        $leaderboard_data = Leaderboard2::getDataByDungeonId($_COOKIE['mapCode']);
                     }else{
-                        $leaderboard_data = $leaderboardMapper->fetchAll();
+                        $leaderboard_data = Leaderboard2::getData();
                     }
                     $checked = "global";
                     $_SESSION['type'] = $checked;
                     require_once 'application/views/leaderboard/index.php';
                 } else if ($_POST['type'] == 'friend') {
                     if (isset($_COOKIE['mapCode'])){
-                        $leaderboard_data = $leaderboardMapper->fetchMapsFriends($_COOKIE['mapCode'],$_SESSION['UserId']);
+                        $leaderboard_data = Leaderboard2::getDataByDungeonAndFriend($_COOKIE['mapCode'],$_SESSION['UserId']);
                     }else{
-                        $leaderboard_data = $leaderboardMapper->fetchFriend($_SESSION["UserId"]);
+                        $leaderboard_data = Leaderboard2::getDataByUserId($_SESSION["UserId"]);
                     }
                     $checked = "friend";
                     $_SESSION['type'] = $checked;

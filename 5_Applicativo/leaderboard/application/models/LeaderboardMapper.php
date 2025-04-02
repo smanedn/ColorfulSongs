@@ -1,7 +1,7 @@
 <?php
 namespace models;
 require_once "Leaderboard.php";
-require_once "application/libs/database.php";
+require_once "application/models/Database.php";
 
 class LeaderboardMapper
 {
@@ -13,7 +13,7 @@ class LeaderboardMapper
         require_once "application/libs/validator.php";
         require_once "application/libs/log.php";
         $this->validator = new \libs\Validator();
-        $this->connection = \libs\Database::getConnection();
+        $this->connection = \models\Database::getConnection();
         $this->logs = new \libs\Log();
     }
 

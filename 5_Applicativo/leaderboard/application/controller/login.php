@@ -1,4 +1,6 @@
 <?php
+require_once 'vendor/autoload.php';
+
 class Login
 {
     private $validator;
@@ -18,16 +20,17 @@ class Login
     {
         session_start();
         if (isset($_POST['login'])) {
-
+             new Database();
             require_once 'application/libs/validator.php';
 
             $username = $this->validator->sanitizeInput($_POST['username']);
             $password = $this->validator->sanitizeInput($_POST['password']);
 
-            require_once 'application/models/AuthenticData.php';
-            $authModel = new \models\AuthenticData();
-            $result = $authModel->getData($username, $password);
-            if ($result) {
+            $result = User::where('username', $username)->first();
+            echo $password;
+            var_dump($result);
+            if ($result && password_verify($password, $result->password)) {
+                var_dump($result);
                 $_SESSION['username'] = $username;
                 $_SESSION["UserId"] = $result['id'];
 

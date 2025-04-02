@@ -1,7 +1,7 @@
 <?php
 
 namespace models;
-
+use Illuminate\Database\Eloquent\Model;
 class Leaderboard
 {
     private $id;

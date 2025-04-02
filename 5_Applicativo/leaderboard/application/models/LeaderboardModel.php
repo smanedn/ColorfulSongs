@@ -1,6 +1,6 @@
 <?php
 namespace models;
-require_once "application/libs/database.php";
+require_once "application/libs/Database.php";
 class LeaderboardModel
 {
     private $conn;
@@ -8,7 +8,7 @@ class LeaderboardModel
 
     public function __construct()
     {
-        $this->conn = \libs\Database::getConnection();
+        $this->conn = \models\Database::getConnection();
     }
 
     public function getAllData(){

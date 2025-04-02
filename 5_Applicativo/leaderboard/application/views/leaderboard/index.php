@@ -70,9 +70,9 @@
                     <?php else :
                         foreach ($leaderboard_data as $leaderboardValue) : ?>
                         <tr>
-                            <td><?php echo $leaderboardValue->getUsername(); ?></td>
-                            <td><?php echo $leaderboardValue->getScore(); ?></td>
-                            <td><?php echo $leaderboardValue->getMapCode(); ?></td>
+                            <td><?php echo $leaderboardValue->username; ?></td>
+                            <td><?php echo $leaderboardValue->score; ?></td>
+                            <td><?php echo $leaderboardValue->dungeon_id; ?></td>
                         </tr>
                     <?php endforeach; ?>
                     <?php endif; ?>

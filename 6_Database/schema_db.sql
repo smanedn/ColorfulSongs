@@ -14,19 +14,20 @@ CREATE TABLE dungeon(
 );
 
 CREATE TABLE friend(
-	user_id int,
-    user_friend_code varchar(10),
-    FOREIGN KEY (user_id) REFERENCES user(id),
-    FOREIGN KEY (user_friend_code) REFERENCES user(friend_code),
-    PRIMARY KEY(user_id, user_friend_code)
+	user_id1 int,
+    user_id2 varchar(10),
+    belongs boolean,
+    FOREIGN KEY (user_id1) REFERENCES user(id) on delete cascade,
+    FOREIGN KEY (user_id2) REFERENCES user(id) on delete cascade,
+    PRIMARY KEY(user_id1, user_id2)
 );
 
 CREATE TABLE leaderboard(
 	score int PRIMARY KEY,
     user_id int,
     dungeon_id int,
-    FOREIGN KEY (user_id) REFERENCES user(id),
-    FOREIGN KEY (dungeon_id) REFERENCES dungeon(id)
+    FOREIGN KEY (user_id) REFERENCES user(id) on delete cascade,
+    FOREIGN KEY (dungeon_id) REFERENCES dungeon(id) on delete cascade
 );
 
 CREATE USER 'colorfulsongs'@'%' IDENTIFIED BY 'Admin$00';

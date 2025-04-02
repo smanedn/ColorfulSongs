@@ -1,15 +1,11 @@
 {
-  "name": "vendor_name/leaderboard",
-  "description": "description",
-  "minimum-stability": "stable",
-  "license": "proprietary",
-  "authors": [
-    {
-      "name": "sebastiano.debertold",
-      "email": "email@example.com"
-    }
-  ],
+  "autoload": {
+    "classmap": [
+      "application/libs/",
+      "application/models/"
+    ]
+  },
   "require": {
-    "illuminate/database": "^12.3"
+    "illuminate/database": "^12.5"
   }
 }
