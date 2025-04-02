@@ -34,7 +34,7 @@ class Login
                 $_SESSION['username'] = $username;
                 $_SESSION["UserId"] = $result['id'];
 
-                header("Location:" . URL . "leaderboard");
+                header("Location:" . URL . "leaderboardController");
                 exit();
             } else {
                 $error = "Username or Password incorrect";
@@ -47,7 +47,7 @@ class Login
     {
         session_start();
         unset($_SESSION['UserId']);
-
+        setcookie('mapCode',$_COOKIE['mapCode'],time() - (3600), "/");
         session_destroy();
         header("Location:" . URL);
         exit();

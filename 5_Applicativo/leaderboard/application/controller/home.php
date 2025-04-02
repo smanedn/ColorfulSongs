@@ -6,7 +6,7 @@ class Home
 
         if($this->isAdmin()){
             new Database();
-            $leaderboard = Leaderboard2::all();
+            $leaderboard = Leaderboard::all();
             require_once 'application/views/leaderboard/index.php';
         }
     }
@@ -25,7 +25,7 @@ class Home
     }
 
     public function showLeaderboardData(){
-        $leaderboard = Leaderboard2::all();
+        $leaderboard = Leaderboard::all();
         require_once 'application/views/leaderboard/index.php';
     }
 }

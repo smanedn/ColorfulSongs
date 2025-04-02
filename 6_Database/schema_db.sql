@@ -15,7 +15,7 @@ CREATE TABLE dungeon(
 
 CREATE TABLE friend(
 	user_id1 int,
-    user_id2 varchar(10),
+    user_id2 int,
     belongs boolean,
     FOREIGN KEY (user_id1) REFERENCES user(id) on delete cascade,
     FOREIGN KEY (user_id2) REFERENCES user(id) on delete cascade,

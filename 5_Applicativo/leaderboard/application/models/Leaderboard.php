@@ -1,55 +1,79 @@
 <?php
-
-namespace models;
 use Illuminate\Database\Eloquent\Model;
-class Leaderboard
+class Leaderboard extends Model
 {
-    private $id;
-    private $username;
-    private $score;
-    private $mapCode;
+    protected $table = 'leaderboard';
 
-    /**
-     * @param $username
-     * @param $score
-     * @param $mapCode
-     */
-    public function __construct($username, $score, $mapCode)
+    public function user()
     {
-        $this->username = $username;
-        $this->score = $score;
-        $this->mapCode = $mapCode;
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function getUsername()
+    public function dungeon()
     {
-        return $this->username;
+        return $this->belongsTo(Dungeon::class,'dungeon_id');
     }
 
-    public function setUsername($username)
+    public static function getData()
     {
-        $this->username = $username;
+        return self::select('user.username as username', 'leaderboard.score', 'leaderboard.dungeon_id')
+            ->join('user', 'leaderboard.user_id', '=', 'user.id')
+            ->orderBy('leaderboard.score', 'DESC')
+            ->get();
     }
 
-    public function getScore()
+    public static function getDataByDungeonId($dungeon_id)
     {
-        return $this->score;
+        return self::select('user.username as username', 'leaderboard.score', 'leaderboard.dungeon_id')
+            ->join('user', 'leaderboard.user_id', '=', 'user.id')
+            ->join('dungeon', 'leaderboard.dungeon_id', '=', 'dungeon.id')
+            ->where('dungeon_id', $dungeon_id)
+            ->orderBy('leaderboard.score', 'DESC')
+            ->get();
     }
 
-    public function setScore($score)
+    public static function getDataByUserId($userId)
     {
-        $this->score = $score;
+        return self::select('user.username as username', 'leaderboard.score', 'leaderboard.dungeon_id')
+            ->join('friend', 'leaderboard.user_id', '=', 'friend.userId2')
+            ->join('user', 'friend.userId1', '=', $userId)
+            ->where('friend.pending','=',0)
+            ->where('friend.userId1', '=', 'user.id')
+            ->orderBy('leaderboard.score', 'DESC')
+            ->get();
     }
 
-    public function getMapCode()
+//$selectUserData = "SELECT user.username, leaderboard.score ,leaderboard.dungeon_id
+//                            from user JOIN friend
+//                                ON friend.userId1 = '$userId'
+//                                AND friend.pending = 0
+//                                AND friend.userId2 = user.id
+//                            JOIN leaderboard
+//                                ON friend.userId2 = leaderboard.user_id
+//                            order by leaderboard.score desc";
+
+    public static function getDataByDungeonAndFriend($dungeonId,$friendId)
     {
-        return $this->mapCode;
+        return self::select('user.username as username', 'leaderboard.score', 'leaderboard.dungeon_id')
+            ->distinct()
+            ->join('user','leaderboard.user_id','=','user.id')
+            ->join('dungeon','leaderboard.dungeon_id','=', 'dungeon.id')//$dungeonId
+            ->join('friend','leaderboard.user_id','=','friend.userId1')//$friendId
+            ->where('friend.pending','=',0)
+            ->where('friend.userId1','=',$friendId)
+            ->where('leaderboard.dungeon_id', '=', $dungeonId)
+            ->orderBy('leaderboard.score','DESC')
+            ->get();
     }
-
-    public function setMapCode($mapCode)
-    {
-        $this->mapCode = $mapCode;
-    }
-
-
+//$selectUserData = "SELECT DISTINCT user.username, leaderboard.score, leaderboard.dungeon_id
+//                            from user JOIN leaderboard
+//                            ON user.id = leaderboard.user_id
+//                            JOIN dungeon
+//                            ON leaderboard.dungeon_id = '$mapId'
+//                            JOIN friend
+//                            ON friend.idUtente1 = '$userId'
+//                            AND friend.pending = 0
+//                            AND friend.idUtente2 = user.id
+//                            AND friend.idUtente2 = leaderboard.user_id
+//                            order by leaderboard.score desc";
 }
