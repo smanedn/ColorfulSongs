@@ -1,0 +1,7 @@
+    public class Root
+    {
+        public int score { get; set; }
+        public int user_id { get; set; }
+        public int dungeon_id { get; set; }
+    }
+

@@ -1,0 +1,62 @@
+[
+    {
+        "score": 69,
+        "user_id": 9,
+        "dungeon_id": 5
+    },
+    {
+        "score": 1001,
+        "user_id": 1,
+        "dungeon_id": 1
+    },
+    {
+        "score": 1469,
+        "user_id": 6,
+        "dungeon_id": 8
+    },
+    {
+        "score": 1561,
+        "user_id": 9,
+        "dungeon_id": 5
+    },
+    {
+        "score": 2301,
+        "user_id": 1,
+        "dungeon_id": 2
+    },
+    {
+        "score": 5001,
+        "user_id": 2,
+        "dungeon_id": 3
+    },
+    {
+        "score": 6945,
+        "user_id": 7,
+        "dungeon_id": 6
+    },
+    {
+        "score": 11100,
+        "user_id": 4,
+        "dungeon_id": 4
+    },
+    {
+        "score": 14015,
+        "user_id": 5,
+        "dungeon_id": 1
+    },
+    {
+        "score": 56414,
+        "user_id": 3,
+        "dungeon_id": 9
+    },
+    {
+        "score": 62650,
+        "user_id": 5,
+        "dungeon_id": 9
+    },
+    {
+        "score": 110652,
+        "user_id": 2,
+        "dungeon_id": 9
+    }
+]
