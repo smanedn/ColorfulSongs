@@ -54,8 +54,8 @@ CREATE TABLE `friend` (
   `pending` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`userId1`,`userId2`),
   KEY `userId2` (`userId2`),
-  CONSTRAINT `friend_ibfk_1` FOREIGN KEY (`userId1`) REFERENCES `user` (`id`) ON DELETE NO ACTION,
-  CONSTRAINT `friend_ibfk_2` FOREIGN KEY (`userId2`) REFERENCES `user` (`id`) ON DELETE NO ACTION
+  CONSTRAINT `friend_ibfk_1` FOREIGN KEY (`userId1`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `friend_ibfk_2` FOREIGN KEY (`userId2`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

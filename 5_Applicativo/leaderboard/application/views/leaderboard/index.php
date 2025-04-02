@@ -23,7 +23,7 @@
     <div class="container-fluid p-0 row mx-auto mt-5">
         <div class="col-2 p-3 text-start">
             <h1 class="fw-bold">Filter</h1>
-            <form id="radioFilterForm" method="POST" action="<?php echo URL; ?>leaderboard/radioFilter">
+            <form id="radioFilterForm" method="POST" action="<?php echo URL; ?>leaderboardController/radioFilter">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="type" id="friendRadio" value="friend" onchange="this.form.submit()"
                         <?php if(isset($_SESSION['type']) && $_SESSION['type'] == "friend"){?> checked <?php }?>>
@@ -36,7 +36,7 @@
                 </div>
             </form>
 
-            <form method="POST" action="<?php echo URL; ?>leaderboard/searchFilter">
+            <form method="POST" action="<?php echo URL; ?>leaderboardController/searchFilter">
                 <section class="mt-3">
                     <div>
                         <label for="mapCode" class="form-label fw-bold fs-6">Maps</label>
@@ -70,9 +70,9 @@
                     <?php else :
                         foreach ($leaderboard_data as $leaderboardValue) : ?>
                         <tr>
-                            <td><?php echo $leaderboardValue->getUsername(); ?></td>
-                            <td><?php echo $leaderboardValue->getScore(); ?></td>
-                            <td><?php echo $leaderboardValue->getMapCode(); ?></td>
+                            <td><?php echo $leaderboardValue->username; ?></td>
+                            <td><?php echo $leaderboardValue->score; ?></td>
+                            <td><?php echo $leaderboardValue->dungeon_id; ?></td>
                         </tr>
                     <?php endforeach; ?>
                     <?php endif; ?>

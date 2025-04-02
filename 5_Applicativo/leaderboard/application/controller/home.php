@@ -5,10 +5,8 @@ class Home
     {
 
         if($this->isAdmin()){
-            require_once "application/models/LeaderboardMapper.php";
-            $leaderboard_model = new \models\LeaderboardMapper();
-            $leaderboard_data = $leaderboard_model->fetchAll();
-
+            new Database();
+            $leaderboard = Leaderboard::all();
             require_once 'application/views/leaderboard/index.php';
         }
     }
@@ -27,10 +25,7 @@ class Home
     }
 
     public function showLeaderboardData(){
-        require_once "application/models/LeaderboardMapper.php";
-        $leaderboard_model = new \models\LeaderboardMapper();
-        $leaderboard_data = $leaderboard_model->fetchAll();
-
+        $leaderboard = Leaderboard::all();
         require_once 'application/views/leaderboard/index.php';
     }
 }
