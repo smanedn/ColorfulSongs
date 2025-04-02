@@ -42,11 +42,12 @@ class UserGateway{
                     (:username, :password, :email)";
 
         try{
+            var_dump($input);
             $statement = $this->db->prepare($statement);
             $statement->execute(array(
-                "username" => $input["username"],
-                "password" => $input["password"],
-                "email" => $input["email"]
+                'username' => $input['username'],
+                'password' => $input['password'],
+                'email' => $input['email']
             ));
             return $statement->rowCount();
         }catch(\PDOException $e){
@@ -67,10 +68,10 @@ class UserGateway{
         try {
             $statement = $this->db->prepare($statement);
             $statement->execute(array(
-                "id" => $input["id"],
-                "username" => $input["username"],
-                "password" => $input["password"],
-                "email" => $input["email"],
+                'id' => (int) $id,
+                'username' => $input['username'],
+                'password' => $input['password'],
+                'email' => $input['email'],
             ));
             return $statement->rowCount();
         }catch(\PDOException $e){
@@ -83,7 +84,7 @@ class UserGateway{
         $statement = "delete from user where id = :id";
         try{
             $statement = $this->db->prepare($statement);
-            $statement->execute(array("id" => $id));
+            $statement->execute(array('id' => $id));
             return $statement->rowCount();
         }catch(\PDOException $e){
             exit($e->getMessage());

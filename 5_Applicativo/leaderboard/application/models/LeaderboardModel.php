@@ -14,7 +14,6 @@ class LeaderboardModel
     public function getAllData(){
         $selectAccesso = "select user.username, leaderboard.score from user JOIN leaderboard on leaderboard.user_id = user.id";
 
-        //var_dump($selectAccesso);
         $this->statement = $this->conn->query($selectAccesso);
         return $this->statement->fetch_all();
     }
