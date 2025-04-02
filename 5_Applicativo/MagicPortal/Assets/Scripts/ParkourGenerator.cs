@@ -20,8 +20,8 @@ public class ParkourGenerator : MonoBehaviour
 
     void Start()
     {
-        generator.GetComponent<TerrainGenerator>().setVariable(startingX, startingZ, endingX, endingZ, startingY, "ParkourGenerator");
-
+        //generator.GetComponent<TerrainGenerator>().setVariable(startingX, startingZ, endingX, this.endingZ, this.startingY, "ParkourGenerator");
+        startingX = generator.GetComponent<TerrainGenerator>().getStartX1();
         int oldZ = -1;
         int z = 0;
         int x = 0;

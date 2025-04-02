@@ -49,8 +49,8 @@ public class CannonGenerator : MonoBehaviour
                 cube.transform.SetParent(parent.transform);                     
             }
         }
-        print("[X start: " + startingX + " X fine: " + endingX + "]");
-        print("[Z start: " + startingZ + " Z fine: " + endingZ + "]");
+        print("Cannon Generator:[X start: " + startingX + " X fine: " + endingX + "] && [Z start: " + startingZ + " Z fine: " + endingZ + "]");
+
     }
 
     void Update()

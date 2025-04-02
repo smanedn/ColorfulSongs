@@ -22,7 +22,7 @@ public class WallSolutionGenerator : MonoBehaviour
 
     void Start()
     {
-        generator.GetComponent<TerrainGenerator>().setVariable(startingX, startingZ, endingX, endingZ, startingY, "WallSolutionGenerator");
+        generator.GetComponent<TerrainGenerator>().setVariable(this.startingX, this.startingZ, this.endingX, this.endingZ, this.startingY, "WallSolutionGenerator");
 
         int[] posX = new int[endingX - startingX];
         int[] posZ = new int[endingX - startingX];
@@ -89,7 +89,7 @@ public class WallSolutionGenerator : MonoBehaviour
             cube.name = "realBlockWall[" + wallX + "; " + posX[j] + " ; " + endingZ + "]";
             cube.transform.SetParent(parent.transform);
         }
-        print("[X start: " + startingX + " X fine: " + endingX + "]");
-        print("[Z start: " + startingZ + " Z fine: " + endingZ + "]");
+        print("Wall Solution Generator:[X start: " + startingX + " X fine: " + endingX + "] && [Z start: " + startingZ + " Z fine: " + endingZ + "]");
+
     }
 }
