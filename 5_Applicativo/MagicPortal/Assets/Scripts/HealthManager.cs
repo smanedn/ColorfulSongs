@@ -73,5 +73,10 @@ public class HealthManager : MonoBehaviour
     public static void Revive()
     {
         health = 5;
+        foreach (var heartImage in Instance.heartImages)
+        {
+            heartImage.gameObject.SetActive(true);
+        }
+        print("revive");
     }
 }

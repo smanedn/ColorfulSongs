@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -49,11 +50,14 @@ public class PauseMenu : MonoBehaviour
         isPaused = !isPaused;
     }
 
-    public void Restart()
+    public async void Restart()
     {
         HealthManager.Revive();
+        await Task.Delay(300);
         GameObject.Find("Character").GetComponent<PlayerCollision>().Teleport(0, 2f, 0);
-        GameObject.Find("Character").GetComponent<PlayerMovement>().enabled = true;
+        print("tp");
+        
+        //GameObject.Find("Character").GetComponent<PlayerMovement>().enabled = true;
     }
 
     public void GoToMainMenu()
