@@ -28,8 +28,6 @@ public class PauseMenu : MonoBehaviour
             {
                 PauseGame();
             }
-            
-
         }
     }
 
@@ -47,8 +45,15 @@ public class PauseMenu : MonoBehaviour
         pauseMenu?.SetActive(false);
         inGameGUI.SetActive(true);
         Time.timeScale = 1f;
-        musicSource?.UnPause();
+        musicSource?.UnPause(); 
         isPaused = !isPaused;
+    }
+
+    public void Restart()
+    {
+        HealthManager.Revive();
+        GameObject.Find("Character").GetComponent<PlayerCollision>().Teleport(0, 2f, 0);
+        GameObject.Find("Character").GetComponent<PlayerMovement>().enabled = true;
     }
 
     public void GoToMainMenu()
@@ -61,4 +66,6 @@ public class PauseMenu : MonoBehaviour
     {
         return isPaused;
     }
+
+    
 }
