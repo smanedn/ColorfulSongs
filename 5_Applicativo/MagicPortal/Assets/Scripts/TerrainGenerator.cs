@@ -113,7 +113,21 @@ public class TerrainGenerator : MonoBehaviour
             endZ = endEnigma2Z;
             startY = startEnigma2Y;
         }
+        print("Function: " +name + ":[X start: " + startX + " X fine: " + endX + "] && [Z start: " + startZ + " Z fine: " + endZ + "]");
+
     }
+
+    public int getStartX1() { return startEnigma1X; }
+    public int getEndX1() { return endEnigma1X; }
+    public int getStartY1() { return startEnigma1Y; }
+    public int getStartZ1() { return startEnigma1Z; }
+    public int getEndZ1() { return endEnigma1Z; }
+    public int getStartY2() { return startEnigma2Y; }
+
+    public int getStartX2() { return startEnigma2X; }
+    public int getEndX2() { return endEnigma2X; }
+    public int getStartZ2() { return startEnigma2Z; }
+    public int getEndZ2() { return endEnigma2Z; }
 
 }
 
