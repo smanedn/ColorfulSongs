@@ -32,8 +32,8 @@ class User extends Model
         return self::select('user.username as username', 'l.score', 'l.dungeon_id')
             ->distinct()
             ->join('leaderboard as l','l.user_id','=','user.id')
-            ->join('dungeon as d','l.dungeon_id','=', 'd.id')//$dungeonId
-            ->join('friend as f','l.user_id','=','f.userId1')//$friendId
+            ->join('dungeon as d','l.dungeon_id','=', 'd.id')
+            ->join('friend as f','l.user_id','=','f.userId1')
             ->where('f.pending','=',0)
             ->where('f.userId2','=',$friendId)
             ->where('l.dungeon_id', '=', $dungeonId)

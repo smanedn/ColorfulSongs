@@ -13,6 +13,7 @@ class Login
 
     public function index()
     {
+        require_once 'application/views/_templates/header.php';
         require_once 'application/views/login/index.php';
     }
 
@@ -20,17 +21,17 @@ class Login
     {
         session_start();
         if (isset($_POST['login'])) {
-             new Database();
+            new Database();
             require_once 'application/libs/validator.php';
 
             $username = $this->validator->sanitizeInput($_POST['username']);
             $password = $this->validator->sanitizeInput($_POST['password']);
 
             $result = User::where('username', $username)->first();
-            echo $password;
-            var_dump($result);
+
+
             if ($result && password_verify($password, $result->password)) {
-                var_dump($result);
+                $_SESSION['userType'] = $result->type;
                 $_SESSION['username'] = $username;
                 $_SESSION["UserId"] = $result['id'];
 
@@ -38,6 +39,7 @@ class Login
                 exit();
             } else {
                 $error = "Username or Password incorrect";
+                require_once 'application/views/_templates/header.php';
                 require_once 'application/views/login/index.php';
             }
         }
