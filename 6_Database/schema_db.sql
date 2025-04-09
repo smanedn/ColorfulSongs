@@ -5,7 +5,7 @@ CREATE TABLE user(
 	username VARCHAR(64) UNIQUE NOT NULL,
 	password VARCHAR(256) NOT NULL,
 	email VARCHAR(256) NOT NULL,
-    friend_code VARCHAR(10) unique
+    type varchar(10) NOT NULL
 );
 
 CREATE TABLE dungeon(
@@ -23,7 +23,8 @@ CREATE TABLE friend(
 );
 
 CREATE TABLE leaderboard(
-	score int PRIMARY KEY,
+	id int primary key auto_increment,
+	score int,
     user_id int,
     dungeon_id int,
     FOREIGN KEY (user_id) REFERENCES user(id) on delete cascade,

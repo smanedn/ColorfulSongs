@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9c775b0-f6e2-48a8-a458-919996b2e743" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../6_Database/dump_database/dump_database.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../4_Diari/2025.04.02-Debertoldi.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../4_Diari/2025.04.02-Debertoldi.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeception.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeception.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/leaderboard.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/leaderboard.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpspec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controller/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controller/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controller/leaderboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controller/leaderboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controller/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controller/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/Dungeon.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Dungeon.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/Friend.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Friend.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/Leaderboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Leaderboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/Leaderboard2.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/LeaderboardMapper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/LeaderboardModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/leaderboard/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/leaderboard/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../6_Database/schema_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../6_Database/schema_db.sql" afterDir="false" />
-    </list>
+    <list default="true" id="f9c775b0-f6e2-48a8-a458-919996b2e743" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,25 +68,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;php__leaderboard&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/3°_anno/Modulo_306(Project_Manager)/MagicPortal/5_Applicativo/API&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "php__leaderboard",
+    "last_opened_file_path": "D:/3°_anno/Modulo_306(Project_Manager)/MagicPortal/5_Applicativo/API",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\3°_anno\Modulo_306(Project_Manager)\MagicPortal\5_Applicativo\leaderboard\application\logs" />
@@ -115,12 +95,6 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\3°_anno\Modulo_306(Project_Manager)\MagicPortal\5_Applicativo\leaderboard\application\models" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
-      <option name="pathToComposerJson" value="$PROJECT_DIR$/composer.json" />
-      <method v="2" />
-    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -144,6 +118,8 @@
       <workItem from="1739959799630" duration="71000" />
       <workItem from="1740554996543" duration="19168000" />
       <workItem from="1741768180565" duration="12738000" />
+      <workItem from="1744179904434" duration="15604000" />
+      <workItem from="1744202740178" duration="698000" />
     </task>
     <servers />
   </component>

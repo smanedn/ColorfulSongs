@@ -7,6 +7,12 @@ class Home
         if($this->isAdmin()){
             new Database();
             $leaderboard = Leaderboard::all();
+            require_once 'application/views/_templates/header.php';
+            require_once 'application/views/admin/index.php';
+        }else{
+            new Database();
+            $leaderboard = Leaderboard::all();
+            require_once 'application/views/_templates/header.php';
             require_once 'application/views/leaderboard/index.php';
         }
     }
@@ -15,17 +21,18 @@ class Home
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        if (isset($_SESSION['UserId'])) {
+        if ($_SESSION['userType'] == 'admin') {
             return true;
         }
-        else{
-            header('location:' . URL . 'login');
-            exit();
-        }
+//        else{
+//            header('location:' . URL . 'login');
+//            exit();
+//        }
     }
 
     public function showLeaderboardData(){
         $leaderboard = Leaderboard::all();
+        require_once 'application/views/_templates/header.php';
         require_once 'application/views/leaderboard/index.php';
     }
 }
