@@ -38,7 +38,6 @@ class leaderboardController
         if ($this->isAdmin()) {
             new Database();
             require_once 'application/models/Leaderboard.php';
-//            $leaderboardMapper = new \models\LeaderboardMapper();
             $leaderboardMapper = Leaderboard::getData();
             if(isset($_POST['type'])) {
                 if ($_POST['type'] == 'global') {
@@ -52,7 +51,7 @@ class leaderboardController
                     require_once 'application/views/leaderboard/index.php';
                 } else if ($_POST['type'] == 'friend') {
                     if (isset($_COOKIE['mapCode'])){
-                        $leaderboard_data = Leaderboard::getDataByDungeonAndFriend($_COOKIE['mapCode'],$_SESSION['UserId']);
+                        $leaderboard_data = User::getDataByDungeonAndFriend($_COOKIE['mapCode'],$_SESSION['UserId']);
                     }else{
                         $leaderboard_data = User::getDataByUserId($_SESSION["UserId"]);
                     }
@@ -81,7 +80,7 @@ class leaderboardController
                 }
                 if (isset($_SESSION['type'])) {
                     if ($_SESSION['type'] == 'friend') {
-                        $leaderboard_data = Leaderboard::getDataByDungeonAndFriend($mapCode,$_SESSION['UserId']);
+                        $leaderboard_data = User::getDataByDungeonAndFriend($mapCode,$_SESSION['UserId']);
                     }elseif ($_SESSION['type'] == 'global'){
                         $leaderboard_data = Leaderboard::getDataByDungeonId($mapCode);
                     }
@@ -92,7 +91,11 @@ class leaderboardController
             if (isset($_POST['deleteFilter'])) {
                 setcookie('mapCode',$_COOKIE['mapCode'],time() - (3600), "/");
                 require_once "application/models/Leaderboard.php";
-                $leaderboard_data = Leaderboard::getData();
+                if ($_SESSION['type'] == 'friend') {
+                    $leaderboard_data = User::getDataByUserId($_SESSION["UserId"]);
+                }elseif ($_SESSION['type'] == 'global'){
+                    $leaderboard_data = Leaderboard::getData();
+                }
                 require_once 'application/views/leaderboard/index.php';
             }
 

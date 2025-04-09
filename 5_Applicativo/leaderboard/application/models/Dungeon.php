@@ -6,7 +6,7 @@ class Dungeon extends Model
 
     public function leaderboard()
     {
-        return $this->hasMany(leaderboardController::class);
+        return $this->hasMany(Leaderboard::class);
     }
 
 }
