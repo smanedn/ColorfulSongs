@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class ParkourGenerator : MonoBehaviour
 {
-    private int startingX;   //= 5
-    private int endingX;     //= 20
-    private int startingZ;   //= 0
-    private int endingZ;     //= 8
-    private int startingY;   //= 0;
+    private int startingX; 
+    private int endingX;   
+    private int startingZ; 
+    private int endingZ;   
+    private int startingY; 
 
     private CharacterController characterController;
 

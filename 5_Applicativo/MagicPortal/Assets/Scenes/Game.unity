@@ -8532,17 +8532,17 @@ MonoBehaviour:
   column: 8
   y: 0
   wallHeight: 12
-  startEnigma1X: 5
-  endEnigma1X: 15
-  startEnigma1Y: 0
-  startEnigma2X: 25
-  endEnigma2X: 35
-  startEnigma2Y: 0
+  startObstacle1X: 5
+  endObstacle1X: 15
+  startObstacle1Y: 0
+  startObstacle2X: 25
+  endObstacle2X: 35
+  startObstacle2Y: 0
   floor: {fileID: 3955915982601514054, guid: ce32500b5fe80b54e8f7947c235d18fc, type: 3}
   wall: {fileID: 3955915982601514054, guid: 3f36deb36f9f10e42800571133690225, type: 3}
   parent: {fileID: 1542006887}
   finishPortal: {fileID: 6479646477241648015, guid: 507c704db64360248be37aeebe1d28e3, type: 3}
-  enigmas:
+  obstacles:
   - {fileID: 1205362128}
   - {fileID: 1328145798}
   - {fileID: 64255682}

@@ -10,58 +10,54 @@ public class TerrainGenerator : MonoBehaviour
     private int z;
     private int h;
     private bool empty;
-    private int firstEnigma;
-    private int secondEnigma;
+    private int firstObstacle;
+    private int secondObstacle;
     private int startingX = 0;
     private int startingZ = 0;
 
-
-    [SerializeField] private int row;         //= 40  
-    [SerializeField] private int column;      //= 8
-    //[SerializeField] private int rowLShaped;         //= 30  
-    //[SerializeField] private int columnLShaped;      //= 12
+    [SerializeField] private int row;         
+    [SerializeField] private int column;            
     [SerializeField] private int y;
-    private int firstTerrainZ; // Uguale a LRow/2
-    private int firstTerrainX; // Uguale a LColumn/2
-
+    private int firstTerrainZ;
+    private int firstTerrainX;
 
     [SerializeField] private int wallHeight;
 
-    [SerializeField] private int startEnigma1X;     //= 5
-    [SerializeField] private int endEnigma1X;       //= 15
-    private int startEnigma1Z;     //= 0
-    private int endEnigma1Z;       //= COLUMN
-    [SerializeField] private int startEnigma1Y;     //= 0
+    [SerializeField] private int startObstacle1X;     
+    [SerializeField] private int endObstacle1X;       
+    private int startObstacle1Z;     
+    private int endObstacle1Z;       
+    [SerializeField] private int startObstacle1Y;     
 
-    [SerializeField] private int startEnigma2X;     //= 25
-    [SerializeField] private int endEnigma2X;       //= 35
-    private int startEnigma2Z;     //= 0
-    private int endEnigma2Z;       //= COLUMN
-    [SerializeField] private int startEnigma2Y;     //= 0
+    [SerializeField] private int startObstacle2X;     
+    [SerializeField] private int endObstacle2X;       
+    private int startObstacle2Z;     
+    private int endObstacle2Z;       
+    [SerializeField] private int startObstacle2Y;     
 
-    private int startLShapedEnigma2X;     //= UGUALE A: firstTerrainX
-    private int endLShapedEnigma2X;       //= UGUALE A: LRow
-    private int startLShapedEnigma2Z;     //= UGUALE A: firstTerrainZ
-    private int endLShapedEnigma2Z;       //= UGUALE A: LColumn
+    private int startLShapedObstacle2X;  
+    private int endLShapedObstacle2X;    
+    private int startLShapedObstacle2Z;  
+    private int endLShapedObstacle2Z;    
 
     [SerializeField] private GameObject floor;
     [SerializeField] private GameObject wall;
     [SerializeField] private GameObject parent;
     [SerializeField] private GameObject finishPortal;
 
-    public GameObject[] enigmas;
+    public GameObject[] obstacles;
 
     void Start()
     {
-        int l = enigmas.Length;
+        int l = obstacles.Length;
         do
         {
-            firstEnigma = Random.Range(0, l);
-            secondEnigma = Random.Range(0, l);
-        } while (firstEnigma == secondEnigma);
+            firstObstacle = Random.Range(0, l);
+            secondObstacle = Random.Range(0, l);
+        } while (firstObstacle == secondObstacle);
 
-        enigmas[firstEnigma].SetActive(true);
-        enigmas[secondEnigma].SetActive(true);
+        obstacles[firstObstacle].SetActive(true);
+        obstacles[secondObstacle].SetActive(true);
 
         generateStraightTerrain();
 
@@ -74,17 +70,17 @@ public class TerrainGenerator : MonoBehaviour
 
     public void generateStraightTerrain()
     {
-        startEnigma1Z = 0;
-        endEnigma1Z = column;
-        startEnigma2Z = 0;
-        endEnigma2Z = column;
+        startObstacle1Z = 0;
+        endObstacle1Z = column;
+        startObstacle2Z = 0;
+        endObstacle2Z = column;
 
         for (int r = startingX; r <= row; r++)
         {
             x = r;
             if (
-                ((r < startEnigma1X || r >= endEnigma1X)) &&
-                ((r < startEnigma2X || r >= endEnigma2X))
+                ((r < startObstacle1X || r >= endObstacle1X)) &&
+                ((r < startObstacle2X || r >= endObstacle2X))
                 )
             {
                 empty = false;
@@ -121,21 +117,21 @@ public class TerrainGenerator : MonoBehaviour
 
     /**public void generateLShapeTerrain()
     {
-        startEnigma1Z = columnLShaped - startEnigma1Z;
-        endEnigma1Z = columnLShaped - endEnigma1Z;
+        startObstacle1Z = columnLShaped - startObstacle1Z;
+        endObstacle1Z = columnLShaped - endObstacle1Z;
         for (int r = startingX; r <= rowLShaped; r++)
         {
             x = r;
             for (int c = startingZ; c <= columnLShaped; c++)
             {
                 z = c;
-                //if ((r < startEnigma1X || r >= endEnigma1X) &&
-                  /// (z < startEnigma2Z || z >= endEnigma2Z) &&
+                //if ((r < startObstacle1X || r >= endObstacle1X) &&
+                  /// (z < startObstacle2Z || z >= endObstacle2Z) &&
                    //(z < firstTerrainZ && r>firstTerrainX))
                 //{
                 if (
                     (z < columnLShaped - firstTerrainZ && x < firstTerrainX) ||
-                    (r > startEnigma1X && r < endEnigma1X)
+                    (r > startObstacle1X && r < endObstacle1X)
 
                     )
                 {
@@ -170,15 +166,15 @@ public class TerrainGenerator : MonoBehaviour
 
     public int getStartX(string name)
     {
-        if (name == enigmas[firstEnigma].name)
+        if (name == obstacles[firstObstacle].name)
         {
-            print("Ritornato X=" + startEnigma1X + " a " + name);
-            return startEnigma1X;
+            print("Ritornato X=" + startObstacle1X + " a " + name);
+            return startObstacle1X;
         }
-        else if (name == enigmas[secondEnigma].name)
+        else if (name == obstacles[secondObstacle].name)
         {
-            print("Ritornato X=" + startEnigma2X + " a " + name);
-            return startEnigma2X;
+            print("Ritornato X=" + startObstacle2X + " a " + name);
+            return startObstacle2X;
         }
         else
         {
@@ -188,13 +184,13 @@ public class TerrainGenerator : MonoBehaviour
     }
     public int getEndX(string name)
     {
-        if (name == enigmas[firstEnigma].name)
+        if (name == obstacles[firstObstacle].name)
         {
-            return endEnigma1X;
+            return endObstacle1X;
         }
-        else if (name == enigmas[secondEnigma].name)
+        else if (name == obstacles[secondObstacle].name)
         {
-            return endEnigma2X;
+            return endObstacle2X;
         }
         else
         {
@@ -204,13 +200,13 @@ public class TerrainGenerator : MonoBehaviour
 
     public int getStartZ(string name)
     {
-        if (name == enigmas[firstEnigma].name)
+        if (name == obstacles[firstObstacle].name)
         {
-            return startEnigma1Z;
+            return startObstacle1Z;
         }
-        else if (name == enigmas[secondEnigma].name)
+        else if (name == obstacles[secondObstacle].name)
         {
-            return startEnigma2Z;
+            return startObstacle2Z;
         }
         else
         {
@@ -219,13 +215,13 @@ public class TerrainGenerator : MonoBehaviour
     }
     public int getEndZ(string name)
     {
-        if (name == enigmas[firstEnigma].name)
+        if (name == obstacles[firstObstacle].name)
         {
-            return endEnigma1Z;
+            return endObstacle1Z;
         }
-        else if (name == enigmas[secondEnigma].name)
+        else if (name == obstacles[secondObstacle].name)
         {
-            return endEnigma2Z;
+            return endObstacle2Z;
         }
         else
         {
@@ -235,13 +231,13 @@ public class TerrainGenerator : MonoBehaviour
 
     public int getStartY(string name)
     {
-        if (name == enigmas[firstEnigma].name)
+        if (name == obstacles[firstObstacle].name)
         {
-            return startEnigma1Y;
+            return startObstacle1Y;
         }
-        else if (name == enigmas[secondEnigma].name)
+        else if (name == obstacles[secondObstacle].name)
         {
-            return startEnigma2Y;
+            return startObstacle2Y;
         }
         else
         {
@@ -249,13 +245,13 @@ public class TerrainGenerator : MonoBehaviour
         }
     }
 
-    public int getEnigmaNumber(string name)
+    public int getObstacleNumber(string name)
     {
-        if (name == enigmas[firstEnigma].name)
+        if (name == obstacles[firstObstacle].name)
         {
             return 1;
         }
-        else if (name == enigmas[secondEnigma].name)
+        else if (name == obstacles[secondObstacle].name)
         {
             return 2;
         }
