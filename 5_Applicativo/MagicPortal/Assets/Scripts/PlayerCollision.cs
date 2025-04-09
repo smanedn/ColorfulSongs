@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    [SerializeField] private GameObject portal;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,8 +32,10 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Portal"))
         {
+            int x = portal.GetComponent<PortalGenerator>().getEndX();
+            int z = portal.GetComponent<PortalGenerator>().getEndZ();
             print("tp");
-            Teleport(0, 2f, 0);
+            Teleport(x, 2f, z);
         }
 
         if (other.gameObject.CompareTag("BadPortal"))

@@ -27,13 +27,17 @@ public class CannonGenerator : MonoBehaviour
 
     void Start()
     {
-        generator.GetComponent<TerrainGenerator>().setVariable(startingX, startingZ, endingX, endingZ, startingY, "CannonGenerator");
+        startingX = generator.GetComponent<TerrainGenerator>().getStartX("CannonGenerator");
+        startingZ = generator.GetComponent<TerrainGenerator>().getStartZ("CannonGenerator");
+        startingY = generator.GetComponent<TerrainGenerator>().getStartY("CannonGenerator");
+        endingX = generator.GetComponent<TerrainGenerator>().getEndX("CannonGenerator");
+        endingZ = generator.GetComponent<TerrainGenerator>().getEndZ("CannonGenerator");
 
         int[] posX = new int[cannonCount];
         cannons = new GameObject[cannonCount];
         for (int i = 0; i < cannonCount; i++)
         {
-            Vector3 cannonPosition = new Vector3(startingX, startingY, endingZ) + new Vector3(i * 2.0f, fireHeight, 0); //distanza fra i cannoni (2.0f)
+            Vector3 cannonPosition = new Vector3(startingX, startingY, endingZ-0.1f) + new Vector3(i * 2.0f, fireHeight, 0); //distanza fra i cannoni (2.0f)
             cannons[i] = Instantiate(cannonPrefab, cannonPosition, Quaternion.identity);
             cannons[i].name = "Cannone" + i;
             cannons[i].transform.SetParent(parent.transform);
@@ -49,8 +53,6 @@ public class CannonGenerator : MonoBehaviour
                 cube.transform.SetParent(parent.transform);                     
             }
         }
-        print("Cannon Generator:[X start: " + startingX + " X fine: " + endingX + "] && [Z start: " + startingZ + " Z fine: " + endingZ + "]");
-
     }
 
     void Update()

@@ -2522,6 +2522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8776d53e9bd8e354bb61cde17c7a0208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  portal: {fileID: 0}
 --- !u!1 &614826243
 GameObject:
   m_ObjectHideFlags: 0
@@ -4179,6 +4180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8776d53e9bd8e354bb61cde17c7a0208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  portal: {fileID: 1217263504}
 --- !u!114 &963500261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5246,7 +5248,7 @@ GameObject:
   - component: {fileID: 1217263506}
   - component: {fileID: 1217263505}
   m_Layer: 0
-  m_Name: PortalGen
+  m_Name: PortalGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5264,14 +5266,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04aeaecb65f7ac549a19ebd48566fd6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endPortalPrefab: {fileID: 3772559609132887709, guid: 044284aa32e219841ba866591be5d04a, type: 3}
   goodPortalPrefab: {fileID: 3772559609132887709, guid: 044284aa32e219841ba866591be5d04a, type: 3}
   badPortalPrefab: {fileID: 4000369887195242706, guid: fd3c8f4c03fa2c7429164904f8b81f10, type: 3}
-  numberOfPortals: 4
-  portalPositions:
-  - {x: -10, y: 1, z: -5}
-  - {x: -5, y: 1, z: -5}
-  - {x: 0, y: 1, z: -5}
-  - {x: 5, y: 1, z: -5}
+  parent: {fileID: 2043246856}
   portalRotations:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -5279,6 +5277,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   goodSFX: {fileID: 8300000, guid: bd87dbb4f5c0f134d8cba1ae11dada9e, type: 3}
   badSFX: {fileID: 8300000, guid: 0a2798f2b44d7db47843aac436dd84f0, type: 3}
+  generator: {fileID: 1705169335}
 --- !u!4 &1217263506
 Transform:
   m_ObjectHideFlags: 0
@@ -6179,7 +6178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd2c62b33bbfe4dabdfe1b44f629ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ladder: {fileID: 1219712586384628110, guid: 5688e4b769d117a43bc005974bd5e919, type: 3}
   realBlock: {fileID: 709262350618453701, guid: 41973e0e34b053e4a80ea3449cf6aa2e, type: 3}
   fakeBlock: {fileID: 7071275311211430607, guid: 0875708a2ad3f9a48a5acc506f7d51b6, type: 3}
   firstBlock: {fileID: 7932817789950506644, guid: 287c4999efb6e7441a621436bdad4109, type: 3}
@@ -8533,27 +8531,23 @@ MonoBehaviour:
   row: 40
   column: 8
   y: 0
-  startingX: 0
-  startingZ: 0
   wallHeight: 12
   startEnigma1X: 5
   endEnigma1X: 15
-  startEnigma1Z: 0
-  endEnigma1Z: 8
   startEnigma1Y: 0
   startEnigma2X: 25
   endEnigma2X: 35
-  startEnigma2Z: 0
-  endEnigma2Z: 8
   startEnigma2Y: 0
   floor: {fileID: 3955915982601514054, guid: ce32500b5fe80b54e8f7947c235d18fc, type: 3}
   wall: {fileID: 3955915982601514054, guid: 3f36deb36f9f10e42800571133690225, type: 3}
   parent: {fileID: 1542006887}
+  finishPortal: {fileID: 6479646477241648015, guid: 507c704db64360248be37aeebe1d28e3, type: 3}
   enigmas:
   - {fileID: 1205362128}
   - {fileID: 1328145798}
   - {fileID: 64255682}
   - {fileID: 187762110}
+  - {fileID: 1217263504}
 --- !u!1 &1723190148
 GameObject:
   m_ObjectHideFlags: 0
@@ -9306,6 +9300,7 @@ Transform:
   - {fileID: 1075973607}
   - {fileID: 116534013}
   - {fileID: 1689663611}
+  - {fileID: 2043246857}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1901179004
@@ -10213,6 +10208,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2028703001}
   m_CullTransparentMesh: 1
+--- !u!1 &2043246856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2043246857}
+  m_Layer: 0
+  m_Name: Portal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2043246857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043246856}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1884417448}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2098463260
 GameObject:
   m_ObjectHideFlags: 0

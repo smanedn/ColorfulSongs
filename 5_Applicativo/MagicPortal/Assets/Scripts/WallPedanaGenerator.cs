@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class WallSolutionGenerator : MonoBehaviour
+public class WallPedanaGenerator : MonoBehaviour
 {
     private int startingX;   //= 5
     private int endingX;     //= 20
@@ -12,7 +12,6 @@ public class WallSolutionGenerator : MonoBehaviour
     private int endingZ;     //= 12
     private int startingY;   //= 0;
 
-    [SerializeField] private GameObject ladder;
     [SerializeField] private GameObject realBlock;
     [SerializeField] private GameObject fakeBlock;
     [SerializeField] private GameObject firstBlock;
@@ -22,7 +21,11 @@ public class WallSolutionGenerator : MonoBehaviour
 
     void Start()
     {
-        generator.GetComponent<TerrainGenerator>().setVariable(this.startingX, this.startingZ, this.endingX, this.endingZ, this.startingY, "WallSolutionGenerator");
+        startingX = generator.GetComponent<TerrainGenerator>().getStartX("WallPedanaGenerator");
+        startingZ = generator.GetComponent<TerrainGenerator>().getStartZ("WallPedanaGenerator");
+        startingY = generator.GetComponent<TerrainGenerator>().getStartY("WallPedanaGenerator");
+        endingX = generator.GetComponent<TerrainGenerator>().getEndX("WallPedanaGenerator");
+        endingZ = generator.GetComponent<TerrainGenerator>().getEndZ("WallPedanaGenerator");
 
         int[] posX = new int[endingX - startingX];
         int[] posZ = new int[endingX - startingX];
@@ -32,11 +35,6 @@ public class WallSolutionGenerator : MonoBehaviour
         bool generateFirst = true;
         int i = 0;
         int blockZ = 0;
-
-        var scala = Instantiate(ladder, new Vector3(startingX-1, startingY+2.5f, endingZ-0.5f), Quaternion.identity);
-        scala.name = "ladder[" + startingX + "; " + endingZ + "]";
-
-        scala.transform.SetParent(parent.transform);
 
         for (int x = startingX; x < endingX; x++)
         {
@@ -89,7 +87,5 @@ public class WallSolutionGenerator : MonoBehaviour
             cube.name = "realBlockWall[" + wallX + "; " + posX[j] + " ; " + endingZ + "]";
             cube.transform.SetParent(parent.transform);
         }
-        print("Wall Solution Generator:[X start: " + startingX + " X fine: " + endingX + "] && [Z start: " + startingZ + " Z fine: " + endingZ + "]");
-
     }
 }

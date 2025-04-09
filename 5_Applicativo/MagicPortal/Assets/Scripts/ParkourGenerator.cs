@@ -20,8 +20,12 @@ public class ParkourGenerator : MonoBehaviour
 
     void Start()
     {
-        //generator.GetComponent<TerrainGenerator>().setVariable(startingX, startingZ, endingX, this.endingZ, this.startingY, "ParkourGenerator");
-        startingX = generator.GetComponent<TerrainGenerator>().getStartX1();
+        startingX = generator.GetComponent<TerrainGenerator>().getStartX("ParkourGenerator");
+        startingZ = generator.GetComponent<TerrainGenerator>().getStartZ("ParkourGenerator");
+        startingY = generator.GetComponent<TerrainGenerator>().getStartY("ParkourGenerator");
+        endingX = generator.GetComponent<TerrainGenerator>().getEndX("ParkourGenerator");
+        endingZ = generator.GetComponent<TerrainGenerator>().getEndZ("ParkourGenerator");
+
         int oldZ = -1;
         int z = 0;
         int x = 0;
@@ -53,7 +57,5 @@ public class ParkourGenerator : MonoBehaviour
             x += Random.Range(2,4);
             z = -1;
         }
-
-        print("Parkour Generator:[X start: " + startingX + " X fine: " + endingX + "] && [Z start: " + startingZ + " Z fine: " + endingZ + "]");
     } 
 }
