@@ -378,6 +378,7 @@ GameObject:
   - component: {fileID: 124154217}
   - component: {fileID: 124154216}
   - component: {fileID: 124154218}
+  - component: {fileID: 124154219}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -430,6 +431,19 @@ MonoBehaviour:
   healthBar: {fileID: 1517176556}
   musicSource: {fileID: 1531333724}
   deathGUI: {fileID: 1909006498}
+--- !u!114 &124154219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124154215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 024727c2277ce6a4b8b53a34490ca017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1880509171}
 --- !u!1 &129097393
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,7 +982,7 @@ GameObject:
   - component: {fileID: 300634185}
   - component: {fileID: 300634184}
   m_Layer: 5
-  m_Name: You Died
+  m_Name: You Lost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1013,7 +1027,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You Died
+  m_text: You Lost
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
