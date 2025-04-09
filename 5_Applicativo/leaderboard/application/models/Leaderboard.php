@@ -17,6 +17,7 @@ class Leaderboard extends Model
     public static function getData()
     {
         return self::select('user.id','user.username as username', 'leaderboard.score', 'leaderboard.dungeon_id')
+            ->distinct()
             ->join('user', 'leaderboard.user_id', '=', 'user.id')
             ->orderBy('leaderboard.score', 'DESC')
             ->get();

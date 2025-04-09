@@ -18,6 +18,7 @@ class User extends Model
     public static function getDataByUserId($userId)
     {
         return self::select('u.username as username', 'l.score', 'l.dungeon_id')
+            ->distinct()
             ->join('friend as f', 'f.userId1', '=', 'user.id')
             ->join('user as u', 'f.userId2', '=', 'u.id')
             ->join('leaderboard as l', 'f.userId2', '=', 'l.user_id')

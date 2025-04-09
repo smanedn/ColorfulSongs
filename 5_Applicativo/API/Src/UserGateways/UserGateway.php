@@ -46,7 +46,7 @@ class UserGateway{
             $statement = $this->db->prepare($statement);
             $statement->execute(array(
                 'username' => $input['username'],
-                'password' => $input['password'],
+                'password' => password_hash($input['password'], PASSWORD_DEFAULT),
                 'email' => $input['email']
             ));
             return $statement->rowCount();
