@@ -1255,7 +1255,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &330585545
 Camera:
   m_ObjectHideFlags: 0
@@ -9070,6 +9070,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1864738342}
   - component: {fileID: 1864738343}
+  - component: {fileID: 1864738344}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Audio
@@ -9112,6 +9113,14 @@ MonoBehaviour:
   death: {fileID: 8300000, guid: 617b53c49dd189d4a8ec786c36b1ecb4, type: 3}
   hit: {fileID: 8300000, guid: 1b3ca3db8cbf7524a888df175ddb2951, type: 3}
   jump: {fileID: 8300000, guid: 617b53c49dd189d4a8ec786c36b1ecb4, type: 3}
+--- !u!81 &1864738344
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864738341}
+  m_Enabled: 1
 --- !u!1 &1884417447
 GameObject:
   m_ObjectHideFlags: 0
