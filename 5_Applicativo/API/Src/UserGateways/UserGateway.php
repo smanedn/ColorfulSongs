@@ -58,20 +58,20 @@ class UserGateway{
     public function update($id, Array $input)
     {
         $statement = "
-            update user 
+            update leaderboard 
             set
-                username = :username, 
-                password = :password,
-                email = :email
-            where id = :id";
+                score = greatest(score, values(:score)),
+                user_id = :user_id,
+                dungeon_id = :dungeon_id
+            where user_id = :user_id"; // non funziona, trovare una modo per modificare lo score
 
         try {
             $statement = $this->db->prepare($statement);
             $statement->execute(array(
                 'id' => (int) $id,
-                'username' => $input['username'],
-                'password' => $input['password'],
-                'email' => $input['email'],
+                'score' => $input['score'],
+                'user_id' => $input['user_id'],
+                'dungeon_id' => $input['dungeon_id'],
             ));
             return $statement->rowCount();
         }catch(\PDOException $e){

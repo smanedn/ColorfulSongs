@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9c775b0-f6e2-48a8-a458-919996b2e743" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../API/Src/UserGateways/UserGateway.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/Src/UserGateways/UserGateway.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/Leaderboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Leaderboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../6_Database/schema_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../6_Database/schema_db.sql" afterDir="false" />
-    </list>
+    <list default="true" id="f9c775b0-f6e2-48a8-a458-919996b2e743" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,7 +73,7 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "php__leaderboard",
-    "last_opened_file_path": "D:/3°_anno/Modulo_306(Project_Manager)/MagicPortal/5_Applicativo/leaderboard",
+    "last_opened_file_path": "D:/3°_anno/Modulo_306(Project_Manager)/MagicPortal/5_Applicativo/API",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -125,7 +119,7 @@
       <workItem from="1740554996543" duration="19168000" />
       <workItem from="1741768180565" duration="12738000" />
       <workItem from="1744179904434" duration="15604000" />
-      <workItem from="1744202740178" duration="511000" />
+      <workItem from="1744202740178" duration="698000" />
     </task>
     <servers />
   </component>

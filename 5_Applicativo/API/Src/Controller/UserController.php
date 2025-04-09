@@ -84,9 +84,9 @@ class UserController
             return $this->notFoundResponse();
         }
         $input = (array) json_decode(file_get_contents('php://input'), true);
-        if (! $this->validateUser($input)){
-            return $this->unprocessableEntityResponse();
-        }
+//        if (! $this->validateUser($input)){
+//            return $this->unprocessableEntityResponse();
+//        }
         $this->userGateway->update($userId, $input);
         $response['status_code_header'] = 'HTTP/1.1 200 OK';
         $response['body'] = null;
