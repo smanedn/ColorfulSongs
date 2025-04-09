@@ -4,29 +4,29 @@
 
 <br>
 
-## 📑 Indice dei contenuti
-- [Autori](#%EF%B8%8F-autori)
-- [Funzionalità](#-funzionalità)
-- [Tecnologie utilizzate](#%EF%B8%8F-tecnologie-utilizzate)
+## 📑 Table of Contents
+- [Authors](#%EF%B8%8F-authors)
+- [Features](#-features)
+- [Technologies used](#%EF%B8%8F-technologies-used)
 
-## ✍️ Autori
+## ✍️ Authors
 
 |      |      |      |
 |------|------|------|
-| <a href="https://github.com/smanedn"><img src="https://github.com/smanedn.png" alt="Smane user picture" style="border-radius: 50%; width: 75px; height: 75px;"></a> | [@Smane](https://github.com/smanedn) | Programmatore |
-| <a href="https://github.com/scr1my"><img src="https://github.com/scr1my.png" alt="Scr1my user picture" style="border-radius: 50%; width: 75px; height: 75px;"></a> | [@Scrimy](https://github.com/Scr1my) |Programmatore |
-| <a href="https://github.com/sebidb633"><img src="https://github.com/sebidb633.png" alt="sebidb633 user picture" style="border-radius: 50%; width: 75px; height: 75px;"></a> | [@Sebidb633](https://github.com/sebidb633) | Programmatore |
-| <a href="https://github.com/Skydog17"><img src="https://github.com/Skydog17.png" alt="Skydog17 user picture" style="border-radius: 50%; width: 75px; height: 75px;"></a> | <span style="font-size: 18px;">[@Skydog17](https://github.com/Skydog17)</spam> | Programmatore |
+| <a href="https://github.com/smanedn"><img src="https://github.com/smanedn.png" alt="Smane user picture" style="border-radius: 50%; width: 75px; height: 75px;"></a> | [@Smane](https://github.com/smanedn) | Developer/Designer |
+| <a href="https://github.com/scr1my"><img src="https://github.com/scr1my.png" alt="Scr1my user picture" style="border-radius: 50%; width: 75px; height: 75px;"></a> | [@Scrimy](https://github.com/Scr1my) |Developer |
+| <a href="https://github.com/sebidb633"><img src="https://github.com/sebidb633.png" alt="sebidb633 user picture" style="border-radius: 50%; width: 75px; height: 75px;"></a> | [@Sebidb633](https://github.com/sebidb633) | Developer |
+| <a href="https://github.com/Skydog17"><img src="https://github.com/Skydog17.png" alt="Skydog17 user picture" style="border-radius: 50%; width: 75px; height: 75px;"></a> | <span style="font-size: 18px;">[@Skydog17](https://github.com/Skydog17)</spam> | Developer |
 
 
-## ⚡ Funzionalità
+## ⚡ Features
 
-- ### Mappa ad ostacoli casuali
-- ### Combattimento contro nemici 
-- ### Punteggio in tempo
-- ### Dashboard globale
+- ### Random obstacle map
+- ### Fighting enemies 
+- ### Scoring in time
+- ### Global dashboard
 
-## ⚙️ Tecnologie utilizzate
+## ⚙️ Technologies used
 * [![Unity][Unity]][Unity-URL]
 * [![C#][C#]][C#-URL]
 * [![MySQL][MySQL]][MySQL-URL]

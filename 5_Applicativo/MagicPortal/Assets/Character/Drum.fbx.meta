@@ -3,7 +3,52 @@ guid: aa397087990a2f045bf83469181b57e5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrumBody
+    second: {fileID: 2100000, guid: 4df549f5a3c1c69479fd11d9e119a69e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Silver
+    second: {fileID: 2100000, guid: 8b637efc7e5200445b976e890a7a271f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Silver.001
+    second: {fileID: 2100000, guid: 1f9cd50ed66369a47b9921a6b70952c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wand.001
+    second: {fileID: 2100000, guid: 19aa601e863bce248b5b678b9d358bf8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wand.002
+    second: {fileID: 2100000, guid: 95e1cfb662795c543b21edbb85c0b2f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wand.003
+    second: {fileID: 2100000, guid: 23e2dadbc0e97a04883605013c793c6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wand.004
+    second: {fileID: 2100000, guid: d3ef54b68fcdf524b841d05164df1507, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wand.005
+    second: {fileID: 2100000, guid: ff6e659c38afdf5409fac00bb7eb32e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wand.006
+    second: {fileID: 2100000, guid: f88893de6b05ce449bb74d56f6c9647e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
