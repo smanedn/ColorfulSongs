@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         inGameGUI.SetActive(true);
     }
@@ -50,14 +51,9 @@ public class PauseMenu : MonoBehaviour
         isPaused = !isPaused;
     }
 
-    public async void Restart()
+    public void Restart()
     {
-        HealthManager.Revive();
-        await Task.Delay(300);
-        GameObject.Find("Character").GetComponent<PlayerCollision>().Teleport(0, 2f, 0);
-        print("tp");
-        
-        //GameObject.Find("Character").GetComponent<PlayerMovement>().enabled = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void GoToMainMenu()
@@ -66,10 +62,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
-    public bool IsPaused()
-    {
-        return isPaused;
-    }
+    
 
     
 }
