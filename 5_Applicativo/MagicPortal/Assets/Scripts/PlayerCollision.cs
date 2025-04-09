@@ -41,6 +41,11 @@ public class PlayerCollision : MonoBehaviour
             Teleport(0, 2f, 0);
             HealthManager.LooseOneHeart();
         }
+
+        if (other.gameObject.CompareTag("FinishPortal"))
+        {
+            PauseMenu.Restart();
+        }
     }
 
     public async void Teleport(float x, float y, float z)

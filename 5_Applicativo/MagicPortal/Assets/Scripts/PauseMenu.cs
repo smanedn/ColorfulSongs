@@ -51,7 +51,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = !isPaused;
     }
 
-    public void Restart()
+    public static void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
