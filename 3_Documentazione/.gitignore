@@ -1,0 +1,12 @@
+# Microsoft Word temporary files
+~$*
+*.wbk
+*.tmp
+*.bak
+
+# Microsoft Word Auto-recovery files
+~*.docx
+*.docx~
+
+# Ignore Microsoft Office lock files
+*.lock
