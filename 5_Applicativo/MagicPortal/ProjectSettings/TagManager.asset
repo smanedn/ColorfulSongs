@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Portal
   - BadPortal
+  - FinishPortal
   layers:
   - Default
   - TransparentFX
