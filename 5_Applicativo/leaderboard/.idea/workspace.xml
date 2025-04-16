@@ -5,48 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9c775b0-f6e2-48a8-a458-919996b2e743" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../4_Diari/2025.04.16-Debertoldi.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../4_Diari/2025.04.16-Debertoldi.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/.idea/API.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../API/.idea/API.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/.idea/codeception.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../API/.idea/codeception.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../API/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/.idea/phpspec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../API/.idea/phpspec.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/Src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/Src/Controller/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../API/Src/UserGateways/UserGateway.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/Src/UserGateways/UserGateway.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/../API/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../API/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/InstalledVersions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/autoload_files.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/autoload_real.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/installed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/installed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/platform_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/platform_check.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeception.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeception.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/leaderboard.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/leaderboard.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpspec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/log/errorLog.log" beforeDir="false" afterPath="$PROJECT_DIR$/../API/log/errorLog.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controller/leaderboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controller/leaderboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/libs/log.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/libs/validator.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/libs/validator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/logs/errorLog.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/logs/successLog.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/Leaderboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Leaderboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/platform_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/platform_check.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../6_Database/schema_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../6_Database/schema_db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Database.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,25 +75,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "php__leaderboard",
-    "last_opened_file_path": "D:/3°_anno/Modulo_306(Project_Manager)/MagicPortal/5_Applicativo/leaderboard",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;php__leaderboard&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/3°_anno/Modulo_306(Project_Manager)/MagicPortal/5_Applicativo/API&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\3°_anno\Modulo_306(Project_Manager)\MagicPortal\5_Applicativo\leaderboard\application\logs" />
@@ -167,7 +129,8 @@
       <workItem from="1744202740178" duration="698000" />
       <workItem from="1744784583279" duration="75000" />
       <workItem from="1744784821582" duration="3021000" />
-      <workItem from="1744800835739" duration="735000" />
+      <workItem from="1744800835739" duration="975000" />
+      <workItem from="1744802565709" duration="93000" />
     </task>
     <servers />
   </component>

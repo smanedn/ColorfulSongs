@@ -14,7 +14,7 @@ class UserGateway{
 
     public function findAll()
     {
-        $statement = "select * from leaderboard";
+        $statement = "select * from user";
 
         try{
             $statement = $this->db->prepare($statement);

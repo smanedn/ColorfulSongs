@@ -4,21 +4,23 @@
 
 ### URL
 
-localhost:8080/
+localhost:8080/API/public/
 
 ### GET
 
-#### api/public/user
+#### /user
 
 Serve per ritornare tutti gli utenti nel database in formato JSON
 
-| Key |
-| ------ |
-| score |
-| user_id |
-| dungeon_id |
+| Key      |
+|----------|
+| id       |
+| username |
+| password |
+| email    |
+| type     |
 
-#### api/public/user/{id}
+#### /user/{id}
 
 Serve per ritornare tutte le informazioni di un utente specifico
 
@@ -32,10 +34,11 @@ Serve per ritornare tutte le informazioni di un utente specifico
 
 ### POST
 
-#### api/public/user
+#### /user
 
-Serve per aggiungere un nuovo utente
+Serve per aggiungere un nuovo utente o un nuovo punteggio
 
+Per l'aggiunta di un nuovo utente:
 
 | Key |
 | ------ |
@@ -43,22 +46,29 @@ Serve per aggiungere un nuovo utente
 | password |
 | email |
 
+Per l'aggiunta di un nuovo punteggio:
+
+| Key        |
+|------------|
+| score      |
+| user_id    |
+| dungeon_id |
 
 ### PUT
 
-#### api/public/user/{id}
+#### /user/{id}
 
-Serve per eseguire un update su un utente specifico
+Serve per eseguire l'update del punteggio di un untente
 
-| Key    |
-|--------|
-| username |
-| password |
-| email |
+| Key      |
+|----------|
+| score    |
+| user_id |
+| dungeon_id    |
 
 
 ### DELETE
 
-#### api/public/user/{id}
+#### /user/{id}
 
 Serve eliminare un utente specifico
