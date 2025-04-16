@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private float z;
     private Vector3 position;
     private float voidHeight = -15;
+    private int defaultMovemnt;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        defaultMovemnt = PlayerPrefs.GetInt("DefaultMovement");
     }
 
     
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         Turn();
+        Debug.Log(defaultMovemnt);
     }
 
     private void Movement()
