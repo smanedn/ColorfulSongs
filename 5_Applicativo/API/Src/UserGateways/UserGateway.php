@@ -12,17 +12,17 @@ class UserGateway{
         $this->logger->pushHandler(new StreamHandler('../log/errorLog.log'));
     }
 
-    public function findAll()
+    public function findByUsername($username)
     {
-        $statement = "select * from user";
+        $statement = "select id,username,password from user where username = ?";
 
         try{
             $statement = $this->db->prepare($statement);
-            $statement->execute();
+            $statement->execute(array($username));
             $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
             return $result;
         }catch(\PDOException $e){
-            $this->logger->error("findAll: " . $e->getMessage());
+            $this->logger->error("findByUsername: " . $e->getMessage());
         }
     }
 

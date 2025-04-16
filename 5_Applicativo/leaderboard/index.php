@@ -1,10 +1,12 @@
 <?php
 
-// carico il file di configurazione
 require 'application/config/config.php';
 
-// carico le classi dell'applicazione
 require 'application/libs/application.php';
 
-// faccio partire l'applicazione
+require_once "vendor/autoload.php";
+
+require_once "application/libs/CsrfTokenManager.php";
+$csrf = new \libs\CsrfTokenManager();
+
 $app = new \libs\Application();

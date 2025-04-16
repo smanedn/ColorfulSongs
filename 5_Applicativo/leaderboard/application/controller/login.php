@@ -8,6 +8,7 @@ class Login
     public function __construct()
     {
         require_once "application/libs/validator.php";
+        require_once "application/libs/CsrfTokenManager.php";
         $this->validator = new \libs\Validator();
     }
 
@@ -19,28 +20,31 @@ class Login
 
     public function logIn()
     {
-        session_start();
         if (isset($_POST['login'])) {
-            new Database();
-            require_once 'application/libs/validator.php';
+            if (!isset($_POST['csrf_token']) || !\libs\CsrfTokenManager::validateToken($_POST['csrf_token'])) {
+                die("CSRF token non valido!");
+            }else{
+                session_start();
+                new Database();
+                require_once 'application/libs/validator.php';
 
-            $username = $this->validator->sanitizeInput($_POST['username']);
-            $password = $this->validator->sanitizeInput($_POST['password']);
+                $username = $this->validator->sanitizeInput($_POST['username']);
+                $password = $this->validator->sanitizeInput($_POST['password']);
 
-            $result = User::where('username', $username)->first();
+                $result = User::where('username', $username)->first();
 
+                if ($result && password_verify($password, $result->password)) {
+                    $_SESSION['userType'] = $result->type;
+                    $_SESSION['username'] = $username;
+                    $_SESSION["UserId"] = $result['id'];
 
-            if ($result && password_verify($password, $result->password)) {
-                $_SESSION['userType'] = $result->type;
-                $_SESSION['username'] = $username;
-                $_SESSION["UserId"] = $result['id'];
-
-                header("Location:" . URL . "leaderboardController");
-                exit();
-            } else {
-                $error = "Username or Password incorrect";
-                require_once 'application/views/_templates/header.php';
-                require_once 'application/views/login/index.php';
+                    header("Location:" . URL . "leaderboardController");
+                    exit();
+                } else {
+                    $error = "Username or Password incorrect";
+                    require_once 'application/views/_templates/header.php';
+                    require_once 'application/views/login/index.php';
+                }
             }
         }
     }

@@ -33,6 +33,7 @@ class leaderboardController
         }
         require_once 'application/views/_templates/header.php';
         if($this->isAdmin()) {
+            echo URL;
             require_once 'application/views/admin/index.php';
         }else{
             require_once 'application/views/leaderboard/index.php';
