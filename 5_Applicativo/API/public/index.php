@@ -21,11 +21,15 @@ if ($uri[3] !== 'user') {
 // the user id is, of course, optional and must be a number:
 $userId = null;
 if (isset($uri[4])) {
-    $userId = (int) $uri[4];
+    if (is_int($uri[4])) {
+        $userId = (int) $uri[4];
+    }elseif (is_string($uri[4])) {
+        $username = $uri[4];
+    }
 }
 
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
-$controller = new UserController($dbConnection,$requestMethod,$userId);
+$controller = new UserController($dbConnection,$requestMethod,$userId,$username);
 $controller->processRequest();
 

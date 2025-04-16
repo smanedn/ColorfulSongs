@@ -1,22 +1,28 @@
 <?php
 namespace Src\UserGateways;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
 class UserGateway{
     private $db = null;
+    private $logger = null;
     public function __construct($db){
         $this->db = $db;
+        $this->logger = new Logger("UserGateway");
+        $this->logger->pushHandler(new StreamHandler('../log/errorLog.log'));
     }
 
-    public function findAll()
+    public function findByUsername($username)
     {
-        $statement = "select * from leaderboard";
+        $statement = "select id,username,password from user where username = ?";
 
         try{
             $statement = $this->db->prepare($statement);
-            $statement->execute();
+            $statement->execute(array($username));
             $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
             return $result;
         }catch(\PDOException $e){
-            exit($e->getMessage());
+            $this->logger->error("findByUsername: " . $e->getMessage());
         }
     }
 
@@ -29,30 +35,53 @@ class UserGateway{
             $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
             return $result;
         }catch(\PDOException $e){
-            exit($e->getMessage());
+            $this->logger->error("find: " . $e->getMessage());
         }
     }
 
     public function insert(Array $input)
     {
-        $statement = "
+        if (isset($input['username']) && isset($input['password']) && isset($input['email']) && isset($input['type'])) {
+            $statement = "
                 insert into user
-                    (username, password, email)
+                    (username, password, email, type)
                 values
-                    (:username, :password, :email)";
+                    (:username, :password, :email, :type)";
 
-        try{
-            var_dump($input);
-            $statement = $this->db->prepare($statement);
-            $statement->execute(array(
-                'username' => $input['username'],
-                'password' => password_hash($input['password'], PASSWORD_DEFAULT),
-                'email' => $input['email']
-            ));
-            return $statement->rowCount();
-        }catch(\PDOException $e){
-            exit($e->getMessage());
+            try{
+                var_dump($input);
+                $statement = $this->db->prepare($statement);
+                $statement->execute(array(
+                    'username' => $input['username'],
+                    'password' => password_hash($input['password'], PASSWORD_DEFAULT),
+                    'email' => $input['email'],
+                    'type' => $input['type']
+                ));
+                return $statement->rowCount();
+            }catch(\PDOException $e){
+                $this->logger->error("insert user: " . $e->getMessage());
+            }
+        }elseif(isset($input['score']) && isset($input['user_id'])){
+            $statement = "
+                insert into leaderboard
+                    (score, user_id, dungeon_id)
+                values
+                    (:score, :user_id, :dungeon_id)";
+
+            try{
+                var_dump($input);
+                $statement = $this->db->prepare($statement);
+                $statement->execute(array(
+                    'score' => $input['score'],
+                    'user_id' => $input['user_id'],
+                    'dungeon_id' => $input['dungeon_id']
+                ));
+                return $statement->rowCount();
+            }catch(\PDOException $e){
+                $this->logger->error("insert score: " . $e->getMessage());
+            }
         }
+
     }
 
     public function update($id, Array $input)
@@ -60,10 +89,11 @@ class UserGateway{
         $statement = "
             update leaderboard 
             set
-                score = greatest(score, values(:score)),
+                score = :score,
                 user_id = :user_id,
                 dungeon_id = :dungeon_id
-            where user_id = :user_id"; // non funziona, trovare una modo per modificare lo score
+            where user_id = :user_id
+            and dungeon_id = :dungeon_id";
 
         try {
             $statement = $this->db->prepare($statement);
@@ -75,7 +105,7 @@ class UserGateway{
             ));
             return $statement->rowCount();
         }catch(\PDOException $e){
-            exit($e->getMessage());
+            $this->logger->error("update: " . $e->getMessage());
         }
     }
 
@@ -87,7 +117,7 @@ class UserGateway{
             $statement->execute(array('id' => $id));
             return $statement->rowCount();
         }catch(\PDOException $e){
-            exit($e->getMessage());
+            $this->logger->error("delete: " . $e->getMessage());
         }
     }
 }

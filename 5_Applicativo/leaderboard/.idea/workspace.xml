@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9c775b0-f6e2-48a8-a458-919996b2e743" name="Changes" comment="" />
+    <list default="true" id="f9c775b0-f6e2-48a8-a458-919996b2e743" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../4_Diari/2025.04.16-Debertoldi.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../4_Diari/2025.04.16-Debertoldi.docx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,6 +57,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/translation" />
       <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -120,6 +124,13 @@
       <workItem from="1741768180565" duration="12738000" />
       <workItem from="1744179904434" duration="15604000" />
       <workItem from="1744202740178" duration="698000" />
+      <workItem from="1744784583279" duration="75000" />
+      <workItem from="1744784821582" duration="3021000" />
+      <workItem from="1744800835739" duration="975000" />
+      <workItem from="1744802565709" duration="93000" />
+      <workItem from="1744805720702" duration="137000" />
+      <workItem from="1744807338595" duration="1058000" />
+      <workItem from="1744808676918" duration="1845000" />
     </task>
     <servers />
   </component>

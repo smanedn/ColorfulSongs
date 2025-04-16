@@ -34,8 +34,13 @@ class ComposerStaticInit976c14dbb885b369981d4e3ef15ee8ab
         'P' => 
         array (
             'Psr\\SimpleCache\\' => 16,
+            'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
             'Psr\\Clock\\' => 10,
+        ),
+        'M' => 
+        array (
+            'Monolog\\' => 8,
         ),
         'L' => 
         array (
@@ -92,6 +97,10 @@ class ComposerStaticInit976c14dbb885b369981d4e3ef15ee8ab
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
         ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/src',
+        ),
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
@@ -99,6 +108,10 @@ class ComposerStaticInit976c14dbb885b369981d4e3ef15ee8ab
         'Psr\\Clock\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/clock/src',
+        ),
+        'Monolog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
         'Laravel\\SerializableClosure\\' => 
         array (
@@ -155,7 +168,7 @@ class ComposerStaticInit976c14dbb885b369981d4e3ef15ee8ab
         'DateRangeError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateRangeError.php',
         'Dungeon' => __DIR__ . '/../..' . '/application/models/Dungeon.php',
         'Friend' => __DIR__ . '/../..' . '/application/models/Friend.php',
-        'Leaderboard2' => __DIR__ . '/../..' . '/application/models/Leaderboard2.php',
+        'Leaderboard' => __DIR__ . '/../..' . '/application/models/Leaderboard.php',
         'Override' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/Override.php',
         'SQLite3Exception' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/SQLite3Exception.php',
         'User' => __DIR__ . '/../..' . '/application/models/User.php',
@@ -163,9 +176,6 @@ class ComposerStaticInit976c14dbb885b369981d4e3ef15ee8ab
         'libs\\Log' => __DIR__ . '/../..' . '/application/libs/log.php',
         'libs\\Validator' => __DIR__ . '/../..' . '/application/libs/validator.php',
         'models\\AuthenticData' => __DIR__ . '/../..' . '/application/models/AuthenticData.php',
-        'models\\Leaderboard' => __DIR__ . '/../..' . '/application/models/Leaderboard.php',
-        'models\\LeaderboardMapper' => __DIR__ . '/../..' . '/application/models/LeaderboardMapper.php',
-        'models\\LeaderboardModel' => __DIR__ . '/../..' . '/application/models/LeaderboardModel.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

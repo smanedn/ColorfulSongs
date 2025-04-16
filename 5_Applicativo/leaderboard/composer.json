@@ -6,6 +6,7 @@
     ]
   },
   "require": {
-    "illuminate/database": "^12.5"
+    "illuminate/database": "^12.5",
+    "monolog/monolog": "^3.9"
   }
 }

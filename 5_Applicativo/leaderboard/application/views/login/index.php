@@ -13,6 +13,7 @@
                     <input type="password" class="form-control" placeholder="Password" name="password" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="text-center">
+                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
                     <button type="submit" class="btn btn-info rounded-5 text-white" name="login" value="Login">Login</button>
                 </div>
 

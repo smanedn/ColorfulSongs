@@ -24,10 +24,6 @@ class Home
         if ($_SESSION['userType'] == 'admin') {
             return true;
         }
-//        else{
-//            header('location:' . URL . 'login');
-//            exit();
-//        }
     }
 
     public function showLeaderboardData(){

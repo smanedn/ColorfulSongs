@@ -1,17 +1,25 @@
 <?php
 namespace libs;
-require_once "application/libs/log.php";
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 class Validator
 {
-    private $logs;
+    private $log;
+
+    public function __construct()
+    {
+        $this->log = new Logger('validator');
+        $this->log->pushHandler(new StreamHandler('application/logs/errorLog.log'));
+    }
+
+
     function checkNumber($val)
     {
-        $this->logs = new \libs\Log();
         if(is_numeric($val) && $val > 0 && $val <= 9999){
             return $val;
         }
         else{
-            $this->logs->errorLog("Type is not a number");
+            $this->log->warning("checkNumber: Type is not a number");
         }
     }
 
