@@ -24,7 +24,7 @@ public class MovementPreference : MonoBehaviour
         }
 
 
-        //Debug.Log(select);
+        Debug.Log(select);
     }
 }
 
