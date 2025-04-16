@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class EnemyMovement : MonoBehaviour
 
     private float timer = 0f;
     private int enemyPosition = 0; //0=base 1=in salto 2=arrivato REPEAT
+    private bool moved = false; //0=base 1=in salto 2=arrivato REPEAT
 
     private Vector3 position;
     private float[][] positions;
@@ -31,19 +33,23 @@ public class EnemyMovement : MonoBehaviour
         enemyZ = endZ / 2 - 0.5f;
         y = 0.5f;
 
-        positions[0][0] = startX;
+        
+        /**positions[0][0] = startX;
         positions[0][1] = enemyX;
         positions[0][2] = endX;
 
         positions[1][0] = startZ;
         positions[1][1] = enemyZ;
-        positions[1][2] = endZ;
+        positions[1][2] = endZ;*/
 
         position = new Vector3(enemyX, y, enemyZ);
+        MovementDrum();
     }
     void Update()
     {
-        timer = Time.fixedTime;
+        /*timer = Time.fixedTime;
+        print(timer);
+
         if (Mathf.RoundToInt(timer) % 6 == 0 && timer!=0)
         {
             print(Mathf.RoundToInt(timer) + "%6 = 0");
@@ -60,9 +66,36 @@ public class EnemyMovement : MonoBehaviour
             print(Mathf.RoundToInt(timer) + "%3 = 0");
             position = new Vector3(enemyX, y, startZ);
         }
-       
 
-        GetComponent<Rigidbody>().transform.position = position;
+        GetComponent<Rigidbody>().transform.position = position;*/
+    }
 
+    IEnumerator MovementDrum()
+    {
+        while (true)
+        {
+            print("Sono nel while");
+            if (enemyPosition == 0)
+            {
+                position = new Vector3(enemyX, y, enemyZ);
+                enemyPosition++;
+                
+            }
+            else if (enemyPosition == 1)
+            {
+                float diff = enemyZ - startZ;
+                position = new Vector3(enemyX, y + 2f, startZ + diff / 2);
+                enemyPosition++;
+            }
+            else if (enemyPosition == 2)
+            {
+                print(Mathf.RoundToInt(timer) + "%3 = 0");
+                position = new Vector3(enemyX, y, startZ);
+                enemyPosition = 0;
+            }
+            print(enemyPosition);
+            GetComponent<Rigidbody>().transform.position = position;
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }

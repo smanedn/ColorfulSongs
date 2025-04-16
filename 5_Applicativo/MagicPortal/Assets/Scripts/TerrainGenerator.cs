@@ -59,7 +59,7 @@ public class TerrainGenerator : MonoBehaviour
         
         enemyX = endObstacle1X + (startObstacle2X - endObstacle1X)/2f;
         enemyZ = column / 2 -0.5f;
-        enemyY = 0.5f;
+        enemyY = 1.5f;
         //enemyX = Mathf.Round(enemyX);
 
         int l = obstacles.Length;
