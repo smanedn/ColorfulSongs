@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private float y;
     private float z;
     private Vector3 position;
+    private float voidHeight = -15;
 
     private void Awake()
     {
@@ -102,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private bool IsVoid()
     {
-        if (transform.position.y < -1)
+        if (transform.position.y < voidHeight)
         {
             return true;
         }
