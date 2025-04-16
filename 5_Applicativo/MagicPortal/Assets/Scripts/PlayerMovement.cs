@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 position;
     private float voidHeight = -15;
     private int defaultMovemnt;
+    private float initialRotationY;
 
     private void Awake()
     {
@@ -29,6 +30,17 @@ public class PlayerMovement : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         defaultMovemnt = PlayerPrefs.GetInt("DefaultMovement");
+
+        if (defaultMovemnt == 0)
+        {
+            initialRotationY = 0f;
+        }
+        else if (defaultMovemnt == 1)
+        {
+            initialRotationY = -45f;
+        }
+
+        transform.rotation = Quaternion.Euler(0, initialRotationY, 0);
     }
 
     
@@ -36,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         Turn();
-        Debug.Log(defaultMovemnt);
+        //Debug.Log(defaultMovemnt);
     }
 
     private void Movement()
@@ -45,7 +57,15 @@ public class PlayerMovement : MonoBehaviour
         z = Input.GetAxis("Vertical");
         y = VerticalForceCalculation();
        
-        position = new Vector3(x + z, y, z - x);
+        if(defaultMovemnt == 0)
+        {
+            position = new Vector3(x + z, y, z - x);
+        }
+        if (defaultMovemnt == 1)
+        {
+            position = new Vector3(x, y, z);
+        }
+        
         /*if(y == -1f)
         {
             position = position.normalized;
@@ -71,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(position.x) > 0.1 || Mathf.Abs(position.z) > 0.1)
         {
             var targetAngle = Mathf.Atan2(x, z) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, targetAngle, 0); 
+            transform.rotation = Quaternion.Euler(0, initialRotationY + targetAngle, 0);
         }
     }
     private float VerticalForceCalculation()

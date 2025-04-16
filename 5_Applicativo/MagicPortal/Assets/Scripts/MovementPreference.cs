@@ -1,17 +1,30 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MovementPreference : MonoBehaviour
+
 {
-    public void HandleDataInput(int val)
+
+    public void MovementData()
     {
-        switch (val)
+        int pickedMovementIndex = GetComponent<TMP_Dropdown>().value;
+        var select = 0;
+
+        switch (pickedMovementIndex)
         {
             case 0:
-                PlayerPrefs.SetInt("DefaultMovement", 1);
+                select = 1;
+                PlayerPrefs.SetInt("DefaultMovement", select);
                 break;
             case 1:
-                PlayerPrefs.SetInt("DefaultMovement", 0);
+                select = 0;
+                PlayerPrefs.SetInt("DefaultMovement", select);
                 break;
         }
+
+
+        //Debug.Log(select);
     }
 }
+
