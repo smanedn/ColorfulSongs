@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class TerrainGenerator : MonoBehaviour
 {
+
     private int x;
     private int z;
     private int h;
@@ -33,22 +34,34 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private int endObstacle2X;       
     private int startObstacle2Z;     
     private int endObstacle2Z;       
-    [SerializeField] private int startObstacle2Y;     
+    [SerializeField] private int startObstacle2Y;
 
     private int startLShapedObstacle2X;  
     private int endLShapedObstacle2X;    
     private int startLShapedObstacle2Z;  
-    private int endLShapedObstacle2Z;    
+    private int endLShapedObstacle2Z;
+
+    private float enemyX;
+    private float enemyZ;
+    private float enemyY;
 
     [SerializeField] private GameObject floor;
     [SerializeField] private GameObject wall;
     [SerializeField] private GameObject parent;
     [SerializeField] private GameObject finishPortal;
+    [SerializeField] private GameObject enemy;
 
     public GameObject[] obstacles;
 
+    
     void Start()
     {
+        
+        enemyX = endObstacle1X + (startObstacle2X - endObstacle1X)/2f;
+        enemyZ = column / 2 -0.5f;
+        enemyY = 0.5f;
+        //enemyX = Mathf.Round(enemyX);
+
         int l = obstacles.Length;
         do
         {
@@ -61,9 +74,13 @@ public class TerrainGenerator : MonoBehaviour
 
         generateStraightTerrain();
 
+        var _enemy = Instantiate(enemy, new Vector3(enemyX, enemyY, enemyZ), Quaternion.identity);
+        _enemy.name = "Enemy";
+        _enemy.transform.SetParent(parent.transform);
+        _enemy.SetActive(true);
+
         var _finishPortal = Instantiate(finishPortal, new Vector3(row-3, y+1.5f, column-column/2), Quaternion.identity);
         _finishPortal.name = "FinishPortal";
-
         _finishPortal.transform.SetParent(parent.transform);
 
     }
@@ -182,6 +199,7 @@ public class TerrainGenerator : MonoBehaviour
             return 0;
         }
     }
+    public int getStartX2() { return startObstacle2X; }
     public int getEndX(string name)
     {
         if (name == obstacles[firstObstacle].name)
@@ -197,6 +215,8 @@ public class TerrainGenerator : MonoBehaviour
             return 0;
         }
     }
+
+    public int getEndX1(){return endObstacle1X; }
 
     public int getStartZ(string name)
     {
@@ -227,6 +247,12 @@ public class TerrainGenerator : MonoBehaviour
         {
             return 0;
         }
+    }
+
+    public int getEndZ()
+    {
+        return endObstacle1Z;
+
     }
 
     public int getStartY(string name)
