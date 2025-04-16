@@ -5,10 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9c775b0-f6e2-48a8-a458-919996b2e743" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../4_Diari/2025.04.16-Debertoldi.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../4_Diari/2025.04.16-Debertoldi.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/.idea/API.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../API/.idea/API.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/.idea/codeception.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../API/.idea/codeception.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../API/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/.idea/phpspec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../API/.idea/phpspec.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/Src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/Src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/Src/UserGateways/UserGateway.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/Src/UserGateways/UserGateway.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/../API/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../API/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/InstalledVersions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/autoload_real.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../API/vendor/composer/platform_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/../API/vendor/composer/platform_check.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeception.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeception.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/leaderboard.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/leaderboard.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/phpspec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpspec.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/controller/leaderboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controller/leaderboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/logs/errorLog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/application/logs/errorLog.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/libs/log.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/libs/validator.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/libs/validator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/logs/errorLog.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/logs/successLog.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Leaderboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Leaderboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/platform_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/platform_check.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6_Database/schema_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../6_Database/schema_db.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +98,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/translation" />
       <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -126,7 +166,8 @@
       <workItem from="1744179904434" duration="15604000" />
       <workItem from="1744202740178" duration="698000" />
       <workItem from="1744784583279" duration="75000" />
-      <workItem from="1744784821582" duration="2853000" />
+      <workItem from="1744784821582" duration="3021000" />
+      <workItem from="1744800835739" duration="735000" />
     </task>
     <servers />
   </component>

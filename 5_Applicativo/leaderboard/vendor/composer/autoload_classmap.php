@@ -19,7 +19,7 @@ return array(
     'DateRangeError' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateRangeError.php',
     'Dungeon' => $baseDir . '/application/models/Dungeon.php',
     'Friend' => $baseDir . '/application/models/Friend.php',
-    'Leaderboard2' => $baseDir . '/application/models/Leaderboard2.php',
+    'Leaderboard' => $baseDir . '/application/models/Leaderboard.php',
     'Override' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/Override.php',
     'SQLite3Exception' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/SQLite3Exception.php',
     'User' => $baseDir . '/application/models/User.php',
@@ -27,7 +27,4 @@ return array(
     'libs\\Log' => $baseDir . '/application/libs/log.php',
     'libs\\Validator' => $baseDir . '/application/libs/validator.php',
     'models\\AuthenticData' => $baseDir . '/application/models/AuthenticData.php',
-    'models\\Leaderboard' => $baseDir . '/application/models/Leaderboard.php',
-    'models\\LeaderboardMapper' => $baseDir . '/application/models/LeaderboardMapper.php',
-    'models\\LeaderboardModel' => $baseDir . '/application/models/LeaderboardModel.php',
 );

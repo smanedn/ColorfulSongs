@@ -4,6 +4,14 @@ require_once 'vendor/autoload.php';
 class leaderboardController
 {
     private $validator;
+
+    public function __construct()
+    {
+        require_once 'application/libs/validator.php';
+        $this->validator = new \libs\Validator();
+    }
+
+
     public function isAdmin(){
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
@@ -11,10 +19,6 @@ class leaderboardController
         if ($_SESSION['userType'] == 'admin') {
             return true;
         }
-//        else{
-//            header('location:' . URL . 'login');
-//            exit();
-//        }
     }
 
     public function index()
@@ -92,8 +96,6 @@ class leaderboardController
         new Database();
         require_once "application/models/Leaderboard.php";
         if (isset($_POST['search'])) {
-            require_once 'application/libs/validator.php';
-            $this->validator = new \libs\Validator();
             $mapCode = $this->validator->sanitizeInput($_POST['mapCode']);
             $mapCode = $this->validator->checkNumber($mapCode);
             setcookie('mapCode',$mapCode,time() + (3600), "/");

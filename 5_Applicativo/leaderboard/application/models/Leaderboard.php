@@ -1,8 +1,17 @@
 <?php
 use Illuminate\Database\Eloquent\Model;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 class Leaderboard extends Model
 {
     protected $table = 'leaderboard';
+    private $log;
+
+    public function __construct()
+    {
+        $this->log = new Logger('leaderboard');
+        $this->log->pushHandler(new StreamHandler('application/logs/errorLog.log'));
+    }
 
     public function user()
     {

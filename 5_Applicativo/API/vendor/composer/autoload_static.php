@@ -16,6 +16,14 @@ class ComposerStaticInit8b0801153801e3e8932a78836d94b702
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Src\\' => 4,
         ),
+        'P' => 
+        array (
+            'Psr\\Log\\' => 8,
+        ),
+        'M' => 
+        array (
+            'Monolog\\' => 8,
+        ),
         'D' => 
         array (
             'Dotenv\\' => 7,
@@ -30,6 +38,14 @@ class ComposerStaticInit8b0801153801e3e8932a78836d94b702
         'Src\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/src',
+        ),
+        'Monolog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
         'Dotenv\\' => 
         array (

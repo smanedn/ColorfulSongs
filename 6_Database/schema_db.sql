@@ -35,3 +35,18 @@ CREATE USER 'colorfulsongs'@'%' IDENTIFIED BY 'Admin$00';
 GRANT ALL PRIVILEGES ON colorfulsongs.* TO 'colorfulsongs'@'%';
 FLUSH PRIVILEGES;
 
+
+delimiter // 
+create trigger leaderboardScoreUpdate 
+before update on leaderboard for each row begin 
+	if new.score > old.score then 
+		set new.score = new.score;
+	elseif old.score = null then
+		set new.score = new.score;
+	else
+		set new.score = old.score;
+	end if; 
+end;
+// delimiter ;
+
+-- drop trigger leaderboardScoreUpdate;
