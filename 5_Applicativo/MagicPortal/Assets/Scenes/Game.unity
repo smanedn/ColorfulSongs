@@ -6178,6 +6178,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd2c62b33bbfe4dabdfe1b44f629ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  realBlock: {fileID: 709262350618453701, guid: 41973e0e34b053e4a80ea3449cf6aa2e, type: 3}
+  fakeBlock: {fileID: 7071275311211430607, guid: 0875708a2ad3f9a48a5acc506f7d51b6, type: 3}
+  firstBlock: {fileID: 3955915982601514054, guid: ce32500b5fe80b54e8f7947c235d18fc, type: 3}
+  wall: {fileID: 7932817789950506644, guid: 287c4999efb6e7441a621436bdad4109, type: 3}
+  parent: {fileID: 1075973606}
+  generator: {fileID: 1705169335}
 --- !u!1 &1339716579
 GameObject:
   m_ObjectHideFlags: 0
