@@ -8,17 +8,15 @@ localhost:8080/API/public/
 
 ### GET
 
-#### /user
+#### /user/{username}
 
-Serve per ritornare tutti gli utenti nel database in formato JSON
+Ritrona l'utente specifico in formato JSON
 
 | Key      |
 |----------|
 | id       |
 | username |
 | password |
-| email    |
-| type     |
 
 #### /user/{id}
 
@@ -71,4 +69,4 @@ Serve per eseguire l'update del punteggio di un untente
 
 #### /user/{id}
 
-Serve eliminare un utente specifico
+Serve a eliminare un utente specifico

@@ -90,7 +90,7 @@ class UserController
     {
         $result = $this->userGateway->find($userId);
         if (! $result){
-            $this->logger->error($this->notFoundResponse());
+            $this->logger->error('HTTP/1.1 404 Not Found');
             return $this->notFoundResponse();
         }
         $input = (array) json_decode(file_get_contents('php://input'), true);

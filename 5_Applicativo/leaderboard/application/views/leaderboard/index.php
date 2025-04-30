@@ -53,7 +53,6 @@
                         <tr>
                             <th>Username</th>
                             <th>High Score</th>
-                            <th>Map Code</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,7 +62,6 @@
                         <tr>
                             <td><?php echo $leaderboardValue->username; ?></td>
                             <td><?php echo $leaderboardValue->score; ?></td>
-                            <td><?php echo $leaderboardValue->dungeon_id; ?></td>
                         </tr>
                     <?php endforeach; ?>
                     <?php endif; ?>

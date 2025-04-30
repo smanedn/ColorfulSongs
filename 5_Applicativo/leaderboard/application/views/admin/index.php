@@ -45,9 +45,9 @@
             <form method="POST" action="<?php echo URL; ?>leaderboardController/searchFilter">
                 <section class="mt-3">
                     <div>
-                        <label for="mapCode" class="form-label fw-bold fs-6">Maps</label>
+                        <label for="usernameSearch" class="form-label fw-bold fs-6">Users</label>
                         <div class="d-inline-flex">
-                            <input class="form-control w-75" name="mapCode" placeholder="Map Code">
+                            <input class="form-control w-75" name="usernameSearch" placeholder="Username...">
                             <button type="submit" class="btn btn-outline-dark ms-2" name="search" value="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                         <p class="text-danger w-75"><?php if(isset($error)) echo $error ?></p>
@@ -68,7 +68,6 @@
                     <tr>
                         <th>Username</th>
                         <th>High Score</th>
-                        <th>Map Code</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -78,7 +77,6 @@
                             <tr>
                                 <td><?php echo $leaderboardValue->username; ?></td>
                                 <td><?php echo $leaderboardValue->score; ?></td>
-                                <td><?php echo $leaderboardValue->dungeon_id; ?></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>

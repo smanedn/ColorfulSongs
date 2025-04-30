@@ -18,27 +18,23 @@ class Leaderboard extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function dungeon()
-    {
-        return $this->belongsTo(Dungeon::class,'dungeon_id');
-    }
 
     public static function getData()
     {
-        return self::select('user.id','user.username as username', 'leaderboard.score', 'leaderboard.dungeon_id')
+        return self::select('user.id','user.username as username', 'leaderboard.score')
             ->distinct()
             ->join('user', 'leaderboard.user_id', '=', 'user.id')
-            ->orderBy('leaderboard.score', 'DESC')
+            ->orderBy('leaderboard.score', 'ASC')
             ->get();
     }
 
-    public static function getDataByDungeonId($dungeon_id)
+    public static function getDataByUsername($username)
     {
-        return self::select('user.username as username', 'leaderboard.score', 'leaderboard.dungeon_id')
+        return self::select('user.username as username', 'leaderboard.score')
+            ->distinct()
             ->join('user', 'leaderboard.user_id', '=', 'user.id')
-            ->join('dungeon', 'leaderboard.dungeon_id', '=', 'dungeon.id')
-            ->where('dungeon_id', $dungeon_id)
-            ->orderBy('leaderboard.score', 'DESC')
+            ->where('user.username', 'like' , "%$username%")
+            ->orderBy('leaderboard.score', 'ASC')
             ->get();
     }
 }

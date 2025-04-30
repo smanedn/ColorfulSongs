@@ -8,11 +8,6 @@ CREATE TABLE user(
     type varchar(10) NOT NULL
 );
 
-CREATE TABLE dungeon(
-	id int PRIMARY KEY,
-	ssid int
-);
-
 CREATE TABLE friend(
 	user_id1 int,
     user_id2 int,
@@ -24,17 +19,14 @@ CREATE TABLE friend(
 
 CREATE TABLE leaderboard(
 	id int primary key auto_increment,
-	score int,
+	score time,
     user_id int,
-    dungeon_id int,
-    FOREIGN KEY (user_id) REFERENCES user(id) on delete cascade,
-    FOREIGN KEY (dungeon_id) REFERENCES dungeon(id) on delete cascade
+    FOREIGN KEY (user_id) REFERENCES user(id) on delete cascade
 );
 
 CREATE USER 'colorfulsongs'@'%' IDENTIFIED BY 'Admin$00';
 GRANT ALL PRIVILEGES ON colorfulsongs.* TO 'colorfulsongs'@'%';
 FLUSH PRIVILEGES;
-
 
 delimiter // 
 create trigger leaderboardScoreUpdate 

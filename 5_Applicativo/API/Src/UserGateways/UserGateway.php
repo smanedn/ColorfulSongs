@@ -64,9 +64,9 @@ class UserGateway{
         }elseif(isset($input['score']) && isset($input['user_id'])){
             $statement = "
                 insert into leaderboard
-                    (score, user_id, dungeon_id)
+                    (score, user_id)
                 values
-                    (:score, :user_id, :dungeon_id)";
+                    (:score, :user_id)";
 
             try{
                 var_dump($input);
@@ -74,7 +74,6 @@ class UserGateway{
                 $statement->execute(array(
                     'score' => $input['score'],
                     'user_id' => $input['user_id'],
-                    'dungeon_id' => $input['dungeon_id']
                 ));
                 return $statement->rowCount();
             }catch(\PDOException $e){
@@ -90,10 +89,8 @@ class UserGateway{
             update leaderboard 
             set
                 score = :score,
-                user_id = :user_id,
-                dungeon_id = :dungeon_id
-            where user_id = :user_id
-            and dungeon_id = :dungeon_id";
+                user_id = :user_id
+            where user_id = :user_id";
 
         try {
             $statement = $this->db->prepare($statement);
@@ -101,7 +98,6 @@ class UserGateway{
                 'id' => (int) $id,
                 'score' => $input['score'],
                 'user_id' => $input['user_id'],
-                'dungeon_id' => $input['dungeon_id'],
             ));
             return $statement->rowCount();
         }catch(\PDOException $e){
