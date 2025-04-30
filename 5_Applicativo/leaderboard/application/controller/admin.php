@@ -19,7 +19,6 @@ class Admin
     public function index()
     {
         if($this->isAdmin()) {
-            new Database();
             require_once 'application/models/Leaderboard.php';
             $leaderboard = Leaderboard::getData();
             require_once 'application/views/_templates/header.php';
@@ -29,7 +28,6 @@ class Admin
 
     public function delete($id)
     {
-        new Database();
         if($this->isAdmin()){
             User::find($id)->delete();
         }

@@ -58,6 +58,7 @@ public class HealthManager : MonoBehaviour
         Instance.musicSource?.Pause();
         Instance.deathGUI.gameObject?.SetActive(true);
         GameObject.Find("Character").GetComponent<PlayerMovement>().enabled = false;
+        Cursor.visible = true;
     }
 
     public static int GetHealth()

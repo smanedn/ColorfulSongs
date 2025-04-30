@@ -7,9 +7,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float runningSpeed = 6.5f;
     [SerializeField] private float gravity = 9.81f;
     [SerializeField] private float jumpHeight = 0.5f;
-    [SerializeField] private GameObject rightArm;
-    [SerializeField] private GameObject leftArm;
-    [SerializeField] private GameObject feet;
     private AudioManager audioManager;
     private CharacterController characterController;
     private float veritcalVelocity;
@@ -18,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private float z;
     private Vector3 position;
     private float voidHeight = -15;
-    private int defaultMovemnt;
+    private int defaultMovement;
     private float initialRotationY;
 
     private void Awake()
@@ -29,15 +26,22 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        defaultMovemnt = PlayerPrefs.GetInt("DefaultMovement");
+        if (!PlayerPrefs.HasKey("DefaultMovement"))
+        {
+            PlayerPrefs.SetInt("DefaultMovement", 1);
+            Debug.Log("c");
+            PlayerPrefs.Save();
+        }
+        defaultMovement = PlayerPrefs.GetInt("DefaultMovement");
+        Debug.Log("Mov: " + defaultMovement);
 
-        if (defaultMovemnt == 0)
+        if (defaultMovement == 0)
         {
             initialRotationY = 0f;
         }
-        else if (defaultMovemnt == 1)
+        else if (defaultMovement == 1)
         {
-            initialRotationY = -45f;
+            initialRotationY = 45f;
         }
 
         transform.rotation = Quaternion.Euler(0, initialRotationY, 0);
@@ -48,7 +52,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         Turn();
-        //Debug.Log(defaultMovemnt);
     }
 
     private void Movement()
@@ -57,13 +60,13 @@ public class PlayerMovement : MonoBehaviour
         z = Input.GetAxis("Vertical");
         y = VerticalForceCalculation();
        
-        if(defaultMovemnt == 0)
+        if(defaultMovement == 0)
         {
             position = new Vector3(x + z, y, z - x);
         }
-        if (defaultMovemnt == 1)
+        else if (defaultMovement == 1)
         {
-            position = new Vector3(x, y, z);
+            position = new Vector3(z, y, -x);
         }
         
         /*if(y == -1f)
@@ -132,38 +135,4 @@ public class PlayerMovement : MonoBehaviour
         }
         return false;
     }
-    /**
-    private void MoveArm(string direction)
-    {
-        float zPositionLeft = -0.459f;
-        float zPositionRight = 0.459f;
-        
-        float zRotationLeft = -15f;
-        float zRotationRight = 15f;
-
-        float y = 0.7f; 
-
-        if(direction == "down")
-        { 
-            zPositionLeft *= -1;
-            zPositionRight *= -1;
-            y = 0.2f;
-        }
-        else if(direction == "up")
-        {
-            zPositionLeft *= -1;
-            zPositionRight *= -1;
-            zRotationRight = 135;
-            zRotationLeft = 225;
-        }
-
-        float xPositionRight = zPositionLeft;
-        float xPositionLeft = zPositionRight;
-
-        rightArm.transform.localPosition = new Vector3(xPositionRight, y, zPositionRight);
-        rightArm.transform.localRotation = Quaternion.Euler(0, 45, zRotationRight);
-        leftArm.transform.localPosition = new Vector3(xPositionLeft, y, zPositionLeft);
-        leftArm.transform.localRotation = Quaternion.Euler(0, 45, zRotationLeft);
-    }
-    */
 }

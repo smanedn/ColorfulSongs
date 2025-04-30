@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
 
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject inGameGUI;
+    [SerializeField] private GameObject winGUI;
     [SerializeField] private static bool isPaused;
     [SerializeField] private AudioSource musicSource;
 
@@ -18,23 +19,22 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         inGameGUI.SetActive(true);
+        Cursor.visible = false;
+        if (!PlayerPrefs.HasKey("CompletedLevels"))
+        {
+            PlayerPrefs.SetInt("CompletedLevels", 0);
+            PlayerPrefs.Save();
+        }
+        if (PlayerPrefs.GetInt("CompletedLevels") == 5)
+        {
+            winGUI.SetActive(true);
+        }
+        Debug.Log("Levels: " + PlayerPrefs.GetInt("CompletedLevels"));
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Mouse.current != null && Mouse.current.delta.ReadValue().magnitude > 0)
-        {
-            currentInput = "MK";
-        }
-
-        float rightStickHorizontal = Input.GetAxis("Horizontal");
-        float rightStickVertical = Input.GetAxis("Vertical");
-
-        if (Mathf.Abs(rightStickHorizontal) > 0.1f || Mathf.Abs(rightStickVertical) > 0.1f)
-        {
-            currentInput = "PAD";
-        }
 
         if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.JoystickButton7))
         {
@@ -50,14 +50,11 @@ public class PauseMenu : MonoBehaviour
 
         if (isPaused)
         {
-            if (currentInput == "MK")
-            {
-                Cursor.visible = true;
-            }
-            else
-            {
-                Cursor.visible = false;
-            }
+           Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.visible = false;
         }
     }
 

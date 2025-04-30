@@ -15,7 +15,8 @@ public class AM : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey(volumeCategory))
         {
-            PlayerPrefs.SetFloat(volumeCategory, 1);  
+            PlayerPrefs.SetFloat(volumeCategory, 1);
+            PlayerPrefs.Save();
         }
         Load();
     }
@@ -44,5 +45,6 @@ public class AM : MonoBehaviour
     private void Save() 
     {
         PlayerPrefs.SetFloat(volumeCategory, volumeSlider.value);
+        PlayerPrefs.Save();
     }
 }

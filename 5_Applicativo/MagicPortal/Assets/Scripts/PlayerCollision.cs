@@ -47,6 +47,10 @@ public class PlayerCollision : MonoBehaviour
 
         if (other.gameObject.CompareTag("FinishPortal"))
         {
+            int CompletedLevels = PlayerPrefs.GetInt("CompletedLevels");
+            CompletedLevels++;
+            PlayerPrefs.SetInt("CompletedLevels", CompletedLevels);
+            PlayerPrefs.Save();
             PauseMenu.Restart();
         }
     }

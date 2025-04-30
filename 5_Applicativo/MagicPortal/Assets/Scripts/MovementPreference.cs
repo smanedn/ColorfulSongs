@@ -9,7 +9,7 @@ public class MovementPreference : MonoBehaviour
     public void MovementData()
     {
         int pickedMovementIndex = GetComponent<TMP_Dropdown>().value;
-        var select = 0;
+        var select = 1;
 
         switch (pickedMovementIndex)
         {
@@ -22,6 +22,8 @@ public class MovementPreference : MonoBehaviour
                 PlayerPrefs.SetInt("DefaultMovement", select);
                 break;
         }
+        PlayerPrefs.Save();
+
 
 
         Debug.Log(select);

@@ -25,7 +25,6 @@ class Login
                 die("CSRF token non valido!");
             }else{
                 session_start();
-                new Database();
                 require_once 'application/libs/validator.php';
 
                 $username = $this->validator->sanitizeInput($_POST['username']);

@@ -4,15 +4,12 @@ class Home
     public function index()
     {
 
+
+        $leaderboard = Leaderboard::all();
+        require_once 'application/views/_templates/header.php';
         if($this->isAdmin()){
-            new Database();
-            $leaderboard = Leaderboard::all();
-            require_once 'application/views/_templates/header.php';
             require_once 'application/views/admin/index.php';
         }else{
-            new Database();
-            $leaderboard = Leaderboard::all();
-            require_once 'application/views/_templates/header.php';
             require_once 'application/views/leaderboard/index.php';
         }
     }
