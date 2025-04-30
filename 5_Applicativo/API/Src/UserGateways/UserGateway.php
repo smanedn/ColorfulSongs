@@ -9,7 +9,7 @@ class UserGateway{
     public function __construct($db){
         $this->db = $db;
         $this->logger = new Logger("UserGateway");
-        $this->logger->pushHandler(new StreamHandler('../log/errorLog.log'));
+        $this->logger->pushHandler(new StreamHandler('../log/log.log'));
     }
 
     public function findByUsername($username)

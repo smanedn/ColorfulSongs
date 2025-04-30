@@ -10,7 +10,7 @@ class Leaderboard extends Model
     public function __construct()
     {
         $this->log = new Logger('leaderboard');
-        $this->log->pushHandler(new StreamHandler('application/logs/errorLog.log'));
+        $this->log->pushHandler(new StreamHandler('application/logs/log.log'));
     }
 
     public function user()

@@ -7,3 +7,6 @@
 [2025-04-16T13:44:09.796511+02:00] UserController.INFO: getAllUser: HTTP/1.1 200 OK [] []
 [2025-04-16T13:56:32.132552+02:00] UserController.INFO: getUserFromUsername: HTTP/1.1 200 OK [] []
 [2025-04-16T15:38:04.410567+02:00] UserController.INFO: getUserFromUsername: HTTP/1.1 200 OK [] []
+[2025-04-30T09:19:57.411915+02:00] UserController.INFO: getUserFromUsername: HTTP/1.1 200 OK [] []
+[2025-04-30T09:20:17.915502+02:00] UserController.INFO: getUserFromUsername: HTTP/1.1 200 OK [] []
+[2025-04-30T09:20:25.660948+02:00] UserController.INFO: getUserFromUsername: HTTP/1.1 200 OK [] []

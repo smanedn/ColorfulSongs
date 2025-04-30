@@ -19,7 +19,7 @@ class UserController
         $this->username = $username;
         $this->userGateway = new UserGateway($db);
         $this->logger = new Logger("UserController");
-        $this->logger->pushHandler(new StreamHandler('../log/errorLog.log'));
+        $this->logger->pushHandler(new StreamHandler('../log/log.log'));
     }
 
     public function processRequest()

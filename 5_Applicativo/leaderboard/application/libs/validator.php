@@ -9,7 +9,7 @@ class Validator
     public function __construct()
     {
         $this->log = new Logger('validator');
-        $this->log->pushHandler(new StreamHandler('application/logs/errorLog.log'));
+        $this->log->pushHandler(new StreamHandler('application/logs/log.log'));
     }
 
 

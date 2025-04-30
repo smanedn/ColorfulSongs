@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9c775b0-f6e2-48a8-a458-919996b2e743" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/../../4_Diari/2025.04.16-Debertoldi.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../4_Diari/2025.04.16-Debertoldi.docx" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/../API/log/errorLog.log" beforeDir="false" afterPath="$PROJECT_DIR$/../API/log/errorLog.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/libs/validator.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/libs/validator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/logs/errorLog.log" beforeDir="false" afterPath="$PROJECT_DIR$/application/logs/log.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Leaderboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Leaderboard.php" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +84,11 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+<<<<<<< Updated upstream
     "git-widget-placeholder": "php__leaderboard",
+=======
+    "git-widget-placeholder": "main",
+>>>>>>> Stashed changes
     "last_opened_file_path": "D:/3°_anno/Modulo_306(Project_Manager)/MagicPortal/5_Applicativo/API",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -131,6 +143,11 @@
       <workItem from="1744805720702" duration="137000" />
       <workItem from="1744807338595" duration="1058000" />
       <workItem from="1744808676918" duration="1845000" />
+<<<<<<< Updated upstream
+=======
+      <workItem from="1745596935098" duration="1268000" />
+      <workItem from="1745994645947" duration="3400000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
