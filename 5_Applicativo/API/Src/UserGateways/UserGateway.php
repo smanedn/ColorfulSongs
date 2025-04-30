@@ -41,12 +41,12 @@ class UserGateway{
 
     public function insert(Array $input)
     {
-        if (isset($input['username']) && isset($input['password']) && isset($input['email']) && isset($input['type'])) {
+        if (isset($input['username']) && isset($input['password']) && isset($input['email'])) {
             $statement = "
                 insert into user
-                    (username, password, email, type)
+                    (username, password, email)
                 values
-                    (:username, :password, :email, :type)";
+                    (:username, :password, :email)";
 
             try{
                 var_dump($input);
@@ -54,8 +54,7 @@ class UserGateway{
                 $statement->execute(array(
                     'username' => $input['username'],
                     'password' => password_hash($input['password'], PASSWORD_DEFAULT),
-                    'email' => $input['email'],
-                    'type' => $input['type']
+                    'email' => $input['email']
                 ));
                 return $statement->rowCount();
             }catch(\PDOException $e){

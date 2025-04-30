@@ -137,9 +137,6 @@ class UserController
         if (! isset($input['user_id'])){
             return false;
         }
-        if (! isset($input['dungeon_id'])){
-            return false;
-        }
         return true;
     }
 

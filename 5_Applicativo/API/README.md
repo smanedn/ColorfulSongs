@@ -20,7 +20,7 @@ Ritrona l'utente specifico in formato JSON
 
 #### /user/{id}
 
-Serve per ritornare tutte le informazioni di un utente specifico
+Serve per ritornare tutte le informazioni di un utente specifico, le informazioni ritornate sono queste:
 
 | Key |
 | ------ |
@@ -28,6 +28,7 @@ Serve per ritornare tutte le informazioni di un utente specifico
 | username |
 | password |
 | email |
+|type|
 
 
 ### POST
@@ -36,7 +37,7 @@ Serve per ritornare tutte le informazioni di un utente specifico
 
 Serve per aggiungere un nuovo utente o un nuovo punteggio
 
-Per l'aggiunta di un nuovo utente:
+Per l'aggiunta di un nuovo utente bisogna inserire:
 
 | Key |
 | ------ |
@@ -44,25 +45,24 @@ Per l'aggiunta di un nuovo utente:
 | password |
 | email |
 
-Per l'aggiunta di un nuovo punteggio:
+Per l'aggiunta di un nuovo punteggio bisogna inserire:
 
 | Key        |
 |------------|
 | score      |
 | user_id    |
-| dungeon_id |
 
 ### PUT
 
 #### /user/{id}
 
-Serve per eseguire l'update del punteggio di un untente
+Serve per eseguire l'update del punteggio di un utente <br>
+Per updateare un utente bisogna inserire:
 
 | Key      |
 |----------|
 | score    |
 | user_id |
-| dungeon_id    |
 
 
 ### DELETE

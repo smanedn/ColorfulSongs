@@ -5,7 +5,7 @@ CREATE TABLE user(
 	username VARCHAR(64) UNIQUE NOT NULL,
 	password VARCHAR(256) NOT NULL,
 	email VARCHAR(256) NOT NULL,
-    type varchar(10) NOT NULL
+    type varchar(10) NOT NULL default 'user'
 );
 
 CREATE TABLE friend(
@@ -31,7 +31,7 @@ FLUSH PRIVILEGES;
 delimiter // 
 create trigger leaderboardScoreUpdate 
 before update on leaderboard for each row begin 
-	if new.score > old.score then 
+	if new.score < old.score then 
 		set new.score = new.score;
 	elseif old.score = null then
 		set new.score = new.score;
