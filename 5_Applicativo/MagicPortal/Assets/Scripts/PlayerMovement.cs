@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (defaultMovement == 1)
         {
-            initialRotationY = 45f;
+            initialRotationY = -45f;
         }
 
         transform.rotation = Quaternion.Euler(0, initialRotationY, 0);
@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (defaultMovement == 1)
         {
-            position = new Vector3(z, y, -x);
+            position = new Vector3(x, y, z);
         }
         
         /*if(y == -1f)

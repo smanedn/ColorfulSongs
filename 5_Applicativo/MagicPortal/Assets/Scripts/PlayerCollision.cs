@@ -1,9 +1,13 @@
+using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] private GameObject portal;
+    [SerializeField] private GameObject hitGUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,7 +28,10 @@ public class PlayerCollision : MonoBehaviour
             print("hit");
             //Destroy(other.gameObject);
             HealthManager.LooseOneHeart();
+            hitGUI.SetActive(true);
             print(HealthManager.GetHealth());
+            StartCoroutine(Wait(0.5f));
+            hitGUI.SetActive(false);
         }
     }
 
@@ -62,5 +69,10 @@ public class PlayerCollision : MonoBehaviour
         transform.position = new Vector3(x, y, z);
         await Task.Delay(300);
         GetComponent<PlayerMovement>().enabled = true;
+    }
+
+    IEnumerator Wait(float time)
+    {
+        yield return new WaitForSeconds(time);
     }
 }
