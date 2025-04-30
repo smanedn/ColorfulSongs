@@ -28,6 +28,8 @@ public class PauseMenu : MonoBehaviour
         if (PlayerPrefs.GetInt("CompletedLevels") == 5)
         {
             winGUI.SetActive(true);
+            PlayerPrefs.SetInt("CompletedLevels", 0);
+            PlayerPrefs.Save();
         }
         Debug.Log("Levels: " + PlayerPrefs.GetInt("CompletedLevels"));
     }
