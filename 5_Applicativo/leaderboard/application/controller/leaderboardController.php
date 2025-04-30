@@ -23,7 +23,6 @@ class leaderboardController
 
     public function index()
     {
-        new Database();
         require_once 'application/models/Leaderboard.php';
         $leaderboard_data = Leaderboard::getData();
         if (isset($_SESSION['type'])){
@@ -42,7 +41,6 @@ class leaderboardController
 
     public function radioFilter()
     {
-        new Database();
         require_once 'application/models/Leaderboard.php';
         $leaderboardMapper = Leaderboard::getData();
         if(isset($_POST['type'])) {
@@ -80,7 +78,6 @@ class leaderboardController
 
     public function searchFilter()
     {
-        new Database();
         require_once "application/models/Leaderboard.php";
         if (isset($_POST['search'])) {
             $username = $this->validator->sanitizeInput($_POST['usernameSearch']);
@@ -133,4 +130,18 @@ class leaderboardController
             }
         }
     }
+
+    public function friendRequest($friendId)
+    {
+
+        if ($this->isAdmin()) {
+            $friend = Friend::create(["userId1" => $_SESSION['UserId'], "userId2" => $friendId, "pending" => 1]);
+
+            require_once 'application/models/Leaderboard.php';
+            $leaderboard = Leaderboard::getData();
+            require_once 'application/views/_templates/header.php';
+            require_once 'application/views/admin/index.php';
+        }
+    }
+
 }

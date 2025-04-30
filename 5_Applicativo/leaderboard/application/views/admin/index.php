@@ -68,6 +68,7 @@
                     <tr>
                         <th>Username</th>
                         <th>High Score</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -77,6 +78,8 @@
                             <tr>
                                 <td><?php echo $leaderboardValue->username; ?></td>
                                 <td><?php echo $leaderboardValue->score; ?></td>
+                                <td><a href="<?php echo URL . 'leaderboardController/friendRequest/'. $leaderboardValue->id; ?>" class="btn btn-outline-info"
+                                       >Friend Request</a></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
