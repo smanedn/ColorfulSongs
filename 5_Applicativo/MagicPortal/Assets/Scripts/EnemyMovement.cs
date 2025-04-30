@@ -32,8 +32,8 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
 
-        startX = generator.GetComponent<TerrainGenerator>().getEndX1()+1.5f;
-        endX = generator.GetComponent<TerrainGenerator>().getStartX2()-1.5f;
+        startX = generator.GetComponent<TerrainGenerator>().getEndX1()+0.5f;
+        endX = generator.GetComponent<TerrainGenerator>().getStartX2()-0.5f;
         startZ = 0.5f;
         endZ = generator.GetComponent<TerrainGenerator>().getEndZ()-2;
         enemyX = startX + (endX - startX) / 2;

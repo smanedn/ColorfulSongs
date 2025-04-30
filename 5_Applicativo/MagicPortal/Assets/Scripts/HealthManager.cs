@@ -1,17 +1,17 @@
 
+using System.Collections;
+using UnityEditor.Rendering.Universal.ShaderGUI;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public static HealthManager Instance { get; private set; } // Singleton
-
-
     [SerializeField] private GameObject healthBar;
     private static int health; // 0-5
     private Transform[] heartImages;
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private GameObject deathGUI;
+    [SerializeField] private GameObject hitGUI;
 
     void Awake()
     {
@@ -34,14 +34,9 @@ public class HealthManager : MonoBehaviour
         deathGUI.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public static void LooseOneHeart()
     {
+
         string currentLastHeart = "Heart " + health;
         GameObject.Find(currentLastHeart).SetActive(false);
         health -= 1;
@@ -50,7 +45,9 @@ public class HealthManager : MonoBehaviour
             print("dead");
             DeathScreen();
         }
+        Instance.hitGUI.GetComponent<HitGUI>().showHitGUI();
     }
+
 
     public static void DeathScreen()
     {
@@ -69,5 +66,10 @@ public class HealthManager : MonoBehaviour
     public static bool IsDead()
     {
         return health <= 0;
+    }
+
+    IEnumerator Wait(float time)
+    {
+        yield return new WaitForSeconds(time);
     }
 }

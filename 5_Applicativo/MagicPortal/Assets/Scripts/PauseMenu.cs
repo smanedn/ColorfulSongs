@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,7 @@ public class PauseMenu : MonoBehaviour
 {
 
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] private GameObject inGameGUI;
     [SerializeField] private GameObject winGUI;
     [SerializeField] private static bool isPaused;
@@ -31,7 +33,8 @@ public class PauseMenu : MonoBehaviour
             PlayerPrefs.SetInt("CompletedLevels", 0);
             PlayerPrefs.Save();
         }
-        Debug.Log("Levels: " + PlayerPrefs.GetInt("CompletedLevels"));
+        levelText.text = string.Format("Level: {0}", (PlayerPrefs.GetInt("CompletedLevels")));
+        Debug.Log("Completed Levels: " + PlayerPrefs.GetInt("CompletedLevels"));
     }
 
     // Update is called once per frame

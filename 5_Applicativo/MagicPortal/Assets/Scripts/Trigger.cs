@@ -4,17 +4,21 @@ public class Trigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(this.gameObject);
-        if(this.name == "CannonBall(Clone)")
+        if (other.name == "Character")
         {
-            HealthManager.LooseOneHeart();
-            print(HealthManager.GetHealth());
+            Destroy(this.gameObject);
+            if(this.name == "CannonBall(Clone)")
+            {
+                HealthManager.LooseOneHeart();
+                print(HealthManager.GetHealth());
+            }
+            if (this.name == "BadPortal")
+            {
+                HealthManager.LooseOneHeart();
+                print(HealthManager.GetHealth());
+            }
         }
-        if (this.name == "BadPortal")
-        {
-            HealthManager.LooseOneHeart();
-            print(HealthManager.GetHealth());
-        }
+        
 
 
     }

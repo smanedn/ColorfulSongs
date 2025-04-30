@@ -7,31 +7,14 @@ using UnityEngine.UIElements;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] private GameObject portal;
-    [SerializeField] private GameObject hitGUI;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             print("hit");
-            //Destroy(other.gameObject);
             HealthManager.LooseOneHeart();
-            hitGUI.SetActive(true);
-            print(HealthManager.GetHealth());
-            StartCoroutine(Wait(0.5f));
-            hitGUI.SetActive(false);
+
         }
     }
 
