@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2533704790079652882}
   - component: {fileID: 6032153151737406600}
   - component: {fileID: 2265737995083973787}
+  - component: {fileID: -9155684676322886930}
   m_Layer: 0
   m_Name: BadPortal
   m_TagString: BadPortal
@@ -108,3 +109,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-9155684676322886930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4000369887195242706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4eaa9a16aa80344a9c9f78a2f5882c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

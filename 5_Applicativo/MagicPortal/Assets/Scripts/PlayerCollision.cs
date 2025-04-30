@@ -42,14 +42,12 @@ public class PlayerCollision : MonoBehaviour
             int x = portal.GetComponent<PortalGenerator>().getEndX();
             int z = portal.GetComponent<PortalGenerator>().getEndZ();
             print("tp");
-            Teleport(x, 2f, z);
+            Teleport(x+1, 0.75f, z, false);
         }
 
         if (other.gameObject.CompareTag("BadPortal"))
         {
-            print("badPortal");
-            Teleport(0, 2f, 0);
-            HealthManager.LooseOneHeart();
+            Teleport(1, 0.75f, 1, true);
         }
 
         if (other.gameObject.CompareTag("FinishPortal"))
@@ -62,11 +60,15 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
-    public async void Teleport(float x, float y, float z)
+    public async void Teleport(float x, float y, float z, bool damage)
     {
         GetComponent<PlayerMovement>().enabled = false;
         await Task.Delay(300);
         transform.position = new Vector3(x, y, z);
+        if (damage)
+        {
+            HealthManager.LooseOneHeart();
+        }
         await Task.Delay(300);
         GetComponent<PlayerMovement>().enabled = true;
     }

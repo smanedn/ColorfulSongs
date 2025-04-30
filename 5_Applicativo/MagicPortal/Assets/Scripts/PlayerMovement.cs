@@ -118,10 +118,9 @@ public class PlayerMovement : MonoBehaviour
             if (IsVoid())
             {
                 print("Void");
-                HealthManager.LooseOneHeart();
                 if (!HealthManager.IsDead())
                 {
-                    GetComponent<PlayerCollision>().Teleport(0, 2f, 0);
+                    GetComponent<PlayerCollision>().Teleport(0, 2f, 0, true);
                 }
             }
         }

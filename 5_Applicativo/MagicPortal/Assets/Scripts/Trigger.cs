@@ -10,7 +10,12 @@ public class Trigger : MonoBehaviour
             HealthManager.LooseOneHeart();
             print(HealthManager.GetHealth());
         }
-        
-        
+        if (this.name == "BadPortal")
+        {
+            HealthManager.LooseOneHeart();
+            print(HealthManager.GetHealth());
+        }
+
+
     }
 }
