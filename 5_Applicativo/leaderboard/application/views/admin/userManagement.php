@@ -23,7 +23,6 @@
                 <tr>
                     <th>Username</th>
                     <th>High Score</th>
-                    <th>Map Code</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -34,7 +33,6 @@
                         <tr>
                             <td><?php echo $leaderboardValue->username; ?></td>
                             <td><?php echo $leaderboardValue->score; ?></td>
-                            <td><?php echo $leaderboardValue->dungeon_id; ?></td>
                             <td><a href="<?php echo URL . 'admin/delete/'. $leaderboardValue->id; ?>" class="btn btn-danger"
                                    onclick="return confirm('Sicuro?')">Delete</a></td>
                         </tr>

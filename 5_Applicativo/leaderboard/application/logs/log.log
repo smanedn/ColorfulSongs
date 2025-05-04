@@ -1,4 +1,6 @@
 [2025-04-16T13:06:20.494940+02:00] validator.WARNING: checkNumber: Type is not a number [] []
+<<<<<<< Updated upstream:5_Applicativo/leaderboard/application/logs/errorLog.log
+=======
 [2025-04-25T18:14:20.333159+02:00] validator.WARNING: checkNumber: Type is not a number [] []
 [2025-04-25T18:14:24.944872+02:00] validator.WARNING: checkNumber: Type is not a number [] []
 [2025-04-25T18:14:27.550897+02:00] validator.WARNING: checkNumber: Type is not a number [] []
@@ -38,3 +40,5 @@
 [2025-04-25T18:15:00.913398+02:00] validator.WARNING: checkNumber: Type is not a number [] []
 [2025-04-25T18:15:01.038376+02:00] validator.WARNING: checkNumber: Type is not a number [] []
 [2025-04-25T18:15:01.155418+02:00] validator.WARNING: checkNumber: Type is not a number [] []
+[2025-04-30T09:09:20.887047+02:00] validator.WARNING: checkNumber: Type is not a number [] []
+>>>>>>> Stashed changes:5_Applicativo/leaderboard/application/logs/log.log

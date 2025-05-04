@@ -46,30 +46,30 @@ class leaderboardController
         if(isset($_POST['type'])) {
             if ($_POST['type'] == 'global') {
                 require_once 'application/views/_templates/header.php';
-                if (isset($_COOKIE['mapCode'])) {
-                    $leaderboard_data = Leaderboard::getDataByDungeonId($_COOKIE['mapCode']);
-                }else{
-                    $leaderboard_data = Leaderboard::getData();
-                }
-                $checked = "global";
-                $_SESSION['type'] = $checked;
                 if ($this->isAdmin()) {
+                    $leaderboard_data = Leaderboard::getData();
+                    $checked = "global";
+                    $_SESSION['type'] = $checked;
                     require_once 'application/views/admin/index.php';
                 }else{
+                    $leaderboard_data = Leaderboard::getData();
+                    $checked = "global";
+                    $_SESSION['type'] = $checked;
                     require_once 'application/views/leaderboard/index.php';
                 }
             } else if ($_POST['type'] == 'friend') {
                 require_once 'application/views/_templates/header.php';
-                if (isset($_COOKIE['mapCode'])){
-                    $leaderboard_data = User::getDataByDungeonAndFriend($_COOKIE['mapCode'],$_SESSION['UserId']);
-                }else{
-                    $leaderboard_data = User::getDataByUserId($_SESSION["UserId"]);
-                }
-                $checked = "friend";
-                $_SESSION['type'] = $checked;
                 if ($this->isAdmin()) {
+
+                    $leaderboard_data = User::getDataByFriendId($_SESSION["UserId"]);
+                    $checked = "friend";
+                    $_SESSION['type'] = $checked;
                     require_once 'application/views/admin/index.php';
                 }else{
+
+                    $leaderboard_data = User::getDataByFriendId($_SESSION["UserId"]);
+                    $checked = "friend";
+                    $_SESSION['type'] = $checked;
                     require_once 'application/views/leaderboard/index.php';
                 }
             }
@@ -80,12 +80,10 @@ class leaderboardController
     {
         require_once "application/models/Leaderboard.php";
         if (isset($_POST['search'])) {
-
-            $mapCode = $this->validator->sanitizeInput($_POST['mapCode']);
-            $mapCode = $this->validator->checkNumber($mapCode);
-            setcookie('mapCode',$mapCode,time() + (3600), "/");
-            if (is_null($mapCode)) {
-                $error = "Value must be numeric";
+            $username = $this->validator->sanitizeInput($_POST['usernameSearch']);
+            $username = $this->validator->checkTextArea($username);
+//            setcookie('usernameSearch',$username,time() + (3600), "/");
+            if (is_null($username)) {
                 require_once 'application/views/_templates/header.php';
                 if ($this->isAdmin()) {
                     require_once 'application/views/admin/index.php';
@@ -95,16 +93,14 @@ class leaderboardController
             }
             if (isset($_SESSION['type'])) {
                 require_once 'application/views/_templates/header.php';
-                $path = 'application/views/leaderboard/index.php';
                 if ($this->isAdmin()) {
-                    $path = 'application/views/admin/index.php';
+                    $leaderboard_data = Leaderboard::getDataByUsername($username);
+                    require_once 'application/views/admin/index.php';
+
+                }else {
+                    $leaderboard_data = Leaderboard::getDataByUsername($username);
+                    require_once 'application/views/admin/index.php';
                 }
-                if ($_SESSION['type'] == 'friend') {
-                    $leaderboard_data = User::getDataByDungeonAndFriend($mapCode,$_SESSION['UserId']);
-                }elseif ($_SESSION['type'] == 'global'){
-                    $leaderboard_data = Leaderboard::getDataByDungeonId($mapCode);
-                }
-                require_once $path;
             }
             require_once 'application/views/_templates/header.php';
             if ($this->isAdmin()) {
@@ -113,21 +109,39 @@ class leaderboardController
                 require_once 'application/views/leaderboard/index.php';
             }
         }
-
         if (isset($_POST['deleteFilter'])) {
-            setcookie('mapCode',$_COOKIE['mapCode'],time() - (3600), "/");
+//            setcookie('mapCode',$_COOKIE['usernameSearch'],time() - (3600), "/");
             require_once "application/models/Leaderboard.php";
             require_once 'application/views/_templates/header.php';
-            if ($_SESSION['type'] == 'friend') {
-                $leaderboard_data = User::getDataByUserId($_SESSION["UserId"]);
-            }elseif ($_SESSION['type'] == 'global'){
-                $leaderboard_data = Leaderboard::getData();
-            }
             if ($this->isAdmin()) {
+                if ($_SESSION['type'] == 'friend') {
+                    $leaderboard_data = User::getDataByFriendId($_SESSION["UserId"]);
+                }elseif ($_SESSION['type'] == 'global'){
+                    $leaderboard_data = Leaderboard::getData();
+                }
                 require_once 'application/views/admin/index.php';
             }else {
+                if ($_SESSION['type'] == 'friend') {
+                    $leaderboard_data = User::getDataByFriendId($_SESSION["UserId"]);
+                }elseif ($_SESSION['type'] == 'global'){
+                    $leaderboard_data = Leaderboard::getData();
+                }
                 require_once 'application/views/leaderboard/index.php';
             }
         }
     }
+
+    public function friendRequest($friendId)
+    {
+
+        if ($this->isAdmin()) {
+            $friend = Friend::create(["userId1" => $_SESSION['UserId'], "userId2" => $friendId, "pending" => 1]);
+
+            require_once 'application/models/Leaderboard.php';
+            $leaderboard = Leaderboard::getData();
+            require_once 'application/views/_templates/header.php';
+            require_once 'application/views/admin/index.php';
+        }
+    }
+
 }

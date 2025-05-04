@@ -19,7 +19,7 @@ class UserController
         $this->username = $username;
         $this->userGateway = new UserGateway($db);
         $this->logger = new Logger("UserController");
-        $this->logger->pushHandler(new StreamHandler('../log/errorLog.log'));
+        $this->logger->pushHandler(new StreamHandler('../log/log.log'));
     }
 
     public function processRequest()
@@ -90,7 +90,7 @@ class UserController
     {
         $result = $this->userGateway->find($userId);
         if (! $result){
-            $this->logger->error($this->notFoundResponse());
+            $this->logger->error('HTTP/1.1 404 Not Found');
             return $this->notFoundResponse();
         }
         $input = (array) json_decode(file_get_contents('php://input'), true);
@@ -135,9 +135,6 @@ class UserController
             return false;
         }
         if (! isset($input['user_id'])){
-            return false;
-        }
-        if (! isset($input['dungeon_id'])){
             return false;
         }
         return true;

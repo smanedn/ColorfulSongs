@@ -9,7 +9,7 @@ class UserGateway{
     public function __construct($db){
         $this->db = $db;
         $this->logger = new Logger("UserGateway");
-        $this->logger->pushHandler(new StreamHandler('../log/errorLog.log'));
+        $this->logger->pushHandler(new StreamHandler('../log/log.log'));
     }
 
     public function findByUsername($username)
@@ -41,12 +41,12 @@ class UserGateway{
 
     public function insert(Array $input)
     {
-        if (isset($input['username']) && isset($input['password']) && isset($input['email']) && isset($input['type'])) {
+        if (isset($input['username']) && isset($input['password']) && isset($input['email'])) {
             $statement = "
                 insert into user
-                    (username, password, email, type)
+                    (username, password, email)
                 values
-                    (:username, :password, :email, :type)";
+                    (:username, :password, :email)";
 
             try{
                 var_dump($input);
@@ -54,8 +54,7 @@ class UserGateway{
                 $statement->execute(array(
                     'username' => $input['username'],
                     'password' => password_hash($input['password'], PASSWORD_DEFAULT),
-                    'email' => $input['email'],
-                    'type' => $input['type']
+                    'email' => $input['email']
                 ));
                 return $statement->rowCount();
             }catch(\PDOException $e){
@@ -64,9 +63,9 @@ class UserGateway{
         }elseif(isset($input['score']) && isset($input['user_id'])){
             $statement = "
                 insert into leaderboard
-                    (score, user_id, dungeon_id)
+                    (score, user_id)
                 values
-                    (:score, :user_id, :dungeon_id)";
+                    (:score, :user_id)";
 
             try{
                 var_dump($input);
@@ -74,7 +73,6 @@ class UserGateway{
                 $statement->execute(array(
                     'score' => $input['score'],
                     'user_id' => $input['user_id'],
-                    'dungeon_id' => $input['dungeon_id']
                 ));
                 return $statement->rowCount();
             }catch(\PDOException $e){
@@ -90,10 +88,8 @@ class UserGateway{
             update leaderboard 
             set
                 score = :score,
-                user_id = :user_id,
-                dungeon_id = :dungeon_id
-            where user_id = :user_id
-            and dungeon_id = :dungeon_id";
+                user_id = :user_id
+            where user_id = :user_id";
 
         try {
             $statement = $this->db->prepare($statement);
@@ -101,7 +97,6 @@ class UserGateway{
                 'id' => (int) $id,
                 'score' => $input['score'],
                 'user_id' => $input['user_id'],
-                'dungeon_id' => $input['dungeon_id'],
             ));
             return $statement->rowCount();
         }catch(\PDOException $e){

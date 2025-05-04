@@ -5,12 +5,7 @@ CREATE TABLE user(
 	username VARCHAR(64) UNIQUE NOT NULL,
 	password VARCHAR(256) NOT NULL,
 	email VARCHAR(256) NOT NULL,
-    type varchar(10) NOT NULL
-);
-
-CREATE TABLE dungeon(
-	id int PRIMARY KEY,
-	ssid int
+    type varchar(10) NOT NULL default 'user'
 );
 
 CREATE TABLE friend(
@@ -24,22 +19,19 @@ CREATE TABLE friend(
 
 CREATE TABLE leaderboard(
 	id int primary key auto_increment,
-	score int,
+	score time,
     user_id int,
-    dungeon_id int,
-    FOREIGN KEY (user_id) REFERENCES user(id) on delete cascade,
-    FOREIGN KEY (dungeon_id) REFERENCES dungeon(id) on delete cascade
+    FOREIGN KEY (user_id) REFERENCES user(id) on delete cascade
 );
 
 CREATE USER 'colorfulsongs'@'%' IDENTIFIED BY 'Admin$00';
 GRANT ALL PRIVILEGES ON colorfulsongs.* TO 'colorfulsongs'@'%';
 FLUSH PRIVILEGES;
 
-
 delimiter // 
 create trigger leaderboardScoreUpdate 
 before update on leaderboard for each row begin 
-	if new.score > old.score then 
+	if new.score < old.score then 
 		set new.score = new.score;
 	elseif old.score = null then
 		set new.score = new.score;
