@@ -678,7 +678,7 @@ MonoBehaviour:
   musicSource: {fileID: 580385512}
   inGameGUI: {fileID: 926971704}
   deathGUI: {fileID: 1909006498}
-  hitGUI: {fileID: 519303886}
+  hitGUI: {fileID: 829833318}
 --- !u!114 &124154219
 MonoBehaviour:
   m_ObjectHideFlags: 0

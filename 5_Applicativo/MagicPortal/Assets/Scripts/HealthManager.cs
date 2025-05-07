@@ -39,17 +39,24 @@ public class HealthManager : MonoBehaviour
 
     public void LooseOneHeart()
     {
+
+        
         if (!isInvincible)
         {
             string currentLastHeart = "Heart " + health;
             GameObject.Find(currentLastHeart).SetActive(false);
             audioManager.PlaySFX(audioManager.GetHit());
             health -= 1;
+            hitGUI.SetActive(true);
             StartCoroutine(SetInvincible());
             if (IsDead())
             {
                 print("dead");
                 DeathScreen();
+            }
+            else
+            {
+                
             }
         }
     }
@@ -60,6 +67,8 @@ public class HealthManager : MonoBehaviour
         yield return new WaitForSeconds(invincibilityDurationSeconds);
 
         isInvincible = false;
+        hitGUI.SetActive(false);
+
     }
 
 
