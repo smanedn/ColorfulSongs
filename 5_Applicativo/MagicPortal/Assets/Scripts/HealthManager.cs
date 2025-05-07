@@ -6,6 +6,8 @@ public class HealthManager : MonoBehaviour
     public static HealthManager Instance { get; private set; } // Singleton
     [SerializeField] private GameObject healthBar;
     private static int health; // 0-5
+    private static bool isInvincible;
+    private float invincibilityDurationSeconds = 2;
     private Transform[] heartImages;
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private GameObject inGameGUI;
@@ -37,17 +39,27 @@ public class HealthManager : MonoBehaviour
 
     public void LooseOneHeart()
     {
-        string currentLastHeart = "Heart " + health;
-        GameObject.Find(currentLastHeart).SetActive(false);
-        audioManager.PlaySFX(audioManager.GetHit());
-        health -= 1;
-        if (IsDead())
+        if (!isInvincible)
         {
-            print("dead");
-            DeathScreen();
+            string currentLastHeart = "Heart " + health;
+            GameObject.Find(currentLastHeart).SetActive(false);
+            audioManager.PlaySFX(audioManager.GetHit());
+            health -= 1;
+            StartCoroutine(SetInvincible());
+            if (IsDead())
+            {
+                print("dead");
+                DeathScreen();
+            }
         }
-        //Instance.hitGUI.GetComponent<HitGUI>().showHitGUI();
-        
+    }
+    private IEnumerator SetInvincible()
+    {
+        Debug.Log("Player turned invincible!");
+        isInvincible = true;
+        yield return new WaitForSeconds(invincibilityDurationSeconds);
+
+        isInvincible = false;
     }
 
 
