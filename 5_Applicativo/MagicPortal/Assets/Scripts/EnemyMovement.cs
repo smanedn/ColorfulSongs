@@ -1,10 +1,5 @@
 using System.Collections;
-using System.Threading;
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph.Legacy;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 public class EnemyMovement : MonoBehaviour
 {

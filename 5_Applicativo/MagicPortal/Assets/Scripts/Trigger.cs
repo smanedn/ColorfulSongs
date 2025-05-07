@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Trigger : MonoBehaviour
 {
+    HealthManager hm = HealthManager.Instance;
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "Character")
@@ -9,12 +10,12 @@ public class Trigger : MonoBehaviour
             Destroy(this.gameObject);
             if(this.name == "CannonBall(Clone)")
             {
-                HealthManager.LooseOneHeart();
+                hm.LooseOneHeart();
                 print(HealthManager.GetHealth());
             }
             if (this.name == "BadPortal")
             {
-                HealthManager.LooseOneHeart();
+                hm.LooseOneHeart();
                 print(HealthManager.GetHealth());
             }
         }

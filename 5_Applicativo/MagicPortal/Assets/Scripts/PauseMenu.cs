@@ -14,10 +14,12 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private static bool isPaused;
     [SerializeField] private AudioSource musicSource;
 
+    private HealthManager healthManager;
     private string currentInput;
 
     void Start()
     {
+        healthManager = new HealthManager();
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         inGameGUI.SetActive(true);
@@ -27,7 +29,7 @@ public class PauseMenu : MonoBehaviour
             PlayerPrefs.SetInt("CompletedLevels", 0);
             PlayerPrefs.Save();
         }
-        if (PlayerPrefs.GetInt("CompletedLevels") == 5)
+        if (PlayerPrefs.GetInt("CompletedLevels") >= 5)
         {
             winGUI.SetActive(true);
             PlayerPrefs.SetInt("CompletedLevels", 0);
@@ -40,8 +42,8 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.JoystickButton7))
+        print("dead: " + healthManager.IsDead());
+        if ((Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.JoystickButton7)) && !healthManager.IsDead())
         {
             if (isPaused)
             {
@@ -81,8 +83,13 @@ public class PauseMenu : MonoBehaviour
         isPaused = !isPaused;
     }
 
-    public static void Restart()
+    public void Restart()
     {
+        if (healthManager.IsDead())
+        {
+            PlayerPrefs.SetInt("CompletedLevels", 0);
+        }
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

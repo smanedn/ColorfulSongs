@@ -1,6 +1,4 @@
-
 using System.Collections;
-using UnityEditor.Rendering.Universal.ShaderGUI;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
@@ -10,6 +8,7 @@ public class HealthManager : MonoBehaviour
     private static int health; // 0-5
     private Transform[] heartImages;
     [SerializeField] private AudioSource musicSource;
+    [SerializeField] private GameObject inGameGUI;
     [SerializeField] private GameObject deathGUI;
     [SerializeField] private GameObject hitGUI;
 
@@ -34,9 +33,8 @@ public class HealthManager : MonoBehaviour
         deathGUI.gameObject.SetActive(false);
     }
 
-    public static void LooseOneHeart()
+    public void LooseOneHeart()
     {
-
         string currentLastHeart = "Heart " + health;
         GameObject.Find(currentLastHeart).SetActive(false);
         health -= 1;
@@ -45,8 +43,10 @@ public class HealthManager : MonoBehaviour
             print("dead");
             DeathScreen();
         }
-        Instance.hitGUI.GetComponent<HitGUI>().showHitGUI();
+        //Instance.hitGUI.GetComponent<HitGUI>().showHitGUI();
+        
     }
+
 
 
     public static void DeathScreen()
@@ -54,6 +54,7 @@ public class HealthManager : MonoBehaviour
         Time.timeScale = 0f;
         Instance.musicSource?.Pause();
         Instance.deathGUI.gameObject?.SetActive(true);
+        Instance.inGameGUI.gameObject?.SetActive(false);
         GameObject.Find("Character").GetComponent<PlayerMovement>().enabled = false;
         Cursor.visible = true;
     }
@@ -63,12 +64,12 @@ public class HealthManager : MonoBehaviour
         return health;
     }
 
-    public static bool IsDead()
+    public bool IsDead()
     {
         return health <= 0;
     }
 
-    IEnumerator Wait(float time)
+    public IEnumerator Wait(float time)
     {
         yield return new WaitForSeconds(time);
     }

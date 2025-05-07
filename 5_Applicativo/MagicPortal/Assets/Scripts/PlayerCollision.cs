@@ -6,16 +6,39 @@ using UnityEngine.UIElements;
 
 public class PlayerCollision : MonoBehaviour
 {
+    private static bool isInvincible;
     [SerializeField] private GameObject portal;
+    //HealthManager hm = new HealthManager();
+    private HealthManager hm;
+    [SerializeField] private PauseMenu pauseMenu;
 
+    void Start()
+    {
+        hm = HealthManager.Instance;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            print("hit");
-            HealthManager.LooseOneHeart();
+            //if (!isInvincible)
+            //{
+                print("hit");
+                hm.LooseOneHeart();
+                //isInvincible = true;
+               // SetInvincible();
+            //}
+            //else
+            //{
+                //print("Invincibile");
+            //}
 
         }
+    }
+
+    public void SetInvincible()
+    {
+        StartCoroutine(Wait(5f));
+        isInvincible = false;
     }
 
     private void OnTriggerStay(Collider other)
@@ -39,7 +62,8 @@ public class PlayerCollision : MonoBehaviour
             CompletedLevels++;
             PlayerPrefs.SetInt("CompletedLevels", CompletedLevels);
             PlayerPrefs.Save();
-            PauseMenu.Restart();
+            print(pauseMenu);
+            pauseMenu.Restart();
         }
     }
 
@@ -50,7 +74,7 @@ public class PlayerCollision : MonoBehaviour
         transform.position = new Vector3(x, y, z);
         if (damage)
         {
-            HealthManager.LooseOneHeart();
+            hm.LooseOneHeart();
         }
         await Task.Delay(300);
         GetComponent<PlayerMovement>().enabled = true;

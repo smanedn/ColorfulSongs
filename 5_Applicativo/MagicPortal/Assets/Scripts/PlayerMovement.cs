@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private float voidHeight = -15;
     private int defaultMovement;
     private float initialRotationY;
+    private HealthManager healthManager;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        healthManager = new HealthManager();
         characterController = GetComponent<CharacterController>();
         if (!PlayerPrefs.HasKey("DefaultMovement"))
         {
@@ -50,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
+       
+
         Movement();
         Turn();
     }
@@ -58,6 +62,15 @@ public class PlayerMovement : MonoBehaviour
     {
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
+        
+        if (x > 0f || z > 0f || x < 0f || z < 0f)
+        {
+            GetComponent<Animator>().SetBool("isWalking", true);
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("isWalking", false);
+        }
         y = VerticalForceCalculation();
        
         if(defaultMovement == 0)
@@ -118,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
             if (IsVoid())
             {
                 print("Void");
-                if (!HealthManager.IsDead())
+                if (!healthManager.IsDead())
                 {
                     GetComponent<PlayerCollision>().Teleport(0, 2f, 0, true);
                 }
