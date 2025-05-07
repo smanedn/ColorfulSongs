@@ -47,8 +47,7 @@ public class HealthManager : MonoBehaviour
             GameObject.Find(currentLastHeart).SetActive(false);
             audioManager.PlaySFX(audioManager.GetHit());
             health -= 1;
-            hitGUI.SetActive(true);
-            StartCoroutine(SetInvincible());
+            
             if (IsDead())
             {
                 print("dead");
@@ -56,7 +55,8 @@ public class HealthManager : MonoBehaviour
             }
             else
             {
-                
+                hitGUI.SetActive(true);
+                StartCoroutine(SetInvincible());
             }
         }
     }
