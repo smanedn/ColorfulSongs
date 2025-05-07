@@ -42,3 +42,11 @@
 [2025-04-25T18:15:01.155418+02:00] validator.WARNING: checkNumber: Type is not a number [] []
 [2025-04-30T09:09:20.887047+02:00] validator.WARNING: checkNumber: Type is not a number [] []
 >>>>>>> Stashed changes:5_Applicativo/leaderboard/application/logs/log.log
+[2025-05-07T08:30:28.464555+02:00] leaderboardController.WARNING: Add [userId1] to fillable property to allow mass assignment on [Friend]. [] []
+[2025-05-07T08:32:14.779307+02:00] leaderboardController.INFO: friend created with attribute userId1:  userId2:  pending:  [] []
+[2025-05-07T08:33:55.357313+02:00] leaderboardController.WARNING: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'updated_at' in 'field list' (Connection: default, SQL: insert into `friend` (`userId1`, `userId2`, `pending`, `updated_at`, `created_at`) values (1, 15, 1, 2025-05-07 08:33:55, 2025-05-07 08:33:55)) [] []
+[2025-05-07T08:37:01.951725+02:00] leaderboardController.WARNING: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'updated_at' in 'field list' (Connection: default, SQL: insert into `friend` (`userId1`, `userId2`, `pending`, `updated_at`, `created_at`) values (1, 15, 1, 2025-05-07 08:37:01, 2025-05-07 08:37:01)) [] []
+[2025-05-07T08:38:40.683074+02:00] leaderboardController.INFO: friend created with attribute userId1: 1 userId2: 1 pending: 1 [] []
+[2025-05-07T08:46:07.821855+02:00] leaderboardController.INFO: friend created with attribute userId1: 1 userId2: 1 pending: 1 [] []
+[2025-05-07T12:35:41.157704+02:00] leaderboardController.WARNING: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1-21' for key 'PRIMARY' (Connection: default, SQL: insert into `friend` (`userId1`, `userId2`, `pending`) values (1, 21, 1)) [] []
+[2025-05-07T13:21:21.800942+02:00] notify.INFO: friend created with attribute userId1: 1 userId2: 1 pending: 1 [] []

@@ -72,13 +72,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php if (isset($error)) : echo "" ?>
+                    <?php if (is_null($leaderboard_data)) : echo "No friend request" ?>
                     <?php else :
                         foreach ($leaderboard_data as $leaderboardValue) : ?>
                             <tr>
                                 <td><?php echo $leaderboardValue->username; ?></td>
                                 <td><?php echo $leaderboardValue->score; ?></td>
-                                <td><a href="<?php echo URL . 'leaderboardController/friendRequest/'. $leaderboardValue->id; ?>" class="btn btn-outline-info"
+                                <td><a href="<?php echo URL . 'friendController/friendRequest/'. $leaderboardValue->id; ?>" class="btn btn-outline-info"
                                        >Friend Request</a></td>
                             </tr>
                         <?php endforeach; ?>
