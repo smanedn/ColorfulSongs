@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -6,11 +7,11 @@ using UnityEngine.UIElements;
 
 public class PlayerCollision : MonoBehaviour
 {
-    private static bool isInvincible;
     [SerializeField] private GameObject portal;
     //HealthManager healthManager = new HealthManager();
     private HealthManager healthManager;
     [SerializeField] private PauseMenu pauseMenu;
+    [SerializeField] private Score sc;
    
 
     void Start()
@@ -22,26 +23,9 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            //if (!isInvincible)
-            //{
-                print("hit");
+                //print("hit");
                 healthManager.LooseOneHeart();
-                
-            //isInvincible = true;
-            // SetInvincible();
-            //}
-            //else
-            //{
-            //print("Invincibile");
-            //}
-
         }
-    }
-
-    public void SetInvincible()
-    {
-        StartCoroutine(Wait(5f));
-        isInvincible = false;
     }
 
     private void OnTriggerStay(Collider other)
@@ -50,7 +34,7 @@ public class PlayerCollision : MonoBehaviour
         {
             int x = portal.GetComponent<PortalGenerator>().getEndX();
             int z = portal.GetComponent<PortalGenerator>().getEndZ();
-            print("tp");
+            //print("tp");
             Teleport(x+1, 0.75f, z, false);
         }
 
@@ -62,10 +46,13 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.CompareTag("FinishPortal"))
         {
             int CompletedLevels = PlayerPrefs.GetInt("CompletedLevels");
+            string timeToComplete = sc.getScore();
+            string timeForLevel = "Time" + CompletedLevels;
             CompletedLevels++;
             PlayerPrefs.SetInt("CompletedLevels", CompletedLevels);
+            PlayerPrefs.SetString(timeForLevel, timeToComplete);
             PlayerPrefs.Save();
-            print(pauseMenu);
+            //print(pauseMenu);
             pauseMenu.Restart();
         }
     }
