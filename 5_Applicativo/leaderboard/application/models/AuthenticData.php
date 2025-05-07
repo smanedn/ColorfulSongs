@@ -5,7 +5,6 @@ class AuthenticData
 {
     private $conn;
     private $statement;
-    private $sth;
 
     public function __construct()
     {

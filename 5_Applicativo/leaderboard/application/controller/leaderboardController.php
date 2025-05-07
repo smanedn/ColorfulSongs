@@ -1,14 +1,21 @@
 <?php
+
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+
 require_once 'vendor/autoload.php';
 
 class leaderboardController
 {
     private $validator;
+    private $log;
 
     public function __construct()
     {
         require_once 'application/libs/validator.php';
         $this->validator = new \libs\Validator();
+        $this->log = new Logger('leaderboardController');
+        $this->log->pushHandler(new StreamHandler('application/logs/log.log'));
     }
 
 
@@ -82,7 +89,6 @@ class leaderboardController
         if (isset($_POST['search'])) {
             $username = $this->validator->sanitizeInput($_POST['usernameSearch']);
             $username = $this->validator->checkTextArea($username);
-//            setcookie('usernameSearch',$username,time() + (3600), "/");
             if (is_null($username)) {
                 require_once 'application/views/_templates/header.php';
                 if ($this->isAdmin()) {
@@ -135,10 +141,17 @@ class leaderboardController
     {
 
         if ($this->isAdmin()) {
-            $friend = Friend::create(["userId1" => $_SESSION['UserId'], "userId2" => $friendId, "pending" => 1]);
+            try {
+                $friend = Friend::create(["userId1" => $_SESSION['UserId'], "userId2" => $friendId, "pending" => 1]);
+
+                $this->log->info('friend created with attribute userId1: ' . $friend->userId1 . ' userId2: ' . $friend->userId1 . ' pending: ' . $friend->pending );
+            }catch (\Exception $e){
+                $this->log->warning($e->getMessage());
+            }
+
 
             require_once 'application/models/Leaderboard.php';
-            $leaderboard = Leaderboard::getData();
+            $leaderboard_data = Leaderboard::getData();
             require_once 'application/views/_templates/header.php';
             require_once 'application/views/admin/index.php';
         }
