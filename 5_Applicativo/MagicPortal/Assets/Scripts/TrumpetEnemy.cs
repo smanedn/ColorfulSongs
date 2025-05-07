@@ -11,35 +11,29 @@ public class TrumpetEnemy : MonoBehaviour
     [SerializeField] private Vector3 enemySpawnPosition = Vector3.zero;
     [SerializeField] private Transform parent;
 
-    [Header("Turret Shooting Settings")]
-    [SerializeField] private float rotationSpeed = 90f; // gradi al secondo
+    [Header("FirePoint Offset")]
+    [SerializeField] private Vector3 firePointOffset = new Vector3(0, 0, 1);
+
+    [Header("Shooting Settings")]
+    [SerializeField] private float rotationSpeed = 90f;
     [SerializeField] private float timeBetweenShots = 0.1f;
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private float bulletLifetime = 3f;
 
     private GameObject enemyInstance;
-    private Transform firePoint;
     private float shootTimer = 0f;
     private List<GameObject> bullets = new List<GameObject>();
 
     void Start()
     {
-        // Spawn del nemico
         enemyInstance = Instantiate(enemyPrefab, enemySpawnPosition, Quaternion.identity);
         if (parent != null) enemyInstance.transform.SetParent(parent);
-
-        // Crea un firePoint al centro del nemico
-        GameObject firePointObj = new GameObject("FirePoint");
-        firePointObj.transform.SetParent(enemyInstance.transform);
-        firePointObj.transform.localPosition = Vector3.zero;
-        firePoint = firePointObj.transform;
     }
 
     void Update()
     {
         if (enemyInstance == null) return;
 
-        // Ruota il nemico continuamente
         enemyInstance.transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
 
         shootTimer -= Time.deltaTime;
@@ -49,7 +43,6 @@ public class TrumpetEnemy : MonoBehaviour
             shootTimer = timeBetweenShots;
         }
 
-        // Muove i proiettili in avanti
         foreach (var bullet in bullets)
         {
             if (bullet != null)
@@ -61,9 +54,9 @@ public class TrumpetEnemy : MonoBehaviour
 
     void ShootBullet()
     {
-        Vector3 direction = enemyInstance.transform.forward;
+        Vector3 firePointWorldPos = enemyInstance.transform.position + enemyInstance.transform.TransformDirection(firePointOffset);
 
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(direction));
+        GameObject bullet = Instantiate(bulletPrefab, firePointWorldPos, enemyInstance.transform.rotation);
         if (parent != null) bullet.transform.SetParent(parent);
 
         bullets.Add(bullet);

@@ -5284,10 +5284,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8645757975272263410, guid: 3285d87384510cd47953d2f7ca24cacf, type: 3}
   bulletPrefab: {fileID: 7648726730572489568, guid: 8944aa90a3863db4195cf3acc1750213, type: 3}
-  enemySpawnPosition: {x: 1, y: 1, z: 1}
+  enemySpawnPosition: {x: 1, y: 1.5, z: 1}
   parent: {fileID: 0}
-  rotationSpeed: 2000
-  timeBetweenShots: 0.005
+  firePointOffset: {x: 0, y: 0, z: 0}
+  rotationSpeed: 100
+  timeBetweenShots: 0.25
   bulletSpeed: 5
   bulletLifetime: 3
 --- !u!1 &913222755
