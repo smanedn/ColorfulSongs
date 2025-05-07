@@ -71,9 +71,12 @@ public class HealthManager : MonoBehaviour
 
         isInvincible = false;
         hitGUI.SetActive(false);
-
     }
 
+    public void resetInvincible()
+    {
+        isInvincible = false;
+    }
 
 
     public static void DeathScreen()
@@ -96,8 +99,8 @@ public class HealthManager : MonoBehaviour
         return health <= 0;
     }
 
-    public IEnumerator Wait(float time)
+    /*public IEnumerator Wait(float time)
     {
         yield return new WaitForSeconds(time);
-    }
+    }*/
 }

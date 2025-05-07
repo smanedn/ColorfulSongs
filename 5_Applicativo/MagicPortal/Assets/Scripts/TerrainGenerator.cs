@@ -57,6 +57,7 @@ public class TerrainGenerator : MonoBehaviour
     
     void Start()
     {
+        hm.resetInvincible();
         print("LIVELLI COMPLETATI" + PlayerPrefs.GetInt("CompletedLevels"));
         if (PlayerPrefs.GetInt("CompletedLevels") <= 4)
         {
