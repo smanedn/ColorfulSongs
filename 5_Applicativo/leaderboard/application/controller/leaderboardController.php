@@ -52,31 +52,33 @@ class leaderboardController
         $leaderboardMapper = Leaderboard::getData();
         if(isset($_POST['type'])) {
             if ($_POST['type'] == 'global') {
-                require_once 'application/views/_templates/header.php';
                 if ($this->isAdmin()) {
                     $leaderboard_data = Leaderboard::getData();
                     $checked = "global";
                     $_SESSION['type'] = $checked;
+                    require_once 'application/views/_templates/header.php';
                     require_once 'application/views/admin/index.php';
                 }else{
                     $leaderboard_data = Leaderboard::getData();
                     $checked = "global";
                     $_SESSION['type'] = $checked;
+                    require_once 'application/views/_templates/header.php';
                     require_once 'application/views/leaderboard/index.php';
                 }
             } else if ($_POST['type'] == 'friend') {
-                require_once 'application/views/_templates/header.php';
                 if ($this->isAdmin()) {
 
                     $leaderboard_data = User::getDataByFriendId($_SESSION["UserId"]);
                     $checked = "friend";
                     $_SESSION['type'] = $checked;
+                    require_once 'application/views/_templates/header.php';
                     require_once 'application/views/admin/index.php';
                 }else{
 
                     $leaderboard_data = User::getDataByFriendId($_SESSION["UserId"]);
                     $checked = "friend";
                     $_SESSION['type'] = $checked;
+                    require_once 'application/views/_templates/header.php';
                     require_once 'application/views/leaderboard/index.php';
                 }
             }
