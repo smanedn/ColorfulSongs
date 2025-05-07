@@ -50,40 +50,49 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private GameObject parent;
     [SerializeField] private GameObject finishPortal;
     [SerializeField] private GameObject enemy;
+    [SerializeField] private HealthManager hm;
 
     public GameObject[] obstacles;
 
     
     void Start()
     {
-        
-        enemyX = endObstacle1X + (startObstacle2X - endObstacle1X)/2f;
-        enemyZ = column / 2 -0.5f;
-        enemyY = 1.5f;
-        //enemyX = Mathf.Round(enemyX);
-
-        int l = obstacles.Length;
-        do
+        print("LIVELLI COMPLETATI" + PlayerPrefs.GetInt("CompletedLevels"));
+        if (PlayerPrefs.GetInt("CompletedLevels") <= 4)
         {
-            firstObstacle = Random.Range(0, l);
-            secondObstacle = Random.Range(0, l);
-        } while (firstObstacle == secondObstacle);
+            enemyX = endObstacle1X + (startObstacle2X - endObstacle1X) / 2f;
+            enemyZ = column / 2 - 0.5f;
+            enemyY = 1.5f;
+            //enemyX = Mathf.Round(enemyX);
 
-        obstacles[firstObstacle].SetActive(true);
-        obstacles[secondObstacle].SetActive(true);
+            int l = obstacles.Length;
+            do
+            {
+                firstObstacle = Random.Range(0, l);
+                secondObstacle = Random.Range(0, l);
+            } while (firstObstacle == secondObstacle);
 
-        generateStraightTerrain();
+            obstacles[firstObstacle].SetActive(true);
+            obstacles[secondObstacle].SetActive(true);
 
-        var _enemy = Instantiate(enemy, new Vector3(enemyX, enemyY, enemyZ), Quaternion.identity);
-        _enemy.name = "Enemy";
-        _enemy.transform.SetParent(parent.transform);
-        _enemy.SetActive(true);
+            generateStraightTerrain();
 
-        var _finishPortal = Instantiate(finishPortal, new Vector3(row-3, y+1.5f, column-column/2), Quaternion.identity);
-        _finishPortal.name = "FinishPortal";
-        _finishPortal.transform.SetParent(parent.transform);
+            var _enemy = Instantiate(enemy, new Vector3(enemyX, enemyY, enemyZ), Quaternion.identity);
+            _enemy.name = "Enemy";
+            _enemy.transform.SetParent(parent.transform);
+            _enemy.SetActive(true);
+
+            var _finishPortal = Instantiate(finishPortal, new Vector3(row - 3, y + 1.5f, column - column / 2), Quaternion.identity);
+            _finishPortal.name = "FinishPortal";
+            _finishPortal.transform.SetParent(parent.transform);
+        }
+        else
+        {
+            generateEndRoom();
+        }
 
     }
+
 
     public void generateStraightTerrain()
     {
@@ -121,6 +130,33 @@ public class TerrainGenerator : MonoBehaviour
                 if (r == row || c == column)
                 {
                     for (int a = y; a <= wallHeight; a++)
+                    {
+                        string nameWall = "wall[" + r.ToString() + ";" + a.ToString() + ";" + c.ToString() + "]";
+                        var wallObj = Instantiate(wall, new Vector3(x, a, z), Quaternion.identity);
+                        wallObj.name = nameWall;
+                        wallObj.transform.SetParent(parent.transform);
+                    }
+                }
+            }
+        }
+    }
+
+    public void generateEndRoom()
+    {
+        for (int r = 0; r <= 7; r++)
+        {
+            x = r;
+            for (int c = 0; c <= 7; c++)
+            {
+                z = c;
+                string name = "pavimento[" + r.ToString() + ";" + y.ToString() + ";" + c.ToString() + "]";
+                var cube = Instantiate(floor, new Vector3(x, y, z), Quaternion.identity);
+                cube.name = name;
+                cube.transform.SetParent(parent.transform);
+
+                if (r == 7 || c == 7)
+                {
+                    for (int a = y; a <= 5; a++)
                     {
                         string nameWall = "wall[" + r.ToString() + ";" + a.ToString() + ";" + c.ToString() + "]";
                         var wallObj = Instantiate(wall, new Vector3(x, a, z), Quaternion.identity);

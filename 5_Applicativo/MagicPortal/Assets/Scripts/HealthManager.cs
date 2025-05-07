@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
@@ -14,6 +15,7 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private GameObject deathGUI;
     [SerializeField] private GameObject hitGUI; 
     private AudioManager audioManager;
+    [SerializeField] private Score sc;
 
     void Awake()
     {
@@ -50,8 +52,9 @@ public class HealthManager : MonoBehaviour
             
             if (IsDead())
             {
-                print("dead");
+                //print("dead");
                 DeathScreen();
+                sc.setGUIScore();
             }
             else
             {
@@ -78,7 +81,7 @@ public class HealthManager : MonoBehaviour
         Time.timeScale = 0f;
         Instance.musicSource?.Pause();
         Instance.deathGUI.gameObject?.SetActive(true);
-        Instance.inGameGUI.gameObject?.SetActive(false);
+        //Instance.inGameGUI.gameObject?.SetActive(false);
         GameObject.Find("Character").GetComponent<PlayerMovement>().enabled = false;
         Cursor.visible = true;
     }
