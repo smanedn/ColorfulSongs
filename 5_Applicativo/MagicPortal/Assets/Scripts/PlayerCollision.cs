@@ -8,14 +8,16 @@ public class PlayerCollision : MonoBehaviour
 {
     private static bool isInvincible;
     [SerializeField] private GameObject portal;
-    //HealthManager hm = new HealthManager();
-    private HealthManager hm;
+    //HealthManager healthManager = new HealthManager();
+    private HealthManager healthManager;
     [SerializeField] private PauseMenu pauseMenu;
+   
 
     void Start()
     {
-        hm = HealthManager.Instance;
+        healthManager = HealthManager.Instance;
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
@@ -23,13 +25,14 @@ public class PlayerCollision : MonoBehaviour
             //if (!isInvincible)
             //{
                 print("hit");
-                hm.LooseOneHeart();
-                //isInvincible = true;
-               // SetInvincible();
+                healthManager.LooseOneHeart();
+                
+            //isInvincible = true;
+            // SetInvincible();
             //}
             //else
             //{
-                //print("Invincibile");
+            //print("Invincibile");
             //}
 
         }
@@ -74,7 +77,7 @@ public class PlayerCollision : MonoBehaviour
         transform.position = new Vector3(x, y, z);
         if (damage)
         {
-            hm.LooseOneHeart();
+            healthManager.LooseOneHeart();
         }
         await Task.Delay(300);
         GetComponent<PlayerMovement>().enabled = true;

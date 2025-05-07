@@ -34,4 +34,9 @@ public class AudioManager : MonoBehaviour
         return jump;
     }
 
+    public AudioClip GetHit()
+    {
+        return hit;
+    }
+
 }

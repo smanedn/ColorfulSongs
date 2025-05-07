@@ -10,10 +10,12 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private GameObject inGameGUI;
     [SerializeField] private GameObject deathGUI;
-    [SerializeField] private GameObject hitGUI;
+    [SerializeField] private GameObject hitGUI; 
+    private AudioManager audioManager;
 
     void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         if (Instance == null)
         {
             Instance = this;
@@ -37,6 +39,7 @@ public class HealthManager : MonoBehaviour
     {
         string currentLastHeart = "Heart " + health;
         GameObject.Find(currentLastHeart).SetActive(false);
+        audioManager.PlaySFX(audioManager.GetHit());
         health -= 1;
         if (IsDead())
         {
