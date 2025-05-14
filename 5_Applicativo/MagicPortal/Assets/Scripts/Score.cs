@@ -27,10 +27,10 @@ public class Score : MonoBehaviour
         {
             scoreValue += Time.deltaTime;
         }
-        else
-        {
-            HealthManager.DeathScreen();
-        }
+        //else
+        //{
+        //    HealthManager.DeathScreen();
+        //}
 
         hundredths = Mathf.FloorToInt(scoreValue * 100) % 100;
         seconds = Mathf.FloorToInt(scoreValue % 60);
@@ -57,6 +57,12 @@ public class Score : MonoBehaviour
             string name = "Time" + i;
             int j = i + 1;
             scores[i].text = string.Format("Score {0}: " + PlayerPrefs.GetString(name), j);
+        }
+        for(int i = PlayerPrefs.GetInt("CompletedLevels");i<5; i++)
+        {
+            int j = i + 1;
+            //scores[i].text = string.Format("{0}" + PlayerPrefs.GetString(name), j);
+            scores[i].text = string.Format("");
         }
     }
 }

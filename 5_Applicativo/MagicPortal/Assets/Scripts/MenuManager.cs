@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("CompletedLevels"))
         {
+            PlayerPrefs.SetInt("LevelEnded", 0);
             PlayerPrefs.SetInt("CompletedLevels", 0);
             PlayerPrefs.Save();
         }

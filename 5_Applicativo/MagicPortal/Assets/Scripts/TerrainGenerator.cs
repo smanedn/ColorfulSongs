@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TerrainGenerator : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class TerrainGenerator : MonoBehaviour
     private int x;
     private int z;
     private int h;
+    private bool end;
     private bool empty;
     private int firstObstacle;
     private int secondObstacle;
@@ -17,20 +19,22 @@ public class TerrainGenerator : MonoBehaviour
     private int startingX = 0;
     private int startingZ = 0;
 
+    [Header("Level Size")]
     [SerializeField] private int row;         
     [SerializeField] private int column;            
     [SerializeField] private int y;
     private int firstTerrainZ;
     private int firstTerrainX;
-
     [SerializeField] private int wallHeight;
 
+    [Header("First Obstacle position")]
     [SerializeField] private int startObstacle1X;     
     [SerializeField] private int endObstacle1X;       
     private int startObstacle1Z;     
     private int endObstacle1Z;       
-    [SerializeField] private int startObstacle1Y;     
+    [SerializeField] private int startObstacle1Y;
 
+    [Header("Second Obstacle position")]
     [SerializeField] private int startObstacle2X;     
     [SerializeField] private int endObstacle2X;       
     private int startObstacle2Z;     
@@ -46,11 +50,18 @@ public class TerrainGenerator : MonoBehaviour
     private float enemyZ;
     private float enemyY;
 
+    [Header("Prefab")]
     [SerializeField] private GameObject floor;
+    [SerializeField] private GameObject transparent;
     [SerializeField] private GameObject wall;
     [SerializeField] private GameObject parent;
     [SerializeField] private GameObject finishPortal;
     [SerializeField] private HealthManager hm;
+    [SerializeField] private Score sc;
+    [SerializeField] private GameObject inGameGUI;
+    [SerializeField] private GameObject winGUI;
+    [SerializeField] private GameObject deathGUI;
+    [SerializeField] private GameObject ButtonGUI;
 
     public GameObject[] obstacles;
     public GameObject[] enemies;
@@ -58,10 +69,14 @@ public class TerrainGenerator : MonoBehaviour
 
     void Start()
     {
-        hm.resetInvincible();
-        print("LIVELLI COMPLETATI" + PlayerPrefs.GetInt("CompletedLevels"));
-        if (PlayerPrefs.GetInt("CompletedLevels") <= 4)
+        if (PlayerPrefs.GetInt("LevelEnded") == 1)
         {
+            generateEndRoom();
+        }
+        else
+        {
+            hm.resetInvincible();
+            print("LIVELLI COMPLETATI " + PlayerPrefs.GetInt("CompletedLevels"));
             enemyX = endObstacle1X + (startObstacle2X - endObstacle1X) / 2f;
             enemyZ = column / 2 - 0.5f;
             enemyY = 1.5f;
@@ -93,11 +108,23 @@ public class TerrainGenerator : MonoBehaviour
             _finishPortal.name = "FinishPortal";
             _finishPortal.transform.SetParent(parent.transform);
         }
-        else
-        {
-            generateEndRoom();
-        }
+    }
 
+    private void Update()
+    {
+        if (hm.IsDead() || PlayerPrefs.GetInt("CompletedLevels") > 4)
+        {
+            if (hm.IsDead())
+            {
+                print("DEAD in UPDATE");
+                PlayerPrefs.SetInt("Dead", 1);
+                PlayerPrefs.Save();
+            }
+            print("LEVEL FINITO:\nHeart: " + hm.IsDead() + "\nLivelli completati: " + PlayerPrefs.GetInt("CompletedLevels"));
+            PlayerPrefs.SetInt("LevelEnded", 1);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
 
@@ -171,8 +198,32 @@ public class TerrainGenerator : MonoBehaviour
                         wallObj.transform.SetParent(parent.transform);
                     }
                 }
+                else if(r==0 || c == 0)
+                {
+                    for (int a = y; a <= 5; a++)
+                    {
+                        string nameWall = "transparentWall[" + r.ToString() + ";" + a.ToString() + ";" + c.ToString() + "]";
+                        var wallObj = Instantiate(transparent, new Vector3(x, a, z), Quaternion.identity);
+                        wallObj.name = nameWall;
+                        wallObj.transform.SetParent(parent.transform);
+                    }
+                }
             }
         }
+        if (PlayerPrefs.GetInt("CompletedLevels") >= 5)
+        {
+            winGUI.SetActive(true);
+        }
+        else if(PlayerPrefs.GetInt("Dead") == 1)
+        {
+            HealthManager.DeathScreen();
+        }
+        ButtonGUI.SetActive(true);
+        sc.setGUIScore();
+        inGameGUI.SetActive(false);
+        //Instance.inGameGUI.gameObject?.SetActive(false);
+        GameObject.Find("Character").GetComponent<PlayerMovement>().enabled = false;
+        Cursor.visible = true;
     }
 
     /**public void generateLShapeTerrain()

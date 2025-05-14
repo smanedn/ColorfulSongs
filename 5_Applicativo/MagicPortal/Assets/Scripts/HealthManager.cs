@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class HealthManager : MonoBehaviour
     private float invincibilityDurationSeconds = 2;
     private Transform[] heartImages;
     [SerializeField] private AudioSource musicSource;
-    [SerializeField] private GameObject inGameGUI;
+    //[SerializeField] private GameObject inGameGUI;
     [SerializeField] private GameObject deathGUI;
     [SerializeField] private GameObject hitGUI; 
     private AudioManager audioManager;
@@ -36,7 +37,8 @@ public class HealthManager : MonoBehaviour
         print(heartImages.Length);
         health = heartImages.Length - 1;
 
-        deathGUI.gameObject.SetActive(false);
+        //deathGUI.gameObject.SetActive(false);
+        //PlayerPrefs.SetInt("Dead", 0);
     }
 
     public void LooseOneHeart()
@@ -52,9 +54,10 @@ public class HealthManager : MonoBehaviour
             
             if (IsDead())
             {
+                hitGUI.SetActive(false);
                 //print("dead");
-                DeathScreen();
-                sc.setGUIScore();
+                //DeathScreen();
+                //sc.setGUIScore();
             }
             else
             {
@@ -84,9 +87,7 @@ public class HealthManager : MonoBehaviour
         Time.timeScale = 0f;
         Instance.musicSource?.Pause();
         Instance.deathGUI.gameObject?.SetActive(true);
-        //Instance.inGameGUI.gameObject?.SetActive(false);
-        GameObject.Find("Character").GetComponent<PlayerMovement>().enabled = false;
-        Cursor.visible = true;
+        
     }
 
     public static int GetHealth()

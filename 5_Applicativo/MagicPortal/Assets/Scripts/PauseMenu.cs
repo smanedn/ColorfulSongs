@@ -10,7 +10,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] private GameObject inGameGUI;
-    [SerializeField] private GameObject winGUI;
     [SerializeField] private static bool isPaused;
     [SerializeField] private AudioSource musicSource;
 
@@ -22,7 +21,7 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        healthManager = new HealthManager();
+     
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         inGameGUI.SetActive(true);
@@ -32,23 +31,14 @@ public class PauseMenu : MonoBehaviour
             PlayerPrefs.SetInt("CompletedLevels", 0);
             PlayerPrefs.Save();
         }
-        if (PlayerPrefs.GetInt("CompletedLevels") >= 5)
-        {
-            winGUI.SetActive(true);
-            sc.setGUIScore();
-            inGameGUI.SetActive(false);
 
-
-        }
         levelText.text = string.Format("Level: {0}", (PlayerPrefs.GetInt("CompletedLevels")));
-        //Debug.Log("Completed Levels: " + PlayerPrefs.GetInt("CompletedLevels"));
+        
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //print("dead: " + healthManager.IsDead());
-        if ((Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.JoystickButton7)) && !healthManager.IsDead())
+        if ((Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.JoystickButton7)) && PlayerPrefs.GetInt("LevelEnded")==0)//!healthManager.IsDead() 
         {
             if (isPaused)
             {
@@ -81,26 +71,25 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        pauseMenu?.SetActive(false);
         inGameGUI.SetActive(true);
         Time.timeScale = 1f;
-        musicSource?.UnPause(); 
+        pauseMenu?.SetActive(false);
+        musicSource?.UnPause();
         isPaused = !isPaused;
     }
 
     public void Restart()
     {
-        if (healthManager.IsDead())
-        {
-            PlayerPrefs.SetInt("CompletedLevels", 0);
-        }
-        
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetInt("CompletedLevels", 0);
+        PlayerPrefs.SetInt("LevelEnded", 0);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("Game");
     }
 
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
+        PlayerPrefs.SetInt("LevelEnded", 0);
         SceneManager.LoadScene("Main Menu");
     }
 }

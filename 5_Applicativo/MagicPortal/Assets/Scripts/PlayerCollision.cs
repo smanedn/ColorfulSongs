@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PlayerCollision : MonoBehaviour
@@ -26,6 +27,18 @@ public class PlayerCollision : MonoBehaviour
                 //print("hit");
                 healthManager.LooseOneHeart();
         }
+        if (other.gameObject.CompareTag("FinishPortal"))
+        {
+            int CompletedLevels = PlayerPrefs.GetInt("CompletedLevels");
+            string timeToComplete = sc.getScore();
+            string timeForLevel = "Time" + CompletedLevels;
+            CompletedLevels++;
+            print(CompletedLevels);
+            PlayerPrefs.SetInt("CompletedLevels", CompletedLevels);
+            PlayerPrefs.SetString(timeForLevel, timeToComplete);
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("Game");
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -43,18 +56,7 @@ public class PlayerCollision : MonoBehaviour
             Teleport(1, 0.75f, 1, true);
         }
 
-        if (other.gameObject.CompareTag("FinishPortal"))
-        {
-            int CompletedLevels = PlayerPrefs.GetInt("CompletedLevels");
-            string timeToComplete = sc.getScore();
-            string timeForLevel = "Time" + CompletedLevels;
-            CompletedLevels++;
-            PlayerPrefs.SetInt("CompletedLevels", CompletedLevels);
-            PlayerPrefs.SetString(timeForLevel, timeToComplete);
-            PlayerPrefs.Save();
-            //print(pauseMenu);
-            pauseMenu.Restart();
-        }
+        
     }
 
     public async void Teleport(float x, float y, float z, bool damage)
