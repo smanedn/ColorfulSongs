@@ -31,11 +31,11 @@ public class TrumpetEnemy : MonoBehaviour
 
     void Start()
     {
-        float startX = generator.GetComponent<TerrainGenerator>().getEndX1() + 0.5f;
-        float endX = generator.GetComponent<TerrainGenerator>().getStartX2() - 0.5f;
-        float endZ = generator.GetComponent<TerrainGenerator>().getEndZ() - 2;
+        float startX = generator.GetComponent<TerrainGenerator>().getEndX1();
+        float endX = generator.GetComponent<TerrainGenerator>().getStartX2();
+        float endZ = generator.GetComponent<TerrainGenerator>().getEndZ();
         enemyX = startX + (endX - startX) / 2;
-        enemyZ = endZ / 2 - 0.5f;
+        enemyZ = endZ / 2;
         y = 1.2f;
         enemySpawnPosition = new Vector3(enemyX, y, enemyZ);
         enemyInstance = Instantiate(enemyPrefab, enemySpawnPosition, Quaternion.identity);

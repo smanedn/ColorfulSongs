@@ -25,7 +25,8 @@ public class WallPedanaGenerator : MonoBehaviour
         startingZ = generator.GetComponent<TerrainGenerator>().getStartZ("WallPedanaGenerator");
         startingY = generator.GetComponent<TerrainGenerator>().getStartY("WallPedanaGenerator");
         endingX = generator.GetComponent<TerrainGenerator>().getEndX("WallPedanaGenerator");
-        endingZ = generator.GetComponent<TerrainGenerator>().getEndZ("WallPedanaGenerator");
+        endingZ = generator.GetComponent<TerrainGenerator>().getEndZ("WallPedanaGenerator")-3;
+        //-2 perchè non vogliamo riempire le due file vicino al muro
 
         int[] posX = new int[endingX - startingX];
         int[] posZ = new int[endingX - startingX];
@@ -40,6 +41,7 @@ public class WallPedanaGenerator : MonoBehaviour
         {
             if (first)
             {
+                
                 blockZ = Random.Range(startingZ + 1, endingZ);
                 first = false;
             }
@@ -82,7 +84,7 @@ public class WallPedanaGenerator : MonoBehaviour
         }
         for (int j = 0; j < posX.Length; j++)
         {
-            var cube = Instantiate(wall, new Vector3(posX[j], posZ[j]+1, endingZ - 0.1f), Quaternion.identity);
+            var cube = Instantiate(wall, new Vector3(posX[j], posZ[j]+1, endingZ + 2.9f), Quaternion.identity);
             var wallX = startingX + j;
             cube.name = "realBlockWall[" + wallX + "; " + posX[j] + " ; " + endingZ + "]";
             cube.transform.SetParent(parent.transform);

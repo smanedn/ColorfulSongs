@@ -10756,15 +10756,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03195dd52e3ed1e4c9439bebfa4c562d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 40
+  row: 45
   column: 8
   y: 0
-  wallHeight: 12
+  wallHeight: 8
   startObstacle1X: 5
   endObstacle1X: 15
   startObstacle1Y: 0
-  startObstacle2X: 25
-  endObstacle2X: 35
+  startObstacle2X: 30
+  endObstacle2X: 40
   startObstacle2Y: 0
   floor: {fileID: 3955915982601514054, guid: ce32500b5fe80b54e8f7947c235d18fc, type: 3}
   wall: {fileID: 3955915982601514054, guid: 3f36deb36f9f10e42800571133690225, type: 3}
