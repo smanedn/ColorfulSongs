@@ -21,4 +21,14 @@ class Friend extends Model
             ->where('friend.pending', '=', 1)
             ->get();
     }
+
+    public static function showFriend($userId)
+    {
+        return self::select('friend.userId1', 'friend.userId2', 'friend.pending')
+            ->distinct()
+            ->where('friend.pending', '=', 0)
+            ->where('friend.userId1', '=', $userId)
+            ->orWhere('friend.userId2', '=', $userId)
+            ->get();
+    }
 }

@@ -4,6 +4,10 @@ class Ajax
 {
     public function getUsername($toSearch = null, $filter = null) {
 
+        if ($filter == null){
+            $filter = 'global';
+        }
+
         $username = $this->search($toSearch,$filter);
 
         if ($username) {
@@ -12,6 +16,7 @@ class Ajax
         } else {
             echo json_encode(array('error' => 'Username not found'));
         }
+
     }
 
     private function search($field, $filter){

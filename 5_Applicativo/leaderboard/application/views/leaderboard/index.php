@@ -7,10 +7,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link <?php if(str_ends_with($_SERVER['REQUEST_URI'],'/')){echo 'text-white';}else{echo'text-secondary';} ?>"  href="<?php echo URL ?>leaderboardController">Leaderboard <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white"  href="<?php echo URL ?>leaderboardController">Leaderboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if(str_ends_with($_SERVER['REQUEST_URI'],'admin')){echo 'text-white';}else{echo'text-secondary';} ?>" href="<?php echo URL ?>friendController/newFriend">Notifiche</a>
+                    <a class="nav-link text-secondary" href="<?php echo URL ?>friendController/newFriend">Notifiche</a>
                 </li>
             </ul>
         </div>
@@ -43,22 +43,12 @@
                 </div>
             </form>
 
+            <form method="POST" action="<?php echo URL; ?>leaderboardController/searchFilter">
                 <section class="mt-3">
                     <div>
-
-                        <script>
-                            function search() {
-                                let toSearch = document.getElementById("toSearch").value;
-                                if(toSearch.length >= 1 || toSearch == ""){
-                                    console.log(toSearch);
-                                    getUsername(toSearch, <?php echo $checked ?>);
-                                }
-                            }
-                        </script>
-
                         <label for="usernameSearch" class="form-label fw-bold fs-6">Users</label>
                         <div class="d-inline-flex">
-                            <input class="form-control w-75" id="toSearch" oninput="search()" name="usernameSearch" placeholder="Username...">
+                            <input class="form-control w-75" name="usernameSearch" placeholder="Username...">
                             <button type="submit" class="btn btn-outline-dark ms-2" name="search" value="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                         <p class="text-danger w-75"><?php if(isset($error)) echo $error ?></p>
@@ -66,41 +56,39 @@
 
                     <button type="submit" class="btn btn-outline-dark ms-2" name="deleteFilter" value="deleteFilter">Delete Filter</button>
                 </section>
+            </form>
 
         </div>
-
-        <script>
-            function filter(field) {
-                let toSearch = document.getElementById('toSearch').value;
-                getUsername(toSearch, <?php echo $checked ?>);
-            }
-        </script>
 
         <div class="col bg-dark bg-opacity-50 text-center text-white p-5">
             <h1>Leaderboard <?php if (isset($checked)) echo $checked; ?></h1>
             <div class="container-md bg-dark bg-opacity-25 rounded-3 pt-4 pb-1">
                 <table class="table table-bordered">
                     <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>High Score</th>
-                            <th></th>
-                        </tr>
+                    <tr>
+                        <th>Username</th>
+                        <th>High Score</th>
+                        <th></th>
+                    </tr>
                     </thead>
-<!--                    <tbody>-->
-<!--                    --><?php //if (is_null($leaderboard_data)) : echo "No friend request" ?>
-<!--                    --><?php //else :
-//                        foreach ($leaderboard_data as $leaderboardValue) : ?>
-<!--                        <tr>-->
-<!--                            <td>--><?php //echo $leaderboardValue->username; ?><!--</td>-->
-<!--                            <td>--><?php //echo $leaderboardValue->score; ?><!--</td>-->
-<!--                            <td><a href="--><?php //echo URL . 'friendController/friendRequest/'. $leaderboardValue->id; ?><!--" class="btn btn-outline-info"-->
-<!--                                >Friend Request</a></td>-->
-<!--                        </tr>-->
-<!--                    --><?php //endforeach; ?>
-<!--                    --><?php //endif; ?>
-                    <tbody id="username">
-                    <script>getUsername()</script>
+                    <tbody>
+                    <?php foreach ($leaderboard_data as $leaderboardValue): ?>
+                        <?php
+                        $isFriend = in_array($leaderboardValue->id, $friendIds);
+                        $alreadyFriend = $isFriend ? "Remove Friends" : "Send Friend Request";
+                        ?>
+                        <tr>
+                            <td><?php echo $leaderboardValue->username ?></td>
+                            <td><?php echo $leaderboardValue->score ?></td>
+                            <td>
+                                <?php if ($isFriend): ?>
+                                    <a href="<?php echo URL . 'friendController/removeFriend/' . $leaderboardValue->id; ?>" class="btn btn-outline-warning" ><?php echo $alreadyFriend?></a>
+                                <?php else: ?>
+                                <a href="<?php echo URL . 'friendController/friendRequest/'. $leaderboardValue->id; ?>" class="btn btn-outline-info"><?php echo $alreadyFriend?></a></td>
+                            <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

@@ -7,10 +7,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link <?php if(str_ends_with($_SERVER['REQUEST_URI'],'/')){echo 'text-white';}else{echo'text-secondary';} ?>"  href="<?php echo URL ?>leaderboardController">Leaderboard <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-secondary"  href="<?php echo URL ?>leaderboardController">Leaderboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if(str_ends_with($_SERVER['REQUEST_URI'],'admin')){echo 'text-white';}else{echo'text-secondary';} ?>" href="<?php echo URL ?>notify/newFriend">Notifiche</a>
+                    <a class="nav-link text-white" href="<?php echo URL ?>notify/newFriend">Notifiche</a>
                 </li>
             </ul>
         </div>
@@ -27,7 +27,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php if (isset($error)) : echo "" ?>
+                    <?php if (is_null($leaderboard_data)) : echo "No friend request" ?>
                     <?php else :
                         foreach ($friends as $friend) : ?>
                         <tr>

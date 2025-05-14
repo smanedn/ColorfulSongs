@@ -34,8 +34,6 @@ class FriendController
 
     public function acceptRequest($userId)
     {
-//        $friend = Friend::friendRequestWithFriendName($_SESSION['UserId']);
-
         $friend = Friend::create(["userId1" => $_SESSION['UserId'], "userId2" => $userId, "pending" => 0]);
         $friendUpdate = Friend::where('userId1', $userId)->where('userId2', $_SESSION['UserId'])->update(['pending'=> 0]);
         require_once 'application/views/_templates/header.php';
@@ -49,7 +47,6 @@ class FriendController
             try {
                 $friend = Friend::create(["userId1" => $_SESSION['UserId'], "userId2" => $friendId, "pending" => 1]);
 
-                $this->log->info('friend created with attribute userId1: ' . $friend->userId1 . ' userId2: ' . $friend->userId1 . ' pending: ' . $friend->pending );
             }catch (\Exception $e){
                 $this->log->warning($e->getMessage());
             }
@@ -66,6 +63,31 @@ class FriendController
                 require_once 'application/views/leaderboard/index.php';
             }
 
+    }
+
+    public function removeFriend($id)
+    {
+        try {
+            $friend = Friend::where('userId1', $id)
+                    ->where('userId2', $_SESSION['UserId'])
+                    ->delete();
+            $friend = Friend::where('userId2', $id)
+                ->where('userId1', $_SESSION['UserId'])
+                ->delete();
+
+        }catch (\Exception $e){
+            $this->log->warning($e->getMessage());
+        }
+        require_once 'application/models/Leaderboard.php';
+        if ($this->isAdmin()){
+            $leaderboard_data = User::getDataByFriendId($_SESSION['UserId']);
+            require_once 'application/views/_templates/header.php';
+            require_once 'application/views/admin/index.php';
+        }else{
+            $leaderboard_data = User::getDataByFriendId($_SESSION['UserId']);
+            require_once 'application/views/_templates/header.php';
+            require_once 'application/views/leaderboard/index.php';
+        }
     }
 
 }

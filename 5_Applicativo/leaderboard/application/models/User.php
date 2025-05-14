@@ -17,7 +17,7 @@ class User extends Model
 
     public static function getDataByFriendId($userId)
     {
-        return self::select('u.username as username', 'l.score')
+        return self::select('u.username as username', 'l.score', 'u.id as id')
             ->distinct()
             ->join('friend as f', 'f.userId1', '=', 'user.id')
             ->join('user as u', 'f.userId2', '=', 'u.id')
