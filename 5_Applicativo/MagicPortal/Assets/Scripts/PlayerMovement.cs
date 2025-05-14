@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 6.0f;
-    [SerializeField] private float runningSpeed = 6.5f;
+    [SerializeField] private float runningSpeed = 9f;
     [SerializeField] private float gravity = 9.81f;
     [SerializeField] private float jumpHeight = 0.5f;
     private AudioManager audioManager;
@@ -93,13 +93,19 @@ public class PlayerMovement : MonoBehaviour
         // Determina la velocità
         float currentSpeed = speed;
 
-        
+
         if (Input.GetButton("Fire3") && (Mathf.Abs(x) > 0.1f || Mathf.Abs(z) > 0.1f))
         {
             currentSpeed = runningSpeed;
+            GetComponent<Animator>().SetBool("isRunning", true);
+        }
+        else
+        {
+            currentSpeed = speed;
+            GetComponent<Animator>().SetBool("isRunning", false);
         }
 
-        characterController.Move(position * currentSpeed * Time.deltaTime);    //in caso non si voglia + speed in diagonale positino.normalized
+            characterController.Move(position * currentSpeed * Time.deltaTime);    //in caso non si voglia + speed in diagonale positino.normalized
     }
 
     private void Turn()
