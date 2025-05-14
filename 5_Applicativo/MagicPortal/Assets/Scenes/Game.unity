@@ -5247,12 +5247,12 @@ GameObject:
   - component: {fileID: 897146768}
   - component: {fileID: 897146769}
   m_Layer: 0
-  m_Name: TrumpetEnemy
-  m_TagString: Untagged
+  m_Name: Trumpet
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &897146768
 Transform:
   m_ObjectHideFlags: 0
@@ -5266,7 +5266,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1566435683}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &897146769
 MonoBehaviour:
@@ -5280,15 +5280,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7f927c792a765469cb3e683522f9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 8645757975272263410, guid: 3285d87384510cd47953d2f7ca24cacf, type: 3}
+  enemyPrefab: {fileID: 4832945399106059475, guid: 496152895baa2ed469a7a776683cd91a, type: 3}
   bulletPrefab: {fileID: 7648726730572489568, guid: 8944aa90a3863db4195cf3acc1750213, type: 3}
-  enemySpawnPosition: {x: 1, y: 1.5, z: 1}
-  parent: {fileID: 0}
-  firePointOffset: {x: 0, y: 0, z: 0}
+  parent: {fileID: 1874765712}
+  firePointOffset: {x: 0, y: 0, z: 1}
   rotationSpeed: 100
   timeBetweenShots: 0.25
   bulletSpeed: 10
   bulletLifetime: 1
+  generator: {fileID: 1705169335}
 --- !u!1 &913222755
 GameObject:
   m_ObjectHideFlags: 0
@@ -9946,7 +9946,6 @@ Transform:
   - {fileID: 1558451210}
   - {fileID: 1685024125}
   - {fileID: 1339716580}
-  - {fileID: 897146768}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1605674463
@@ -10771,7 +10770,6 @@ MonoBehaviour:
   wall: {fileID: 3955915982601514054, guid: 3f36deb36f9f10e42800571133690225, type: 3}
   parent: {fileID: 1542006887}
   finishPortal: {fileID: 6479646477241648015, guid: 507c704db64360248be37aeebe1d28e3, type: 3}
-  enemy: {fileID: 981102141}
   hm: {fileID: 124154218}
   obstacles:
   - {fileID: 1205362128}
@@ -10779,6 +10777,9 @@ MonoBehaviour:
   - {fileID: 64255682}
   - {fileID: 187762110}
   - {fileID: 1217263504}
+  enemies:
+  - {fileID: 981102141}
+  - {fileID: 897146767}
 --- !u!1 &1723190148
 GameObject:
   m_ObjectHideFlags: 0
@@ -11604,6 +11605,37 @@ Transform:
   - {fileID: 1654979375}
   m_Father: {fileID: 876589103}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1874765711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1874765712}
+  m_Layer: 0
+  m_Name: Trumpet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1874765712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874765711}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1884417448}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1880509169
 GameObject:
   m_ObjectHideFlags: 0
@@ -11774,6 +11806,7 @@ Transform:
   - {fileID: 1075973607}
   - {fileID: 116534013}
   - {fileID: 1689663611}
+  - {fileID: 1874765712}
   - {fileID: 2043246857}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13120,6 +13153,10 @@ PrefabInstance:
       propertyPath: generator
       value: 
       objectReference: {fileID: 1705169335}
+    - target: {fileID: 5254003944131359780, guid: 26c5e0766ab78404d969ddd68ffcf379, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 3408828851692909138, guid: 26c5e0766ab78404d969ddd68ffcf379, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13222,4 +13259,5 @@ SceneRoots:
   - {fileID: 1566435683}
   - {fileID: 9158254619422236482}
   - {fileID: 2386343437410571738}
+  - {fileID: 897146768}
   - {fileID: 876589103}

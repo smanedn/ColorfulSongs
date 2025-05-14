@@ -3,12 +3,15 @@ using System.Collections.Generic;
 
 public class TrumpetEnemy : MonoBehaviour
 {
+    private float enemyX;
+    private float y;
+    private float enemyZ;
+
     [Header("Prefabs")]
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject bulletPrefab;
 
     [Header("Spawn settings")]
-    [SerializeField] private Vector3 enemySpawnPosition = Vector3.zero;
     [SerializeField] private Transform parent;
 
     [Header("FirePoint Offset")]
@@ -23,9 +26,18 @@ public class TrumpetEnemy : MonoBehaviour
     private GameObject enemyInstance;
     private float shootTimer = 0f;
     private List<GameObject> bullets = new List<GameObject>();
+    private Vector3 enemySpawnPosition = Vector3.zero;
+    [SerializeField] private GameObject generator;
 
     void Start()
     {
+        float startX = generator.GetComponent<TerrainGenerator>().getEndX1() + 0.5f;
+        float endX = generator.GetComponent<TerrainGenerator>().getStartX2() - 0.5f;
+        float endZ = generator.GetComponent<TerrainGenerator>().getEndZ() - 2;
+        enemyX = startX + (endX - startX) / 2;
+        enemyZ = endZ / 2 - 0.5f;
+        y = 1.2f;
+        enemySpawnPosition = new Vector3(enemyX, y, enemyZ);
         enemyInstance = Instantiate(enemyPrefab, enemySpawnPosition, Quaternion.identity);
         if (parent != null) enemyInstance.transform.SetParent(parent);
     }

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class DrumEnemy : MonoBehaviour
 {
     private float enemyX;
     private float y;
@@ -22,17 +22,16 @@ public class EnemyMovement : MonoBehaviour
     private int enemyPosition = 0;
 
     private Vector3 position;
-    //private float[][] positions;
     [SerializeField] private GameObject generator;
     private void Start()
     {
 
         startX = generator.GetComponent<TerrainGenerator>().getEndX1()+0.5f;
-        endX = generator.GetComponent<TerrainGenerator>().getStartX2()-0.5f;
+        endX = generator.GetComponent<TerrainGenerator>().getStartX2()-2f;
         startZ = 0.5f;
         endZ = generator.GetComponent<TerrainGenerator>().getEndZ()-2;
-        enemyX = startX + (endX - startX) / 2;
-        enemyZ = endZ / 2 - 0.5f;
+        enemyX = startX-1f + (endX - startX+1.5f) / 2;
+        enemyZ = (endZ+2f) / 2;
         y = 0.5f;
 
         position = new Vector3(enemyX, y, enemyZ);

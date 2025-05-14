@@ -13,6 +13,7 @@ public class TerrainGenerator : MonoBehaviour
     private bool empty;
     private int firstObstacle;
     private int secondObstacle;
+    private int enemy;
     private int startingX = 0;
     private int startingZ = 0;
 
@@ -49,12 +50,12 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private GameObject wall;
     [SerializeField] private GameObject parent;
     [SerializeField] private GameObject finishPortal;
-    [SerializeField] private GameObject enemy;
     [SerializeField] private HealthManager hm;
 
     public GameObject[] obstacles;
+    public GameObject[] enemies;
 
-    
+
     void Start()
     {
         hm.resetInvincible();
@@ -64,21 +65,26 @@ public class TerrainGenerator : MonoBehaviour
             enemyX = endObstacle1X + (startObstacle2X - endObstacle1X) / 2f;
             enemyZ = column / 2 - 0.5f;
             enemyY = 1.5f;
-            //enemyX = Mathf.Round(enemyX);
 
             int l = obstacles.Length;
+            int n = enemies.Length;
             do
             {
                 firstObstacle = Random.Range(0, l);
                 secondObstacle = Random.Range(0, l);
+                enemy = Random.Range(0,n);
             } while (firstObstacle == secondObstacle);
 
             obstacles[firstObstacle].SetActive(true);
             obstacles[secondObstacle].SetActive(true);
-
+            if(enemies[enemy].name != "Drum")
+            {
+                enemies[enemy].SetActive(true);
+            }
+            
             generateStraightTerrain();
 
-            var _enemy = Instantiate(enemy, new Vector3(enemyX, enemyY, enemyZ), Quaternion.identity);
+            var _enemy = Instantiate(enemies[enemy], new Vector3(enemyX, enemyY, enemyZ), Quaternion.identity);
             _enemy.name = "Enemy";
             _enemy.transform.SetParent(parent.transform);
             _enemy.SetActive(true);
