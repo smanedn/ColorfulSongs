@@ -1,0 +1,13 @@
+Documentazione:
+- modificare use case
+- fare gantt
+- modificare schemi er, logico e descriverli
+- modifcare GUI login
+- modificare enigma portali, stanza, parkour
+- 3.6 generazione dei dungeon
+- 3.7 aggiungere schemi
+- sviluppi futuri
+- Gestione utenti?
+- test logout, bottoni game, generazione stanza e enigmi, vittoria, giocabilità
+- test migliori per le richieste di amicizia
+- togliere prerequisiti inutili

@@ -1920,7 +1920,6 @@ GameObject:
   m_Component:
   - component: {fileID: 330585546}
   - component: {fileID: 330585545}
-  - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
   m_Layer: 0
@@ -1930,14 +1929,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &330585544
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 0
 --- !u!20 &330585545
 Camera:
   m_ObjectHideFlags: 0
@@ -13186,6 +13177,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 3721250870513855878, guid: d7675334499871048b577f3ab595d526, type: 3}
+      propertyPath: death
+      value: 
+      objectReference: {fileID: 8300000, guid: b6af9997bce2c664f97e242891c5efeb, type: 3}
     - target: {fileID: 6073209777359271578, guid: d7675334499871048b577f3ab595d526, type: 3}
       propertyPath: portal
       value: 

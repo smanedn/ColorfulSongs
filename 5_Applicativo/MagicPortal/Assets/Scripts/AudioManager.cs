@@ -18,7 +18,6 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -29,14 +28,17 @@ public class AudioManager : MonoBehaviour
         SFXSource.PlayOneShot(clip);
     }
 
-    public AudioClip GetJump()
-    {
-        return jump;
+    public AudioClip getDeath() 
+    { 
+        return death; 
     }
-
     public AudioClip GetHit()
     {
         return hit;
     }
 
+    public AudioClip GetJump()
+    {
+        return jump;
+    }
 }
