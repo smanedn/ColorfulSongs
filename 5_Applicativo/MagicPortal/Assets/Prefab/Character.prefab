@@ -594,6 +594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portal: {fileID: 0}
   pauseMenu: {fileID: 0}
+  sc: {fileID: 0}
 --- !u!95 &7290698941882967979
 Animator:
   serializedVersion: 7

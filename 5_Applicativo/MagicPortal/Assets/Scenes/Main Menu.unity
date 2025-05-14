@@ -4976,7 +4976,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Simone Demarchi
+  m_text: 'Lorenzo Berther
+
+    Simone Demarchi
 
     Kamil Siddiqui'
   m_isRightToLeft: 0
@@ -9608,7 +9610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2011244216
 Transform:
   m_ObjectHideFlags: 0

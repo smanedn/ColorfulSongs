@@ -117,16 +117,18 @@ public class PlayerMovement : MonoBehaviour
             veritcalVelocity = -1f;
             if (Input.GetButtonDown("Jump"))
             {
+                GetComponent<Animator>().SetBool("isJumping",true);
+                //GetComponent<Animator>().SetBool("isWalking", false);
                 veritcalVelocity = Mathf.Sqrt(jumpHeight * gravity * 2);
                 audioManager.PlaySFX(audioManager.GetJump());
             }
-
+            
             //MoveArm("down");
         }
         else
         {
             veritcalVelocity -= gravity * Time.deltaTime;
-
+            GetComponent<Animator>().SetBool("isJumping", false);
             //MoveArm("up");
             if (IsVoid())
             {
