@@ -50,3 +50,5 @@
 [2025-05-07T08:46:07.821855+02:00] leaderboardController.INFO: friend created with attribute userId1: 1 userId2: 1 pending: 1 [] []
 [2025-05-07T12:35:41.157704+02:00] leaderboardController.WARNING: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1-21' for key 'PRIMARY' (Connection: default, SQL: insert into `friend` (`userId1`, `userId2`, `pending`) values (1, 21, 1)) [] []
 [2025-05-07T13:21:21.800942+02:00] notify.INFO: friend created with attribute userId1: 1 userId2: 1 pending: 1 [] []
+[2025-05-14T09:43:11.817181+02:00] notify.WARNING: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1-21' for key 'PRIMARY' (Connection: default, SQL: insert into `friend` (`userId1`, `userId2`, `pending`) values (1, 21, 1)) [] []
+[2025-05-14T11:17:15.303471+02:00] notify.INFO: friend created with attribute userId1: 1 userId2: 1 pending: 1 [] []

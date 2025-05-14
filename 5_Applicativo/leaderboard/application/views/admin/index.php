@@ -6,10 +6,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link <?php if(str_ends_with($_SERVER['REQUEST_URI'],'/')){echo 'text-white';}else{echo'text-secondary';} ?>"  href="<?php echo URL ?>leaderboardController">Leaderboard <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white"  href="<?php echo URL ?>leaderboardController">Leaderboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if(str_ends_with($_SERVER['REQUEST_URI'],'admin')){echo 'text-white';}else{echo'text-secondary';} ?>" href="<?php echo URL ?>admin">Gestione Utenti</a>
+                    <a class="nav-link text-secondary" href="<?php echo URL ?>admin">Gestione Utenti</a>
                 </li>
             </ul>
         </div>
@@ -72,17 +72,23 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php if (is_null($leaderboard_data)) : echo "No friend request" ?>
-                    <?php else :
-                        foreach ($leaderboard_data as $leaderboardValue) : ?>
-                            <tr>
-                                <td><?php echo $leaderboardValue->username; ?></td>
-                                <td><?php echo $leaderboardValue->score; ?></td>
-                                <td><a href="<?php echo URL . 'friendController/friendRequest/'. $leaderboardValue->id; ?>" class="btn btn-outline-info"
-                                       >Friend Request</a></td>
-                            </tr>
+                        <?php foreach ($leaderboard_data as $leaderboardValue): ?>
+                        <?php
+                        $isFriend = in_array($leaderboardValue->id, $friendIds);
+                        $alreadyFriend = $isFriend ? "Remove Friends" : "Send Friend Request";
+                        ?>
+                        <tr>
+                            <td><?php echo $leaderboardValue->username ?></td>
+                            <td><?php echo $leaderboardValue->score ?></td>
+                            <td>
+                                <?php if ($isFriend): ?>
+                                    <a href="<?php echo URL . 'friendController/removeFriend/' . $leaderboardValue->id; ?>" class="btn btn-outline-warning" ><?php echo $alreadyFriend?></a>
+                                <?php else: ?>
+                                <a href="<?php echo URL . 'friendController/friendRequest/'. $leaderboardValue->id; ?>" class="btn btn-outline-info"><?php echo $alreadyFriend?></a></td>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
                         <?php endforeach; ?>
-                    <?php endif; ?>
                     </tbody>
                 </table>
             </div>
