@@ -12,7 +12,7 @@
  * Utile per vedere tutti i piccoli problemi in fase di sviluppo, in produzione solo quelli gravi
  */
 error_reporting(E_ALL);
-ini_set("display_errors", 1);
+ini_set("display_errors", 0);
 
 /**
  * Configurazione di : URL del progetto

@@ -43,11 +43,12 @@
                 </div>
             </form>
 
+            <form method="POST" action="<?php echo URL; ?>leaderboardController/searchFilter">
                 <section class="mt-3">
                     <div>
                         <label for="usernameSearch" class="form-label fw-bold fs-6">Users</label>
                         <div class="d-inline-flex">
-                            <input class="form-control w-75" id="toSearch" oninput="search()" name="usernameSearch" placeholder="Username...">
+                            <input class="form-control w-75" name="usernameSearch" placeholder="Username...">
                             <button type="submit" class="btn btn-outline-dark ms-2" name="search" value="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                         <p class="text-danger w-75"><?php if(isset($error)) echo $error ?></p>
@@ -55,6 +56,7 @@
 
                     <button type="submit" class="btn btn-outline-dark ms-2" name="deleteFilter" value="deleteFilter">Delete Filter</button>
                 </section>
+            </form>
 
         </div>
 

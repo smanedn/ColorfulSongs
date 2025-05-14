@@ -115,31 +115,25 @@ class leaderboardController
                     require_once 'application/views/leaderboard/index.php';
                 }
             }
-            if (isset($_SESSION['type'])) {
-                $leaderboard_data = Leaderboard::getDataByUsername($username);
-                $friends = Friend::showFriend($_SESSION['UserId']);
 
-                $friendIds = [];
-                foreach ($friends as $friend) {
-                    if ($friend->userId1 == $_SESSION['UserId']) {
-                        $friendIds[] = $friend->userId2;
-                    } else {
-                        $friendIds[] = $friend->userId1;
-                    }
-                }
-                require_once 'application/views/_templates/header.php';
-                if ($this->isAdmin()) {
-                    require_once 'application/views/admin/index.php';
-                }else {
-                    require_once 'application/views/admin/index.php';
+            $leaderboard_data = Leaderboard::getDataByUsername($username);
+            $friends = Friend::showFriend($_SESSION['UserId']);
+
+            $friendIds = [];
+            foreach ($friends as $friend) {
+                if ($friend->userId1 == $_SESSION['UserId']) {
+                    $friendIds[] = $friend->userId2;
+                } else {
+                    $friendIds[] = $friend->userId1;
                 }
             }
             require_once 'application/views/_templates/header.php';
             if ($this->isAdmin()) {
                 require_once 'application/views/admin/index.php';
             }else {
-                require_once 'application/views/leaderboard/index.php';
+                require_once 'application/views/admin/index.php';
             }
+
         }
         if (isset($_POST['deleteFilter'])) {
             require_once "application/models/Leaderboard.php";

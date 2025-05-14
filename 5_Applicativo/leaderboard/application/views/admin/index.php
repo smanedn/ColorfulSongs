@@ -55,8 +55,6 @@
 
                     <button type="submit" class="btn btn-outline-dark ms-2" name="deleteFilter" value="deleteFilter">Delete Filter</button>
                 </section>
-
-
             </form>
 
         </div>
