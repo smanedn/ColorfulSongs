@@ -1,5 +1,7 @@
+using System;
 using System.Net.NetworkInformation;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
@@ -51,11 +53,13 @@ public class Score : MonoBehaviour
 
     public void setGUIScore()
     {
+        
         scoreParent.SetActive(true);
         for (int i = 0; i < PlayerPrefs.GetInt("CompletedLevels"); i++)
         {
             string name = "Time" + i;
             int j = i + 1;
+            //DateTime dt = new DateTime(PlayerPrefs.GetString(name));
             scores[i].text = string.Format("Score {0}: " + PlayerPrefs.GetString(name), j);
         }
         for(int i = PlayerPrefs.GetInt("CompletedLevels");i<5; i++)

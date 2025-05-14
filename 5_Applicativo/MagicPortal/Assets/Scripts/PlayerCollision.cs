@@ -33,7 +33,6 @@ public class PlayerCollision : MonoBehaviour
             string timeToComplete = sc.getScore();
             string timeForLevel = "Time" + CompletedLevels;
             CompletedLevels++;
-            print(CompletedLevels);
             PlayerPrefs.SetInt("CompletedLevels", CompletedLevels);
             PlayerPrefs.SetString(timeForLevel, timeToComplete);
             PlayerPrefs.Save();

@@ -20,30 +20,32 @@ public class TerrainGenerator : MonoBehaviour
     private int startingZ = 0;
 
     [Header("Level Size")]
-    [SerializeField] private int row;         
-    [SerializeField] private int column;            
+    [SerializeField] private int row;
+    [SerializeField] private int column;
     [SerializeField] private int y;
     private int firstTerrainZ;
     private int firstTerrainX;
     [SerializeField] private int wallHeight;
+    private int rowLShaped = 20;
+    private int columnLShaped = 20;
 
     [Header("First Obstacle position")]
-    [SerializeField] private int startObstacle1X;     
-    [SerializeField] private int endObstacle1X;       
-    private int startObstacle1Z;     
-    private int endObstacle1Z;       
+    [SerializeField] private int startObstacle1X;
+    [SerializeField] private int endObstacle1X;
+    private int startObstacle1Z;
+    private int endObstacle1Z;
     [SerializeField] private int startObstacle1Y;
 
     [Header("Second Obstacle position")]
-    [SerializeField] private int startObstacle2X;     
-    [SerializeField] private int endObstacle2X;       
-    private int startObstacle2Z;     
-    private int endObstacle2Z;       
+    [SerializeField] private int startObstacle2X;
+    [SerializeField] private int endObstacle2X;
+    private int startObstacle2Z;
+    private int endObstacle2Z;
     [SerializeField] private int startObstacle2Y;
 
-    private int startLShapedObstacle2X;  
-    private int endLShapedObstacle2X;    
-    private int startLShapedObstacle2Z;  
+    private int startLShapedObstacle2X;
+    private int endLShapedObstacle2X;
+    private int startLShapedObstacle2Z;
     private int endLShapedObstacle2Z;
 
     private float enemyX;
@@ -198,7 +200,7 @@ public class TerrainGenerator : MonoBehaviour
                         wallObj.transform.SetParent(parent.transform);
                     }
                 }
-                else if(r==0 || c == 0)
+                else if (r == 0 || c == 0)
                 {
                     for (int a = y; a <= 5; a++)
                     {
@@ -210,23 +212,24 @@ public class TerrainGenerator : MonoBehaviour
                 }
             }
         }
+
+        ButtonGUI.SetActive(true);
+        sc.setGUIScore();
+        inGameGUI.SetActive(false);
+        GameObject.Find("Character").GetComponent<PlayerMovement>().enabled = false;
+        Time.timeScale = 0f;
         if (PlayerPrefs.GetInt("CompletedLevels") >= 5)
         {
             winGUI.SetActive(true);
         }
-        else if(PlayerPrefs.GetInt("Dead") == 1)
+        else if (PlayerPrefs.GetInt("Dead") == 1)
         {
             HealthManager.DeathScreen();
         }
-        ButtonGUI.SetActive(true);
-        sc.setGUIScore();
-        inGameGUI.SetActive(false);
-        //Instance.inGameGUI.gameObject?.SetActive(false);
-        GameObject.Find("Character").GetComponent<PlayerMovement>().enabled = false;
-        Cursor.visible = true;
+
     }
 
-    /**public void generateLShapeTerrain()
+    public void generateLShapeTerrain()
     {
         startObstacle1Z = columnLShaped - startObstacle1Z;
         endObstacle1Z = columnLShaped - endObstacle1Z;
@@ -236,148 +239,149 @@ public class TerrainGenerator : MonoBehaviour
             for (int c = startingZ; c <= columnLShaped; c++)
             {
                 z = c;
-                //if ((r < startObstacle1X || r >= endObstacle1X) &&
-                  /// (z < startObstacle2Z || z >= endObstacle2Z) &&
-                   //(z < firstTerrainZ && r>firstTerrainX))
-                //{
-                if (
-                    (z < columnLShaped - firstTerrainZ && x < firstTerrainX) ||
-                    (r > startObstacle1X && r < endObstacle1X)
+                if ((r < startObstacle1X || r >= endObstacle1X) &&
+                   (z < startObstacle2Z || z >= endObstacle2Z) &&
+                   (z < firstTerrainZ && r > firstTerrainX))
+                {
+                    if (
+                        (z < columnLShaped - firstTerrainZ && x < firstTerrainX) ||
+                        (r > startObstacle1X && r < endObstacle1X)
 
-                    )
-                {
-                    empty = true;
-                }
-                else
-                {
-                    empty = false;
-                }
-
-                if (!empty)
-                {
-                    string name = "pavimento[" + r.ToString() + ";" + y.ToString() + ";" + c.ToString() + "]";
-                    var cube = Instantiate(floor, new Vector3(x, y, z), Quaternion.identity);
-                    cube.name = name;
-                    cube.transform.SetParent(parent.transform);
-                }
-
-                if (r == rowLShaped || c == columnLShaped)
-                {
-                    for (int a = y; a <= wallHeight; a++)
+                        )
                     {
-                        string nameWall = "wall[" + r.ToString() + ";" + a.ToString() + ";" + c.ToString() + "]";
-                        var wallObj = Instantiate(wall, new Vector3(x, a, z), Quaternion.identity);
-                        wallObj.name = nameWall;
-                        wallObj.transform.SetParent(parent.transform);
+                        empty = true;
+                    }
+                    else
+                    {
+                        empty = false;
+                    }
+
+                    if (!empty)
+                    {
+                        string name = "pavimento[" + r.ToString() + ";" + y.ToString() + ";" + c.ToString() + "]";
+                        var cube = Instantiate(floor, new Vector3(x, y, z), Quaternion.identity);
+                        cube.name = name;
+                        cube.transform.SetParent(parent.transform);
+                    }
+
+                    if (r == rowLShaped || c == columnLShaped)
+                    {
+                        for (int a = y; a <= wallHeight; a++)
+                        {
+                            string nameWall = "wall[" + r.ToString() + ";" + a.ToString() + ";" + c.ToString() + "]";
+                            var wallObj = Instantiate(wall, new Vector3(x, a, z), Quaternion.identity);
+                            wallObj.name = nameWall;
+                            wallObj.transform.SetParent(parent.transform);
+                        }
                     }
                 }
             }
         }
-    }*/
-
-    public int getStartX(string name)
-    {
-        if (name == obstacles[firstObstacle].name)
-        {
-            print("Ritornato X=" + startObstacle1X + " a " + name);
-            return startObstacle1X;
-        }
-        else if (name == obstacles[secondObstacle].name)
-        {
-            print("Ritornato X=" + startObstacle2X + " a " + name);
-            return startObstacle2X;
-        }
-        else
-        {
-            print("Ritornato X=0 a " + name);
-            return 0;
-        }
-    }
-    public int getStartX2() { return startObstacle2X; }
-    public int getEndX(string name)
-    {
-        if (name == obstacles[firstObstacle].name)
-        {
-            return endObstacle1X;
-        }
-        else if (name == obstacles[secondObstacle].name)
-        {
-            return endObstacle2X;
-        }
-        else
-        {
-            return 0;
-        }
     }
 
-    public int getEndX1(){return endObstacle1X; }
+        public int getStartX(string name)
+        {
+            if (name == obstacles[firstObstacle].name)
+            {
+                print("Ritornato X=" + startObstacle1X + " a " + name);
+                return startObstacle1X;
+            }
+            else if (name == obstacles[secondObstacle].name)
+            {
+                print("Ritornato X=" + startObstacle2X + " a " + name);
+                return startObstacle2X;
+            }
+            else
+            {
+                print("Ritornato X=0 a " + name);
+                return 0;
+            }
+        }
+        public int getStartX2() { return startObstacle2X; }
+        public int getEndX(string name)
+        {
+            if (name == obstacles[firstObstacle].name)
+            {
+                return endObstacle1X;
+            }
+            else if (name == obstacles[secondObstacle].name)
+            {
+                return endObstacle2X;
+            }
+            else
+            {
+                return 0;
+            }
+        }
 
-    public int getStartZ(string name)
-    {
-        if (name == obstacles[firstObstacle].name)
+        public int getEndX1() { return endObstacle1X; }
+
+        public int getStartZ(string name)
         {
-            return startObstacle1Z;
+            if (name == obstacles[firstObstacle].name)
+            {
+                return startObstacle1Z;
+            }
+            else if (name == obstacles[secondObstacle].name)
+            {
+                return startObstacle2Z;
+            }
+            else
+            {
+                return 0;
+            }
         }
-        else if (name == obstacles[secondObstacle].name)
+        public int getEndZ(string name)
         {
-            return startObstacle2Z;
+            if (name == obstacles[firstObstacle].name)
+            {
+                return endObstacle1Z;
+            }
+            else if (name == obstacles[secondObstacle].name)
+            {
+                return endObstacle2Z;
+            }
+            else
+            {
+                return 0;
+            }
         }
-        else
-        {
-            return 0;
-        }
-    }
-    public int getEndZ(string name)
-    {
-        if (name == obstacles[firstObstacle].name)
+
+        public int getEndZ()
         {
             return endObstacle1Z;
+
         }
-        else if (name == obstacles[secondObstacle].name)
+
+        public int getStartY(string name)
         {
-            return endObstacle2Z;
+            if (name == obstacles[firstObstacle].name)
+            {
+                return startObstacle1Y;
+            }
+            else if (name == obstacles[secondObstacle].name)
+            {
+                return startObstacle2Y;
+            }
+            else
+            {
+                return 0;
+            }
         }
-        else
+
+        public int getObstacleNumber(string name)
         {
-            return 0;
+            if (name == obstacles[firstObstacle].name)
+            {
+                return 1;
+            }
+            else if (name == obstacles[secondObstacle].name)
+            {
+                return 2;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
-
-    public int getEndZ()
-    {
-        return endObstacle1Z;
-
-    }
-
-    public int getStartY(string name)
-    {
-        if (name == obstacles[firstObstacle].name)
-        {
-            return startObstacle1Y;
-        }
-        else if (name == obstacles[secondObstacle].name)
-        {
-            return startObstacle2Y;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-
-    public int getObstacleNumber(string name)
-    {
-        if (name == obstacles[firstObstacle].name)
-        {
-            return 1;
-        }
-        else if (name == obstacles[secondObstacle].name)
-        {
-            return 2;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-}
