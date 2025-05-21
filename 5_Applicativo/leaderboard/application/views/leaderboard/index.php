@@ -75,7 +75,7 @@
                     <?php foreach ($leaderboard_data as $leaderboardValue): ?>
                         <?php
                         $isFriend = in_array($leaderboardValue->id, $friendIds);
-                        $alreadyFriend = $isFriend ? "Remove Friends" : "Send Friend Request";
+                        $alreadyFriend = $isFriend ? "Remove Friend" : "Send Friend Request";
                         ?>
                         <tr>
                             <td><?php echo $leaderboardValue->username ?></td>

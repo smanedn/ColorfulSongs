@@ -25,68 +25,80 @@ class FriendController
 
     public function newFriend()
     {
-        $friends = Friend::friendRequestWithFriendName($_SESSION['UserId']);
-
-        require_once 'application/views/_templates/header.php';
-        require_once 'application/views/notifications/index.php';
-
+        if (isset($_SESSION['userType'])) {
+            $friends = Friend::friendRequestWithFriendName($_SESSION['UserId']);
+            require_once 'application/views/_templates/header.php';
+            require_once 'application/views/notifications/index.php';
+        }else{
+            header("Location:" . URL);
+        }
     }
 
     public function acceptRequest($userId)
     {
-        $friend = Friend::create(["userId1" => $_SESSION['UserId'], "userId2" => $userId, "pending" => 0]);
-        $friendUpdate = Friend::where('userId1', $userId)->where('userId2', $_SESSION['UserId'])->update(['pending'=> 0]);
-        require_once 'application/views/_templates/header.php';
-        require_once 'application/views/notifications/index.php';
+        if (isset($_SESSION['userType'])) {
+            $friend = Friend::create(["userId1" => $_SESSION['UserId'], "userId2" => $userId, "pending" => 0]);
+            $friendUpdate = Friend::where('userId1', $userId)->where('userId2', $_SESSION['UserId'])->update(['pending' => 0]);
+            require_once 'application/views/_templates/header.php';
+            require_once 'application/views/notifications/index.php';
+        }else{
+            header("Location:" . URL);
+        }
     }
 
     public function friendRequest($friendId)
     {
-
-
+        if (isset($_SESSION['userType'])) {
             try {
                 $friend = Friend::create(["userId1" => $_SESSION['UserId'], "userId2" => $friendId, "pending" => 1]);
 
-            }catch (\Exception $e){
+            } catch (\Exception $e) {
                 $this->log->warning($e->getMessage());
             }
 
 
             require_once 'application/models/Leaderboard.php';
-            if ($this->isAdmin()){
+            if ($this->isAdmin()) {
                 $leaderboard_data = Leaderboard::getData();
                 require_once 'application/views/_templates/header.php';
                 require_once 'application/views/admin/index.php';
-            }else{
+            } else {
                 $leaderboard_data = Leaderboard::getData();
                 require_once 'application/views/_templates/header.php';
                 require_once 'application/views/leaderboard/index.php';
             }
+        }else{
+            header("Location:" . URL);
+        }
 
     }
 
     public function removeFriend($id)
     {
-        try {
-            $friend = Friend::where('userId1', $id)
+        if (isset($_SESSION['userType'])) {
+            try {
+                $friend = Friend::where('userId1', $id)
                     ->where('userId2', $_SESSION['UserId'])
                     ->delete();
-            $friend = Friend::where('userId2', $id)
-                ->where('userId1', $_SESSION['UserId'])
-                ->delete();
+                $friend = Friend::where('userId2', $id)
+                    ->where('userId1', $_SESSION['UserId'])
+                    ->delete();
 
-        }catch (\Exception $e){
-            $this->log->warning($e->getMessage());
-        }
-        require_once 'application/models/Leaderboard.php';
-        if ($this->isAdmin()){
-            $leaderboard_data = User::getDataByFriendId($_SESSION['UserId']);
-            require_once 'application/views/_templates/header.php';
-            require_once 'application/views/admin/index.php';
+            } catch (\Exception $e) {
+                $this->log->warning($e->getMessage());
+            }
+            require_once 'application/models/Leaderboard.php';
+            if ($this->isAdmin()) {
+                $leaderboard_data = User::getDataByFriendId($_SESSION['UserId']);
+                require_once 'application/views/_templates/header.php';
+                require_once 'application/views/admin/index.php';
+            } else {
+                $leaderboard_data = User::getDataByFriendId($_SESSION['UserId']);
+                require_once 'application/views/_templates/header.php';
+                require_once 'application/views/leaderboard/index.php';
+            }
         }else{
-            $leaderboard_data = User::getDataByFriendId($_SESSION['UserId']);
-            require_once 'application/views/_templates/header.php';
-            require_once 'application/views/leaderboard/index.php';
+            header("Location:" . URL);
         }
     }
 

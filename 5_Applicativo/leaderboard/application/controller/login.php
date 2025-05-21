@@ -52,7 +52,6 @@ class Login
     {
         session_start();
         unset($_SESSION['UserId']);
-        setcookie('mapCode',$_COOKIE['mapCode'],time() - (3600), "/");
         session_destroy();
         header("Location:" . URL);
         exit();
