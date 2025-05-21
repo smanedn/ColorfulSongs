@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,7 +12,6 @@ public class TerrainGenerator : MonoBehaviour
     private int x;
     private int z;
     private int h;
-    private bool end;
     private bool empty;
     private int firstObstacle;
     private int secondObstacle;
@@ -71,9 +71,12 @@ public class TerrainGenerator : MonoBehaviour
 
     void Start()
     {
-        if (PlayerPrefs.GetInt("LevelEnded") == 1)
+        print("Dentro start, RoomGenerated: " + PlayerPrefs.GetInt("roomGenerated"));
+        if (PlayerPrefs.GetInt("LevelEnded") == 1 && PlayerPrefs.GetInt("roomGenerated") == 0)
         {
             generateEndRoom();
+            PlayerPrefs.SetInt("roomGenerated", 1);
+            PlayerPrefs.Save();
         }
         else
         {
@@ -87,9 +90,9 @@ public class TerrainGenerator : MonoBehaviour
             int n = enemies.Length;
             do
             {
-                firstObstacle = Random.Range(0, l);
-                secondObstacle = Random.Range(0, l);
-                enemy = Random.Range(0,n);
+                firstObstacle = UnityEngine.Random.Range(0, l);
+                secondObstacle = UnityEngine.Random.Range(0, l);
+                enemy = UnityEngine.Random.Range(0,n);
             } while (firstObstacle == secondObstacle);
 
             obstacles[firstObstacle].SetActive(true);
@@ -114,15 +117,13 @@ public class TerrainGenerator : MonoBehaviour
 
     private void Update()
     {
-        if (hm.IsDead() || PlayerPrefs.GetInt("CompletedLevels") > 4)
+        if ( hm.IsDead() || PlayerPrefs.GetInt("CompletedLevels") > 4 && PlayerPrefs.GetInt("roomGenerated") == 0)
         {
+            print("Dentro l'update, RoomGenerated: " + PlayerPrefs.GetInt("roomGenerated"));
             if (hm.IsDead())
             {
-                print("DEAD in UPDATE");
                 PlayerPrefs.SetInt("Dead", 1);
-                PlayerPrefs.Save();
             }
-            print("LEVEL FINITO:\nHeart: " + hm.IsDead() + "\nLivelli completati: " + PlayerPrefs.GetInt("CompletedLevels"));
             PlayerPrefs.SetInt("LevelEnded", 1);
             PlayerPrefs.Save();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -179,54 +180,57 @@ public class TerrainGenerator : MonoBehaviour
 
     public void generateEndRoom()
     {
-        for (int r = 0; r <= 7; r++)
+        if (PlayerPrefs.GetInt("roomGenerated") == 0) 
         {
-            x = r;
-            for (int c = 0; c <= 7; c++)
+            print("Generata la stanza end");
+            for (int r = 0; r <= 7; r++)
             {
-                z = c;
-                string name = "pavimento[" + r.ToString() + ";" + y.ToString() + ";" + c.ToString() + "]";
-                var cube = Instantiate(floor, new Vector3(x, y, z), Quaternion.identity);
-                cube.name = name;
-                cube.transform.SetParent(parent.transform);
+                x = r;
+                for (int c = 0; c <= 7; c++)
+                {
+                    z = c;
+                    string name = "pavimento[" + r.ToString() + ";" + y.ToString() + ";" + c.ToString() + "]";
+                    var cube = Instantiate(floor, new Vector3(x, y, z), Quaternion.identity);
+                    cube.name = name;
+                    cube.transform.SetParent(parent.transform);
 
-                if (r == 7 || c == 7)
-                {
-                    for (int a = y; a <= 5; a++)
+                    if (r == 7 || c == 7)
                     {
-                        string nameWall = "wall[" + r.ToString() + ";" + a.ToString() + ";" + c.ToString() + "]";
-                        var wallObj = Instantiate(wall, new Vector3(x, a, z), Quaternion.identity);
-                        wallObj.name = nameWall;
-                        wallObj.transform.SetParent(parent.transform);
+                        for (int a = y; a <= 5; a++)
+                        {
+                            string nameWall = "wall[" + r.ToString() + ";" + a.ToString() + ";" + c.ToString() + "]";
+                            var wallObj = Instantiate(wall, new Vector3(x, a, z), Quaternion.identity);
+                            wallObj.name = nameWall;
+                            wallObj.transform.SetParent(parent.transform);
+                        }
                     }
-                }
-                else if (r == 0 || c == 0)
-                {
-                    for (int a = y; a <= 5; a++)
+                    else if (r == 0 || c == 0)
                     {
-                        string nameWall = "transparentWall[" + r.ToString() + ";" + a.ToString() + ";" + c.ToString() + "]";
-                        var wallObj = Instantiate(transparent, new Vector3(x, a, z), Quaternion.identity);
-                        wallObj.name = nameWall;
-                        wallObj.transform.SetParent(parent.transform);
+                        for (int a = y; a <= 5; a++)
+                        {
+                            string nameWall = "transparentWall[" + r.ToString() + ";" + a.ToString() + ";" + c.ToString() + "]";
+                            var wallObj = Instantiate(transparent, new Vector3(x, a, z), Quaternion.identity);
+                            wallObj.name = nameWall;
+                            wallObj.transform.SetParent(parent.transform);
+                        }
                     }
                 }
             }
-        }
 
-        ButtonGUI.SetActive(true);
-        sc.setGUIScore();
-        inGameGUI.SetActive(false);
-        GameObject.Find("Character").GetComponent<PlayerMovement>().enabled = false;
-        Time.timeScale = 0f;
-        if (PlayerPrefs.GetInt("CompletedLevels") >= 5)
-        {
-            winGUI.SetActive(true);
+            ButtonGUI.SetActive(true);
+            sc.setGUIScore();
+            inGameGUI.SetActive(false);
+            GameObject.Find("Character").GetComponent<PlayerMovement>().enabled = false;
+            Time.timeScale = 0f;
+            if (PlayerPrefs.GetInt("CompletedLevels") >= 5)
+            {
+                HealthManager.EndScreen("won");
+            }
+            else if (PlayerPrefs.GetInt("Dead") == 1)
+            {
+                HealthManager.EndScreen("lost");
+            }
         }
-        else if (PlayerPrefs.GetInt("Dead") == 1)
-        {
-            HealthManager.DeathScreen();
-        }
-
     }
 
     public void generateLShapeTerrain()
@@ -283,17 +287,14 @@ public class TerrainGenerator : MonoBehaviour
         {
             if (name == obstacles[firstObstacle].name)
             {
-                print("Ritornato X=" + startObstacle1X + " a " + name);
                 return startObstacle1X;
             }
             else if (name == obstacles[secondObstacle].name)
             {
-                print("Ritornato X=" + startObstacle2X + " a " + name);
                 return startObstacle2X;
             }
             else
             {
-                print("Ritornato X=0 a " + name);
                 return 0;
             }
         }

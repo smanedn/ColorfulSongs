@@ -82,6 +82,7 @@ public class PauseMenu : MonoBehaviour
     {
         PlayerPrefs.SetInt("CompletedLevels", 0);
         PlayerPrefs.SetInt("LevelEnded", 0);
+        PlayerPrefs.SetInt("roomGenerated", 0);
         PlayerPrefs.Save();
         SceneManager.LoadScene("Game");
     }
@@ -90,6 +91,8 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         PlayerPrefs.SetInt("LevelEnded", 0);
+        PlayerPrefs.SetInt("roomGenerated", 0);
+        PlayerPrefs.Save();
         SceneManager.LoadScene("Main Menu");
     }
 }

@@ -12,8 +12,8 @@ public class HealthManager : MonoBehaviour
     private float invincibilityDurationSeconds = 2;
     private Transform[] heartImages;
     [SerializeField] private AudioSource musicSource;
-    //[SerializeField] private GameObject inGameGUI;
     [SerializeField] private GameObject deathGUI;
+    [SerializeField] private TextMeshProUGUI winLostGUI;
     [SerializeField] private GameObject hitGUI; 
     private AudioManager audioManager;
     [SerializeField] private Score sc;
@@ -36,9 +36,6 @@ public class HealthManager : MonoBehaviour
         heartImages = healthBar.GetComponentsInChildren<Transform>();
         print(heartImages.Length);
         health = heartImages.Length - 1;
-
-        //deathGUI.gameObject.SetActive(false);
-        //PlayerPrefs.SetInt("Dead", 0);
     }
 
     public void LooseOneHeart()
@@ -55,9 +52,6 @@ public class HealthManager : MonoBehaviour
             if (IsDead())
             {
                 hitGUI.SetActive(false);
-                //print("dead");
-                //DeathScreen();
-                //sc.setGUIScore();
             }
             else
             {
@@ -82,12 +76,13 @@ public class HealthManager : MonoBehaviour
     }
 
 
-    public static void DeathScreen()
+    public static void EndScreen(string text)
     {
         Time.timeScale = 0f;
         Instance.musicSource?.Pause();
         Instance.deathGUI.gameObject?.SetActive(true);
-        
+        Instance.winLostGUI.text = string.Format("You {0}", text);
+
     }
 
     public static int GetHealth()
@@ -99,9 +94,4 @@ public class HealthManager : MonoBehaviour
     {
         return health <= 0;
     }
-
-    /*public IEnumerator Wait(float time)
-    {
-        yield return new WaitForSeconds(time);
-    }*/
 }

@@ -29,10 +29,6 @@ public class Score : MonoBehaviour
         {
             scoreValue += Time.deltaTime;
         }
-        //else
-        //{
-        //    HealthManager.DeathScreen();
-        //}
 
         hundredths = Mathf.FloorToInt(scoreValue * 100) % 100;
         seconds = Mathf.FloorToInt(scoreValue % 60);
