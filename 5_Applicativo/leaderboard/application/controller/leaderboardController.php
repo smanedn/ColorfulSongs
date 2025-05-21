@@ -34,9 +34,7 @@ class leaderboardController
         if (isset($_SESSION['userType'])) {
             require_once 'application/models/Leaderboard.php';
             $leaderboard_data = Leaderboard::getData();
-
             $friends = Friend::showFriend($_SESSION['UserId']);
-
             $friendIds = [];
             foreach ($friends as $friend) {
                 if ($friend->userId1 == $_SESSION['UserId']) {
@@ -69,7 +67,6 @@ class leaderboardController
             $leaderboardMapper = Leaderboard::getData();
             if (isset($_POST['type'])) {
                 $friends = Friend::showFriend($_SESSION['UserId']);
-
                 $friendIds = [];
                 foreach ($friends as $friend) {
                     if ($friend->userId1 == $_SESSION['UserId']) {
@@ -125,7 +122,6 @@ class leaderboardController
                         require_once 'application/views/leaderboard/index.php';
                     }
                 }
-
                 $leaderboard_data = Leaderboard::getDataByUsername($username);
                 $friends = Friend::showFriend($_SESSION['UserId']);
 
@@ -143,13 +139,11 @@ class leaderboardController
                 } else {
                     require_once 'application/views/admin/index.php';
                 }
-
             }
             if (isset($_POST['deleteFilter'])) {
                 require_once "application/models/Leaderboard.php";
                 require_once 'application/views/_templates/header.php';
                 $friends = Friend::showFriend($_SESSION['UserId']);
-
                 $friendIds = [];
                 foreach ($friends as $friend) {
                     if ($friend->userId1 == $_SESSION['UserId']) {

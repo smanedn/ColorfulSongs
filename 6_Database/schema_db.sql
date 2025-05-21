@@ -4,7 +4,7 @@ CREATE TABLE user(
 	id int AUTO_INCREMENT PRIMARY KEY,
 	username VARCHAR(64) UNIQUE NOT NULL,
 	password VARCHAR(256) NOT NULL,
-	email VARCHAR(256) NOT NULL,
+	email VARCHAR(256) UNIQUE NOT NULL,
     type varchar(10) NOT NULL default 'user'
 );
 
@@ -28,6 +28,8 @@ CREATE USER 'colorfulsongs'@'%' IDENTIFIED BY 'Admin$00';
 GRANT ALL PRIVILEGES ON colorfulsongs.* TO 'colorfulsongs'@'%';
 FLUSH PRIVILEGES;
 
+use colorfulsongs;
+show triggers;
 delimiter // 
 create trigger leaderboardScoreUpdate 
 before update on leaderboard for each row begin 

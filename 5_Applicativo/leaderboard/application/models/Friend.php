@@ -12,7 +12,7 @@ class Friend extends Model
         return $this->belongsTo(User::class,'userId1');
     }
 
-    public static function friendRequestWithFriendName($userId)
+    public static function friendRequestWithFriendId($userId)
     {
         return self::select('user.username as username', 'friend.userId2', 'friend.userId1')
             ->distinct()

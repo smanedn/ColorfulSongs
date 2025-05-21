@@ -26,7 +26,7 @@ class FriendController
     public function newFriend()
     {
         if (isset($_SESSION['userType'])) {
-            $friends = Friend::friendRequestWithFriendName($_SESSION['UserId']);
+            $friends = Friend::friendRequestWithFriendId($_SESSION['UserId']);
             require_once 'application/views/_templates/header.php';
             require_once 'application/views/notifications/index.php';
         }else{
