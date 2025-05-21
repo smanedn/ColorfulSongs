@@ -26,7 +26,7 @@ public class ParkourGenerator : MonoBehaviour
         endingX = generator.GetComponent<TerrainGenerator>().getEndX("ParkourGenerator");
         endingZ = generator.GetComponent<TerrainGenerator>().getEndZ("ParkourGenerator");
 
-        int oldZ = -1;
+        int oldZ = 0;
         int z = 0;
         int x = 0;
         bool first = true;
@@ -35,12 +35,8 @@ public class ParkourGenerator : MonoBehaviour
         {
             if (first){
                 x = startingX + Random.Range(0,3);
-                first = false;
-            }
-            
-            if (oldZ == -1)
-            {
                 z = Random.Range(startingZ, endingZ);
+                first = false;
             }
             else
             {
