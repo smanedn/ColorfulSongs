@@ -26,10 +26,10 @@ public class DrumEnemy : MonoBehaviour
     private void Start()
     {
 
-        startX = generator.GetComponent<TerrainGenerator>().getEndX1()+0.5f;
-        endX = generator.GetComponent<TerrainGenerator>().getStartX2()-2f;
+        startX = generator.GetComponent<TerrainGenerator>().getEndX("1")+0.5f;
+        endX = generator.GetComponent<TerrainGenerator>().getStartX("2")-2f;
         startZ = 0.5f;
-        endZ = generator.GetComponent<TerrainGenerator>().getEndZ()-2;
+        endZ = generator.GetComponent<TerrainGenerator>().getEndZ("1")-2;
         enemyX = startX-1f + (endX - startX+1.5f) / 2;
         enemyZ = (endZ+2f) / 2;
         y = 0.5f;
