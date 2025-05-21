@@ -31,9 +31,9 @@ public class TrumpetEnemy : MonoBehaviour
 
     void Start()
     {
-        float startX = generator.GetComponent<TerrainGenerator>().getEndX1();
-        float endX = generator.GetComponent<TerrainGenerator>().getStartX2();
-        float endZ = generator.GetComponent<TerrainGenerator>().getEndZ();
+        float startX = generator.GetComponent<TerrainGenerator>().getEndX("1");
+        float endX = generator.GetComponent<TerrainGenerator>().getStartX("2");
+        float endZ = generator.GetComponent<TerrainGenerator>().getEndZ("1");
         enemyX = startX + (endX - startX) / 2;
         enemyZ = endZ / 2;
         y = 1.2f;

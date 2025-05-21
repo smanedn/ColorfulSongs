@@ -43,11 +43,6 @@ public class TerrainGenerator : MonoBehaviour
     private int endObstacle2Z;
     [SerializeField] private int startObstacle2Y;
 
-    private int startLShapedObstacle2X;
-    private int endLShapedObstacle2X;
-    private int startLShapedObstacle2Z;
-    private int endLShapedObstacle2Z;
-
     private float enemyX;
     private float enemyZ;
     private float enemyY;
@@ -71,7 +66,6 @@ public class TerrainGenerator : MonoBehaviour
 
     void Start()
     {
-        print("Dentro start, RoomGenerated: " + PlayerPrefs.GetInt("roomGenerated"));
         if (PlayerPrefs.GetInt("LevelEnded") == 1 && PlayerPrefs.GetInt("roomGenerated") == 0)
         {
             generateEndRoom();
@@ -81,7 +75,6 @@ public class TerrainGenerator : MonoBehaviour
         else
         {
             hm.resetInvincible();
-            print("LIVELLI COMPLETATI " + PlayerPrefs.GetInt("CompletedLevels"));
             enemyX = endObstacle1X + (startObstacle2X - endObstacle1X) / 2f;
             enemyZ = column / 2 - 0.5f;
             enemyY = 1.5f;
@@ -224,72 +217,22 @@ public class TerrainGenerator : MonoBehaviour
             Time.timeScale = 0f;
             if (PlayerPrefs.GetInt("CompletedLevels") >= 5)
             {
-                HealthManager.EndScreen("won");
+                HealthManager.EndScreen("Won!");
             }
             else if (PlayerPrefs.GetInt("Dead") == 1)
             {
-                HealthManager.EndScreen("lost");
-            }
-        }
-    }
-
-    public void generateLShapeTerrain()
-    {
-        startObstacle1Z = columnLShaped - startObstacle1Z;
-        endObstacle1Z = columnLShaped - endObstacle1Z;
-        for (int r = startingX; r <= rowLShaped; r++)
-        {
-            x = r;
-            for (int c = startingZ; c <= columnLShaped; c++)
-            {
-                z = c;
-                if ((r < startObstacle1X || r >= endObstacle1X) &&
-                   (z < startObstacle2Z || z >= endObstacle2Z) &&
-                   (z < firstTerrainZ && r > firstTerrainX))
-                {
-                    if (
-                        (z < columnLShaped - firstTerrainZ && x < firstTerrainX) ||
-                        (r > startObstacle1X && r < endObstacle1X)
-
-                        )
-                    {
-                        empty = true;
-                    }
-                    else
-                    {
-                        empty = false;
-                    }
-
-                    if (!empty)
-                    {
-                        string name = "pavimento[" + r.ToString() + ";" + y.ToString() + ";" + c.ToString() + "]";
-                        var cube = Instantiate(floor, new Vector3(x, y, z), Quaternion.identity);
-                        cube.name = name;
-                        cube.transform.SetParent(parent.transform);
-                    }
-
-                    if (r == rowLShaped || c == columnLShaped)
-                    {
-                        for (int a = y; a <= wallHeight; a++)
-                        {
-                            string nameWall = "wall[" + r.ToString() + ";" + a.ToString() + ";" + c.ToString() + "]";
-                            var wallObj = Instantiate(wall, new Vector3(x, a, z), Quaternion.identity);
-                            wallObj.name = nameWall;
-                            wallObj.transform.SetParent(parent.transform);
-                        }
-                    }
-                }
+                HealthManager.EndScreen("Lost");
             }
         }
     }
 
         public int getStartX(string name)
         {
-            if (name == obstacles[firstObstacle].name)
+            if (name == obstacles[firstObstacle].name || name == "1")
             {
                 return startObstacle1X;
             }
-            else if (name == obstacles[secondObstacle].name)
+            else if (name == obstacles[secondObstacle].name || name == "2")
             {
                 return startObstacle2X;
             }
@@ -298,14 +241,14 @@ public class TerrainGenerator : MonoBehaviour
                 return 0;
             }
         }
-        public int getStartX2() { return startObstacle2X; }
+
         public int getEndX(string name)
         {
-            if (name == obstacles[firstObstacle].name)
+            if (name == obstacles[firstObstacle].name || name == "1")
             {
                 return endObstacle1X;
             }
-            else if (name == obstacles[secondObstacle].name)
+            else if (name == obstacles[secondObstacle].name || name == "2")
             {
                 return endObstacle2X;
             }
@@ -315,15 +258,13 @@ public class TerrainGenerator : MonoBehaviour
             }
         }
 
-        public int getEndX1() { return endObstacle1X; }
-
         public int getStartZ(string name)
         {
-            if (name == obstacles[firstObstacle].name)
+            if (name == obstacles[firstObstacle].name || name == "1")
             {
                 return startObstacle1Z;
             }
-            else if (name == obstacles[secondObstacle].name)
+            else if (name == obstacles[secondObstacle].name || name == "2")
             {
                 return startObstacle2Z;
             }
@@ -334,11 +275,11 @@ public class TerrainGenerator : MonoBehaviour
         }
         public int getEndZ(string name)
         {
-            if (name == obstacles[firstObstacle].name)
+            if (name == obstacles[firstObstacle].name || name == "1")
             {
                 return endObstacle1Z;
             }
-            else if (name == obstacles[secondObstacle].name)
+            else if (name == obstacles[secondObstacle].name || name == "2")
             {
                 return endObstacle2Z;
             }
@@ -348,19 +289,13 @@ public class TerrainGenerator : MonoBehaviour
             }
         }
 
-        public int getEndZ()
-        {
-            return endObstacle1Z;
-
-        }
-
         public int getStartY(string name)
         {
-            if (name == obstacles[firstObstacle].name)
+            if (name == obstacles[firstObstacle].name || name == "1")
             {
                 return startObstacle1Y;
             }
-            else if (name == obstacles[secondObstacle].name)
+            else if (name == obstacles[secondObstacle].name || name == "2")
             {
                 return startObstacle2Y;
             }
