@@ -24,6 +24,7 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.CompareTag("FinishPortal"))
         {
             int CompletedLevels = PlayerPrefs.GetInt("CompletedLevels");
+            
             string timeToComplete = sc.getScore();
             string timeForLevel = "Time" + CompletedLevels;
             CompletedLevels++;

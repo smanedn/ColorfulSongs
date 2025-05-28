@@ -20,8 +20,6 @@ public class TerrainGenerator : MonoBehaviour
     private int firstTerrainZ;
     private int firstTerrainX;
     [SerializeField] private int wallHeight;
-    private int rowLShaped = 20;
-    private int columnLShaped = 20;
 
     [Header("First Obstacle position")]
     [SerializeField] private int startObstacle1X;
