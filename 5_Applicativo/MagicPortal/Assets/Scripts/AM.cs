@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class AM : MonoBehaviour
+//Audio Manager for manage volume
+public class AM : MonoBehaviour 
 {
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private AudioMixer audioMixer;
