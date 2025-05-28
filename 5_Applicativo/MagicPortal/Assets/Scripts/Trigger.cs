@@ -11,16 +11,11 @@ public class Trigger : MonoBehaviour
             if(this.name == "CannonBall(Clone)")
             {
                 hm.LooseOneHeart();
-                print(HealthManager.GetHealth());
             }
             if (this.name == "BadPortal")
             {
                 hm.LooseOneHeart();
-                print(HealthManager.GetHealth());
             }
         }
-        
-
-
     }
 }

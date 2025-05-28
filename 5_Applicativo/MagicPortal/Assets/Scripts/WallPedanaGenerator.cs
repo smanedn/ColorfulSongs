@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 public class WallPedanaGenerator : MonoBehaviour
@@ -41,7 +37,6 @@ public class WallPedanaGenerator : MonoBehaviour
         {
             if (first)
             {
-                
                 blockZ = Random.Range(startingZ + 1, endingZ);
                 first = false;
             }

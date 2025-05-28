@@ -25,7 +25,6 @@ public class DrumEnemy : MonoBehaviour
     [SerializeField] private GameObject generator;
     private void Start()
     {
-
         startX = generator.GetComponent<TerrainGenerator>().getEndX("1")+0.5f;
         endX = generator.GetComponent<TerrainGenerator>().getStartX("2")-2f;
         startZ = 0.5f;
@@ -51,9 +50,7 @@ public class DrumEnemy : MonoBehaviour
             {enemyX,endZ},
             {endX,endZ}
             };
-
         while (true)
-
         {
             if(enemyPosition == 0)
             {

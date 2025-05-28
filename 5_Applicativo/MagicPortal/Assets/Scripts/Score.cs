@@ -1,9 +1,5 @@
-using System;
-using System.Net.NetworkInformation;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 public class Score : MonoBehaviour
 {
@@ -16,13 +12,11 @@ public class Score : MonoBehaviour
     [SerializeField]  private GameObject scoreParent;
     public TextMeshProUGUI[] scores;
 
-
     void Start()
     {
         scoreValue = 0f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (scoreValue < 300)  //5 minutes = 300 seconds
@@ -49,19 +43,16 @@ public class Score : MonoBehaviour
 
     public void setGUIScore()
     {
-        
         scoreParent.SetActive(true);
         for (int i = 0; i < PlayerPrefs.GetInt("CompletedLevels"); i++)
         {
             string name = "Time" + i;
             int j = i + 1;
-            //DateTime dt = new DateTime(PlayerPrefs.GetString(name));
             scores[i].text = string.Format("Score {0}: " + PlayerPrefs.GetString(name), j);
         }
         for(int i = PlayerPrefs.GetInt("CompletedLevels");i<5; i++)
         {
             int j = i + 1;
-            //scores[i].text = string.Format("{0}" + PlayerPrefs.GetString(name), j);
             scores[i].text = string.Format("");
         }
     }

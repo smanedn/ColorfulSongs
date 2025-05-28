@@ -1,8 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using static Unity.Collections.AllocatorManager;
-using System.Linq;
 
 public class CannonGenerator : MonoBehaviour
 {

@@ -141,7 +141,7 @@ public class UserToAdd
     public string email;
 }
 
-public class Score
+public class ScoreApi
 {
     public int id;
     public TimeSpan score;

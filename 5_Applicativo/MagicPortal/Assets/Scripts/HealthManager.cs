@@ -1,7 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
@@ -34,14 +33,11 @@ public class HealthManager : MonoBehaviour
     void Start()
     {
         heartImages = healthBar.GetComponentsInChildren<Transform>();
-        print(heartImages.Length);
         health = heartImages.Length - 1;
     }
 
     public void LooseOneHeart()
     {
-
-        
         if (!isInvincible)
         {
             string currentLastHeart = "Heart " + health;
@@ -62,7 +58,6 @@ public class HealthManager : MonoBehaviour
     }
     private IEnumerator SetInvincible()
     {
-        Debug.Log("Player turned invincible!");
         isInvincible = true;
         yield return new WaitForSeconds(invincibilityDurationSeconds);
 
@@ -75,14 +70,12 @@ public class HealthManager : MonoBehaviour
         isInvincible = false;
     }
 
-
     public static void EndScreen(string text)
     {
         Time.timeScale = 0f;
         Instance.musicSource?.Pause();
         Instance.deathGUI.gameObject?.SetActive(true);
         Instance.winLostGUI.text = string.Format("You {0}", text);
-
     }
 
     public static int GetHealth()

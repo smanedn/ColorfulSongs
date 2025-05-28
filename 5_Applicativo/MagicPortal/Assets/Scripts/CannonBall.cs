@@ -7,6 +7,5 @@ public class CannonBall : MonoBehaviour
         Destroy(this.gameObject); 
         HealthManager hm = HealthManager.Instance;
         hm.LooseOneHeart();
-        print(HealthManager.GetHealth());
     }
 }

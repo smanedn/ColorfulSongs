@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -31,11 +30,9 @@ public class PlayerMovement : MonoBehaviour
         if (!PlayerPrefs.HasKey("DefaultMovement"))
         {
             PlayerPrefs.SetInt("DefaultMovement", 1);
-            Debug.Log("c");
             PlayerPrefs.Save();
         }
         defaultMovement = PlayerPrefs.GetInt("DefaultMovement");
-        Debug.Log("Mov: " + defaultMovement);
 
         if (defaultMovement == 0)
         {
@@ -45,15 +42,11 @@ public class PlayerMovement : MonoBehaviour
         {
             initialRotationY = -45f;
         }
-
         transform.rotation = Quaternion.Euler(0, initialRotationY, 0);
     }
 
-    
     void Update()
     {
-       
-
         Movement();
         Turn();
     }
@@ -81,19 +74,7 @@ public class PlayerMovement : MonoBehaviour
         {
             position = new Vector3(x, y, z);
         }
-        
-        /*if(y == -1f)
-        {
-            position = position.normalized;
-        }*/
-        
-        //Debug.Log(position);
-        //Debug.Log(Time.deltaTime);
-
-        // Determina la velocità
         float currentSpeed = speed;
-
-
         if (Input.GetButton("Fire3") && (Mathf.Abs(x) > 0.1f || Mathf.Abs(z) > 0.1f))
         {
             currentSpeed = runningSpeed;
@@ -104,8 +85,7 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = speed;
             GetComponent<Animator>().SetBool("isRunning", false);
         }
-
-            characterController.Move(position * currentSpeed * Time.deltaTime);    //in caso non si voglia + speed in diagonale positino.normalized
+        characterController.Move(position * currentSpeed * Time.deltaTime);    //in caso non si voglia + speed in diagonale positino.normalized
     }
 
     private void Turn()
@@ -124,21 +104,16 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 GetComponent<Animator>().SetBool("isJumping",true);
-                //GetComponent<Animator>().SetBool("isWalking", false);
                 veritcalVelocity = Mathf.Sqrt(jumpHeight * gravity * 2);
                 audioManager.PlaySFX(audioManager.GetJump());
             }
-            
-            //MoveArm("down");
         }
         else
         {
             veritcalVelocity -= gravity * Time.deltaTime;
             GetComponent<Animator>().SetBool("isJumping", false);
-            //MoveArm("up");
             if (IsVoid())
             {
-                print("Void");
                 if (!healthManager.IsDead())
                 {
                     GetComponent<PlayerCollision>().Teleport(0, 2f, 0, true);

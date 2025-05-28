@@ -1,16 +1,13 @@
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class AM : MonoBehaviour
 {
-
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private string volumeCategory;
     [SerializeField] private string audioMixerCategory;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (!PlayerPrefs.HasKey(volumeCategory))
@@ -21,12 +18,6 @@ public class AM : MonoBehaviour
         Load();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ChangeVolume() {
         if (volumeSlider.value == 0)
         {
@@ -34,7 +25,6 @@ public class AM : MonoBehaviour
         }
         audioMixer.SetFloat(audioMixerCategory, Mathf.Log10(volumeSlider.value) * 20);   //conversione (0.1-1) a db
         Save();
-        
     }
 
     private void Load()

@@ -1,11 +1,8 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MovementPreference : MonoBehaviour
-
 {
-
     public void MovementData()
     {
         int pickedMovementIndex = GetComponent<TMP_Dropdown>().value;
@@ -23,10 +20,6 @@ public class MovementPreference : MonoBehaviour
                 break;
         }
         PlayerPrefs.Save();
-
-
-
-        Debug.Log(select);
     }
 }
 

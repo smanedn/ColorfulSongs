@@ -1,12 +1,9 @@
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] private GameObject inGameGUI;
@@ -21,7 +18,6 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-     
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         inGameGUI.SetActive(true);
@@ -31,14 +27,12 @@ public class PauseMenu : MonoBehaviour
             PlayerPrefs.SetInt("CompletedLevels", 0);
             PlayerPrefs.Save();
         }
-
-        levelText.text = string.Format("Level: {0}", (PlayerPrefs.GetInt("CompletedLevels")));
-        
+        levelText.text = string.Format("Level: {0}", PlayerPrefs.GetInt("CompletedLevels"));
     }
 
     void Update()
     {
-        if ((Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.JoystickButton7)) && PlayerPrefs.GetInt("LevelEnded")==0)//!healthManager.IsDead() 
+        if ((Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.JoystickButton7)) && PlayerPrefs.GetInt("LevelEnded")==0)
         {
             if (isPaused)
             {

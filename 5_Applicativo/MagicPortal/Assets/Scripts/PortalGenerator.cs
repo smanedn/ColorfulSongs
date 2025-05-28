@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class PortalGenerator : MonoBehaviour
@@ -34,7 +33,6 @@ public class PortalGenerator : MonoBehaviour
 
         for (int i = 0; i < numberOfPortals; i++)
         {
-            
             GameObject portalPrefab = (i == goodPortal) ? goodPortalPrefab : badPortalPrefab;
             if (i == 0)
             {
@@ -47,7 +45,6 @@ public class PortalGenerator : MonoBehaviour
             
             newPortal.name = "Portal" + i;
             newPortal.transform.SetParent(parent.transform);
-
 
             AudioSource audioSource = newPortal.AddComponent<AudioSource>();
             audioSource.loop = true;

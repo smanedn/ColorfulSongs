@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-
     [SerializeField] public GameObject player;
     private Vector3 offset;
     private float y;
@@ -12,7 +11,6 @@ public class CameraController : MonoBehaviour
         y = transform.position.y;
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position = player.transform.position + offset;

@@ -1,19 +1,14 @@
 using System.Collections;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] private GameObject portal;
-    //HealthManager healthManager = new HealthManager();
     private HealthManager healthManager;
     [SerializeField] private PauseMenu pauseMenu;
     [SerializeField] private Score sc;
-   
 
     void Start()
     {
@@ -24,7 +19,6 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-                //print("hit");
                 healthManager.LooseOneHeart();
         }
         if (other.gameObject.CompareTag("FinishPortal"))
@@ -46,7 +40,6 @@ public class PlayerCollision : MonoBehaviour
         {
             int x = portal.GetComponent<PortalGenerator>().getEndX();
             int z = portal.GetComponent<PortalGenerator>().getEndZ();
-            //print("tp");
             Teleport(x+1, 0.75f, z, false);
         }
 
@@ -54,8 +47,6 @@ public class PlayerCollision : MonoBehaviour
         {
             Teleport(1, 0.75f, 1, true);
         }
-
-        
     }
 
     public async void Teleport(float x, float y, float z, bool damage)

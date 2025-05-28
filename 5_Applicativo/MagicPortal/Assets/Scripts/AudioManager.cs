@@ -18,11 +18,6 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    void Update()
-    {
-        
-    }
-
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
