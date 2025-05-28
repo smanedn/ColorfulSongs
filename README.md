@@ -1,4 +1,4 @@
-# [![ColorfulSongs][logo]](https://i.imgur.com/kwsIN3K.png)
+# [![ColorfulSongs][logo]]()
 
 >
 
@@ -35,7 +35,7 @@
 
 
 
-[logo]: https://i.imgur.com/LRASFB9.png
+[logo]: https://i.imgur.com/uNkOZxH.png
 
 [Unity]: https://img.shields.io/badge/Unity-555555?style=for-the-badge&logo=Unity&logoColor=white
 [Unity-URL]: https://unity.com/
