@@ -27,7 +27,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php if (is_null($leaderboard_data)) : echo "No friend request" ?>
+                    <?php if (is_null($friends)) : echo "No friend request" ?>
                     <?php else :
                         foreach ($friends as $friend) : ?>
                         <tr>

@@ -49,6 +49,15 @@ class FriendController
     public function friendRequest($friendId)
     {
         if (isset($_SESSION['userType'])) {
+            $showFriends = Friend::showFriend($_SESSION['UserId']);
+            $friendIds = [];
+            foreach ($showFriends as $friend) {
+                if ($friend->userId1 == $_SESSION['UserId']) {
+                    $friendIds[] = $friend->userId2;
+                } else {
+                    $friendIds[] = $friend->userId1;
+                }
+            }
             try {
                 $friend = Friend::create(["userId1" => $_SESSION['UserId'], "userId2" => $friendId, "pending" => 1]);
 
