@@ -76,9 +76,6 @@ class UserController
     private function createFromRequest()
     {
         $input = (array) json_decode(file_get_contents('php://input'), true);
-//        if (! $this->validateUser($input) || ! $this->validateData($input)){
-//            return $this->unprocessableEntityResponse();
-//        }
         $this->userGateway->insert($input);
         $response['status_code_header'] = 'HTTP/1.1 201 CREATED';
         $this->logger->info("createFromRequest: HTTP/1.1 201 CREATED");

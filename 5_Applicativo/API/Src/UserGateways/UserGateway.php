@@ -49,7 +49,6 @@ class UserGateway{
                     (:username, :password, :email)";
 
             try{
-                var_dump($input);
                 $statement = $this->db->prepare($statement);
                 $statement->execute(array(
                     'username' => $input['username'],
@@ -68,7 +67,6 @@ class UserGateway{
                     (:score, :user_id)";
 
             try{
-                var_dump($input);
                 $statement = $this->db->prepare($statement);
                 $statement->execute(array(
                     'score' => $input['score'],

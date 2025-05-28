@@ -15,14 +15,15 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = explode('/', $uri);
 
-// all of our endpoints start with /user
-// everything else results in a 404 Not Found
+// tutti gli endpoint iniziano per /user
+// quindi tutto il resto che non inizia per /user risulterà in un 404 Not Found
 if ($uri[3] !== 'user') {
     header('HTTP/1.1 404 Not Found');
     exit();
 }
 
-// the user id is, of course, optional and must be a number:
+// questi sono i parametri opzionali dopo lo /user.
+// Controlla che se ci sia un id o uno username
 $userId = null;
 $username = '';
 if (isset($uri[4])) {
