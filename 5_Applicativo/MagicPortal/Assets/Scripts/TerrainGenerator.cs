@@ -1,14 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TerrainGenerator : MonoBehaviour
 {
-
     private int x;
     private int z;
     private int h;
@@ -63,7 +57,6 @@ public class TerrainGenerator : MonoBehaviour
     public GameObject[] obstacles;
     public GameObject[] enemies;
 
-
     void Start()
     {
         if (PlayerPrefs.GetInt("LevelEnded") == 1 && PlayerPrefs.GetInt("roomGenerated") == 0)
@@ -112,7 +105,6 @@ public class TerrainGenerator : MonoBehaviour
     {
         if ( hm.IsDead() || PlayerPrefs.GetInt("CompletedLevels") > 4 && PlayerPrefs.GetInt("roomGenerated") == 0)
         {
-            print("Dentro l'update, RoomGenerated: " + PlayerPrefs.GetInt("roomGenerated"));
             if (hm.IsDead())
             {
                 PlayerPrefs.SetInt("Dead", 1);
@@ -122,7 +114,6 @@ public class TerrainGenerator : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
-
 
     public void generateStraightTerrain()
     {
@@ -175,7 +166,6 @@ public class TerrainGenerator : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("roomGenerated") == 0) 
         {
-            print("Generata la stanza end");
             for (int r = 0; r <= 7; r++)
             {
                 x = r;
