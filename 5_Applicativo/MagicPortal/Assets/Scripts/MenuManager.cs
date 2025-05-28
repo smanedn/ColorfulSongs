@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("LevelEnded", 0);
             PlayerPrefs.SetInt("CompletedLevels", 0);
             PlayerPrefs.SetInt("roomGenerated", 0);
+            PlayerPrefs.SetString("TotalScore", "");
             PlayerPrefs.Save();
         }
     }
