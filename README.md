@@ -1,4 +1,4 @@
-# [![ColorfulSongs][logo]](https://i.imgur.com/LRASFB9.png)
+# [![ColorfulSongs][logo]](https://i.imgur.com/kwsIN3K.png)
 
 >
 
