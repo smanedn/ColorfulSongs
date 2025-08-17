@@ -120,44 +120,47 @@ public class TerrainGenerator : MonoBehaviour
         startObstacle2Z = 0;
         endObstacle2Z = column;
 
-        for (int r = startingX; r <= row; r++)
-        {
-            x = r;
-            if (
-                ((r < startObstacle1X || r >= endObstacle1X)) &&
-                ((r < startObstacle2X || r >= endObstacle2X))
-                )
-            {
-                empty = false;
-            }
-            else
-            {
-                empty = true;
-            }
 
-            for (int c = startingZ; c <= column; c++)
+        for(int rc = 0; rc<5; rc++){
+            for (int r = startingX + rc*row; r <= row; r++)
             {
-                z = c;
-                if (!empty)
+                x = r;
+                if (
+                    ((r < startObstacle1X || r >= endObstacle1X)) &&
+                    ((r < startObstacle2X || r >= endObstacle2X))
+                    )
                 {
-                    string name = "pavimento[" + r.ToString() + ";" + y.ToString() + ";" + c.ToString() + "]";
-                    var cube = Instantiate(floor, new Vector3(x, y, z), Quaternion.identity);
-                    cube.name = name;
-                    cube.transform.SetParent(parent.transform);
+                    empty = false;
+                }
+                else
+                {
+                    empty = true;
                 }
 
-                if (r == row || c == column)
+                for (int c = startingZ; c <= column; c++)
                 {
-                    for (int a = y; a <= wallHeight; a++)
+                    z = c;
+                    if (!empty)
                     {
-                        string nameWall = "wall[" + r.ToString() + ";" + a.ToString() + ";" + c.ToString() + "]";
-                        var wallObj = Instantiate(wall, new Vector3(x, a, z), Quaternion.identity);
-                        wallObj.name = nameWall;
-                        wallObj.transform.SetParent(parent.transform);
+                        string name = "pavimento[" + r.ToString() + ";" + y.ToString() + ";" + c.ToString() + "]";
+                        var cube = Instantiate(floor, new Vector3(x, y, z), Quaternion.identity);
+                        cube.name = name;
+                        cube.transform.SetParent(parent.transform);
+                    }
+
+                    if (r == row || c == column)
+                    {
+                        for (int a = y; a <= wallHeight; a++)
+                        {
+                            string nameWall = "wall[" + r.ToString() + ";" + a.ToString() + ";" + c.ToString() + "]";
+                            var wallObj = Instantiate(wall, new Vector3(x, a, z), Quaternion.identity);
+                            wallObj.name = nameWall;
+                            wallObj.transform.SetParent(parent.transform);
+                        }
                     }
                 }
             }
-        }
+        }    
     }
 
     public void generateEndRoom()
