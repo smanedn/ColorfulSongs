@@ -31,6 +31,7 @@ public class CannonGenerator : MonoBehaviour
         endingX = generator.GetComponent<TerrainGenerator>().getEndX("CannonGenerator");
         endingZ = generator.GetComponent<TerrainGenerator>().getEndZ("CannonGenerator");
         bool lShaped = generator.GetComponent<TerrainGenerator>().getShape();
+        int isSecond = generator.GetComponent<TerrainGenerator>().getObstacleNumber("CannonGenerator");
 
         int[] posX = new int[cannonCount];
         cannons = new GameObject[cannonCount];

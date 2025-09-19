@@ -72,13 +72,19 @@ public class TerrainGenerator : MonoBehaviour
             enemyX = endObstacle1X + (startObstacle2X - endObstacle1X) / 2f;
             enemyZ = column / 2 - 0.5f;
             enemyY = 1.5f;
-
+            int shape = UnityEngine.Random.Range(0, 2);
             int l = obstacles.Length;
             int n = enemies.Length;
+
             do
             {
                 firstObstacle = UnityEngine.Random.Range(0, l);
-                secondObstacle = UnityEngine.Random.Range(0, l);
+                if(shape==1){
+                    secondObstacle=0;
+                }
+                else{
+                    secondObstacle = UnityEngine.Random.Range(0, l);
+                }
                 enemy = UnityEngine.Random.Range(0,n);
             } while (firstObstacle == secondObstacle);
 
@@ -89,8 +95,8 @@ public class TerrainGenerator : MonoBehaviour
                 enemies[enemy].SetActive(true);
             }
             
-            //generateStraightTerrain();
-            generateLTerrain();
+            if(shape==0){generateStraightTerrain();}
+            else if(shape==1){generateLTerrain();}
 
             var _enemy = Instantiate(enemies[enemy], new Vector3(enemyX, enemyY, enemyZ), Quaternion.identity);
             _enemy.name = "Enemy";

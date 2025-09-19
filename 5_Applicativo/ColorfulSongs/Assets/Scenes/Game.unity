@@ -5478,8 +5478,8 @@ Transform:
   m_Children:
   - {fileID: 1705169336}
   - {fileID: 1205362129}
-  - {fileID: 1328145799}
   - {fileID: 64255683}
+  - {fileID: 1328145799}
   - {fileID: 187762111}
   - {fileID: 1217263506}
   - {fileID: 519303887}
@@ -10858,8 +10858,11 @@ MonoBehaviour:
   deathGUI: {fileID: 0}
   ButtonGUI: {fileID: 1337255532}
   obstacles:
-  - {fileID: 187762110}
   - {fileID: 64255682}
+  - {fileID: 1205362128}
+  - {fileID: 1328145798}
+  - {fileID: 187762110}
+  - {fileID: 1217263504}
   enemies:
   - {fileID: 981102141}
   - {fileID: 897146767}

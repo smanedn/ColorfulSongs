@@ -26,6 +26,7 @@ public class PortalGenerator : MonoBehaviour
         int c = (generator.GetComponent<TerrainGenerator>().getEndZ("PortalGenerator") - generator.GetComponent<TerrainGenerator>().getStartZ("PortalGenerator")) / numberOfPortals;
         int z = generator.GetComponent<TerrainGenerator>().getStartZ("PortalGenerator");
         y = generator.GetComponent<TerrainGenerator>().getStartY("PortalGenerator")+1.5f;
+        bool lShaped = generator.GetComponent<TerrainGenerator>().getShape();
 
         endPortalX = generator.GetComponent<TerrainGenerator>().getEndX("PortalGenerator");
         endPortalZ = z + c * numberOfPortals / 2;

@@ -27,7 +27,7 @@ public class FakeFloorGenerator : MonoBehaviour
        int[] posZ = new int[2];
         int oldZ = 0;
         bool first = true;
-        int zBlock = 0;d
+        int zBlock = 0;
 
         if(lShaped && isSecond == 2){
             for (int z = startingZ; z < endingZ; z++)
