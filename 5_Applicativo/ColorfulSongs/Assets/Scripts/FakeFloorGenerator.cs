@@ -21,54 +21,105 @@ public class FakeFloorGenerator : MonoBehaviour
         startingY = generator.GetComponent<TerrainGenerator>().getStartY("FakeFloorGenerator");
         endingX = generator.GetComponent<TerrainGenerator>().getEndX("FakeFloorGenerator");
         endingZ = generator.GetComponent<TerrainGenerator>().getEndZ("FakeFloorGenerator");
+        bool lShaped = generator.GetComponent<TerrainGenerator>().getShape();
+        int isSecond = generator.GetComponent<TerrainGenerator>().getObstacleNumber("FakeFloorGenerator");
 
-        int[] posZ = new int[2];
+       int[] posZ = new int[2];
         int oldZ = 0;
         bool first = true;
-        int zBlock = 0;
+        int zBlock = 0;d
 
-        for (int x = startingX; x < endingX; x++)
-        {
-            if (first)
+        if(lShaped && isSecond == 2){
+            for (int z = startingZ; z < endingZ; z++)
             {
-                for (int i = 0; i < 2; i++)
+                if (first)
                 {
-                    zBlock = Random.Range(startingZ + 1, endingZ);
-                    posZ[i] = zBlock;
-                }
-
-                first = false;
-            }
-            else
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    oldZ = posZ[i];
-                    do
+                    for (int i = 0; i < 2; i++)
                     {
-                        zBlock = Random.Range(oldZ - 1, oldZ + 2);
-                    } while (zBlock >= endingZ || zBlock <= startingZ);
+                        zBlock = Random.Range(startingX + 1, endingX);
+                        posZ[i] = zBlock;
+                    }
 
-                    posZ[i] = zBlock;
-                }
-            }
-            oldZ = zBlock;
-
-            for (int z = startingZ; z <= endingZ; z++)
-            {
-                if (posZ.Contains(z))
-                {
-                    var percorso = Instantiate(realFloor, new Vector3(x, startingY, z), Quaternion.identity);
-                    percorso.name = "realFloor[" + x + "; " + z + "]";
-
-                    percorso.transform.SetParent(parent.transform);
+                    first = false;
                 }
                 else
                 {
-                    var cube = Instantiate(fakeFloor, new Vector3(x, startingY, z), Quaternion.identity);
-                    cube.name = "fakeFloor[" + x + "; " + z + "]";
+                    for (int i = 0; i < 2; i++)
+                    {
+                        oldZ = posZ[i];
+                        do
+                        {
+                            zBlock = Random.Range(oldZ - 1, oldZ + 2);
+                        } while (zBlock >= endingX || zBlock <= startingX);
 
-                    cube.transform.SetParent(parent.transform);
+                        posZ[i] = zBlock;
+                    }
+                }
+                oldZ = zBlock;
+
+                for (int x = startingX; x <= endingX; x++)
+                {
+                    if (posZ.Contains(x))
+                    {
+                        var percorso = Instantiate(realFloor, new Vector3(x, startingY, z), Quaternion.identity);
+                        percorso.name = "realFloor[" + x + "; " + z + "]";
+
+                        percorso.transform.SetParent(parent.transform);
+                    }
+                    else
+                    {
+                        var cube = Instantiate(fakeFloor, new Vector3(x, startingY, z), Quaternion.identity);
+                        cube.name = "fakeFloor[" + x + "; " + z + "]";
+
+                        cube.transform.SetParent(parent.transform);
+                    }
+                }
+            }
+        }
+        else{
+            for (int x = startingX; x < endingX; x++)
+            {
+                if (first)
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        zBlock = Random.Range(startingZ + 1, endingZ);
+                        posZ[i] = zBlock;
+                    }
+
+                    first = false;
+                }
+                else
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        oldZ = posZ[i];
+                        do
+                        {
+                            zBlock = Random.Range(oldZ - 1, oldZ + 2);
+                        } while (zBlock >= endingZ || zBlock <= startingZ);
+
+                        posZ[i] = zBlock;
+                    }
+                }
+                oldZ = zBlock;
+
+                for (int z = startingZ; z <= endingZ; z++)
+                {
+                    if (posZ.Contains(z))
+                    {
+                        var percorso = Instantiate(realFloor, new Vector3(x, startingY, z), Quaternion.identity);
+                        percorso.name = "realFloor[" + x + "; " + z + "]";
+
+                        percorso.transform.SetParent(parent.transform);
+                    }
+                    else
+                    {
+                        var cube = Instantiate(fakeFloor, new Vector3(x, startingY, z), Quaternion.identity);
+                        cube.name = "fakeFloor[" + x + "; " + z + "]";
+
+                        cube.transform.SetParent(parent.transform);
+                    }
                 }
             }
         }

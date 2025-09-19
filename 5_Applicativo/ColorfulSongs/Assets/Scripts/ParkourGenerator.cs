@@ -21,6 +21,7 @@ public class ParkourGenerator : MonoBehaviour
         startingY = generator.GetComponent<TerrainGenerator>().getStartY("ParkourGenerator");
         endingX = generator.GetComponent<TerrainGenerator>().getEndX("ParkourGenerator");
         endingZ = generator.GetComponent<TerrainGenerator>().getEndZ("ParkourGenerator");
+        bool lShaped = generator.GetComponent<TerrainGenerator>().getShape();
 
         int oldZ = 0;
         int z = 0;

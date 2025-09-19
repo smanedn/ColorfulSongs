@@ -55,6 +55,7 @@ public class TerrainGenerator : MonoBehaviour
 
     public GameObject[] obstacles;
     public GameObject[] enemies;
+    private bool isLGenerated;
 
 
     void Start()
@@ -74,12 +75,6 @@ public class TerrainGenerator : MonoBehaviour
 
             int l = obstacles.Length;
             int n = enemies.Length;
-
-                    int staticRow = row;
-                    startObstacle2Z = -1*2*column+widthLObstacle/2;
-                    endObstacle2Z = -1*2*column+widthLObstacle;
-                    startObstacle2X = row/2;
-                    endObstacle2X = staticRow*3/4;
             do
             {
                 firstObstacle = UnityEngine.Random.Range(0, l);
@@ -124,6 +119,7 @@ public class TerrainGenerator : MonoBehaviour
         endObstacle1Z = column;
         startObstacle2Z = 0;
         endObstacle2Z = column;
+        isLGenerated=false;
 
         for (int r = startingX; r <= row; r++)
         {
@@ -178,6 +174,12 @@ public class TerrainGenerator : MonoBehaviour
         int staticStartingZ = startingZ;
         int staticRow = row;
         int staticColumn = column;
+
+        startObstacle2Z = -1*2*column+widthLObstacle/2;
+        endObstacle2Z = -1*2*column+widthLObstacle;
+        startObstacle2X = row/2;
+        endObstacle2X = staticRow*3/4;
+        isLGenerated=true;
 
         for (int r = startingX; r <= row; r++)
         {
@@ -377,5 +379,10 @@ public class TerrainGenerator : MonoBehaviour
             {
                 return 0;
             }
+        }
+
+        public bool getShape()
+        {
+            return isLGenerated;
         }
     }

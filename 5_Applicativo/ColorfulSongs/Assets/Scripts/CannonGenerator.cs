@@ -30,6 +30,7 @@ public class CannonGenerator : MonoBehaviour
         startingY = generator.GetComponent<TerrainGenerator>().getStartY("CannonGenerator");
         endingX = generator.GetComponent<TerrainGenerator>().getEndX("CannonGenerator");
         endingZ = generator.GetComponent<TerrainGenerator>().getEndZ("CannonGenerator");
+        bool lShaped = generator.GetComponent<TerrainGenerator>().getShape();
 
         int[] posX = new int[cannonCount];
         cannons = new GameObject[cannonCount];

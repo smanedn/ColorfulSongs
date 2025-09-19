@@ -22,7 +22,8 @@ public class WallPedanaGenerator : MonoBehaviour
         startingY = generator.GetComponent<TerrainGenerator>().getStartY("WallPedanaGenerator");
         endingX = generator.GetComponent<TerrainGenerator>().getEndX("WallPedanaGenerator");
         endingZ = generator.GetComponent<TerrainGenerator>().getEndZ("WallPedanaGenerator")-3;
-        //-2 perch� non vogliamo riempire le due file vicino al muro
+        bool lShaped = generator.GetComponent<TerrainGenerator>().getShape();
+       //-2 perch� non vogliamo riempire le due file vicino al muro
 
         int[] posX = new int[endingX - startingX];
         int[] posZ = new int[endingX - startingX];

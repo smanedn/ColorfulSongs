@@ -10859,10 +10859,7 @@ MonoBehaviour:
   ButtonGUI: {fileID: 1337255532}
   obstacles:
   - {fileID: 187762110}
-  - {fileID: 1217263504}
   - {fileID: 64255682}
-  - {fileID: 1328145798}
-  - {fileID: 1205362128}
   enemies:
   - {fileID: 981102141}
   - {fileID: 897146767}
