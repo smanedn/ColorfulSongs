@@ -10801,7 +10801,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1705169336}
   - component: {fileID: 1705169337}
-  - component: {fileID: 1705169338}
   m_Layer: 0
   m_Name: TerrainGenerator
   m_TagString: Untagged
@@ -10831,7 +10830,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705169335}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03195dd52e3ed1e4c9439bebfa4c562d, type: 3}
   m_Name: 
@@ -10845,6 +10844,7 @@ MonoBehaviour:
   startObstacle1Y: 0
   startObstacle2X: 25
   endObstacle2X: 35
+  widthLObstacle: 10
   startObstacle2Y: 0
   floor: {fileID: 3955915982601514054, guid: ce32500b5fe80b54e8f7947c235d18fc, type: 3}
   transparent: {fileID: 709262350618453701, guid: 41973e0e34b053e4a80ea3449cf6aa2e, type: 3}
@@ -10863,34 +10863,6 @@ MonoBehaviour:
   - {fileID: 64255682}
   - {fileID: 1328145798}
   - {fileID: 1205362128}
-  enemies:
-  - {fileID: 981102141}
-  - {fileID: 897146767}
---- !u!114 &1705169338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1705169335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d7c78d2ddbdd634683ca7e56d4ca2e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  row: 20
-  column: 8
-  y: 0
-  wallHeight: 5
-  floor: {fileID: 3955915982601514054, guid: ce32500b5fe80b54e8f7947c235d18fc, type: 3}
-  transparent: {fileID: 709262350618453701, guid: 41973e0e34b053e4a80ea3449cf6aa2e, type: 3}
-  wall: {fileID: 3955915982601514054, guid: 3f36deb36f9f10e42800571133690225, type: 3}
-  parent: {fileID: 1542006887}
-  finishPortal: {fileID: 6479646477241648015, guid: 507c704db64360248be37aeebe1d28e3, type: 3}
-  hm: {fileID: 124154218}
-  sc: {fileID: 124154219}
-  inGameGUI: {fileID: 926971704}
-  ButtonGUI: {fileID: 1337255532}
   enemies:
   - {fileID: 981102141}
   - {fileID: 897146767}

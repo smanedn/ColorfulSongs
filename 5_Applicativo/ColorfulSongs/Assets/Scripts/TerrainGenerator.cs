@@ -31,6 +31,7 @@ public class TerrainGenerator : MonoBehaviour
     [Header("Second Obstacle position")]
     [SerializeField] private int startObstacle2X;
     [SerializeField] private int endObstacle2X;
+    [SerializeField] private int widthLObstacle;
     private int startObstacle2Z;
     private int endObstacle2Z;
     [SerializeField] private int startObstacle2Y;
@@ -55,6 +56,7 @@ public class TerrainGenerator : MonoBehaviour
     public GameObject[] obstacles;
     public GameObject[] enemies;
 
+
     void Start()
     {
         if (PlayerPrefs.GetInt("LevelEnded") == 1 && PlayerPrefs.GetInt("roomGenerated") == 0)
@@ -72,6 +74,12 @@ public class TerrainGenerator : MonoBehaviour
 
             int l = obstacles.Length;
             int n = enemies.Length;
+
+                    int staticRow = row;
+                    startObstacle2Z = -1*2*column+widthLObstacle/2;
+                    endObstacle2Z = -1*2*column+widthLObstacle;
+                    startObstacle2X = row/2;
+                    endObstacle2X = staticRow*3/4;
             do
             {
                 firstObstacle = UnityEngine.Random.Range(0, l);
@@ -86,16 +94,13 @@ public class TerrainGenerator : MonoBehaviour
                 enemies[enemy].SetActive(true);
             }
             
-            generateStraightTerrain();
+            //generateStraightTerrain();
+            generateLTerrain();
 
             var _enemy = Instantiate(enemies[enemy], new Vector3(enemyX, enemyY, enemyZ), Quaternion.identity);
             _enemy.name = "Enemy";
             _enemy.transform.SetParent(parent.transform);
             _enemy.SetActive(true);
-
-            var _finishPortal = Instantiate(finishPortal, new Vector3(row - 3, y + 1.5f, column - column / 2), Quaternion.identity);
-            _finishPortal.name = "FinishPortal";
-            _finishPortal.transform.SetParent(parent.transform);
         }
     }
 
@@ -120,14 +125,75 @@ public class TerrainGenerator : MonoBehaviour
         startObstacle2Z = 0;
         endObstacle2Z = column;
 
-
-        for(int rc = 0; rc<5; rc++){
-            for (int r = startingX + rc*row; r <= row; r++)
+        for (int r = startingX; r <= row; r++)
+        {
+            x = r;
+            //manage when to leave empty space to generate the obstacles
+            if (
+                ((r < startObstacle1X || r >= endObstacle1X)) &&
+                ((r < startObstacle2X || r >= endObstacle2X))
+                )
             {
-                x = r;
+                empty = false;
+            }
+            else
+            {
+                empty = true;
+            }
+
+
+            for (int c = startingZ; c <= column; c++)
+            {
+                z = c;
+                if (!empty)
+                {
+                    string name = "pavimento[" + r.ToString() + ";" + y.ToString() + ";" + c.ToString() + "]";
+                    var cube = Instantiate(floor, new Vector3(x, y, z), Quaternion.identity);
+                    cube.name = name;
+                    cube.transform.SetParent(parent.transform);
+                }
+
+                if (r == row || c == column)
+                {
+                    for (int a = y; a <= wallHeight; a++)
+                    {
+                        string nameWall = "wall[" + r.ToString() + ";" + a.ToString() + ";" + c.ToString() + "]";
+                        var wallObj = Instantiate(wall, new Vector3(x, a, z), Quaternion.identity);
+                        wallObj.name = nameWall;
+                        wallObj.transform.SetParent(parent.transform);
+                    }
+                }
+            }
+        }
+
+        var _finishPortal = Instantiate(finishPortal, new Vector3(row - 3, y + 1.5f, column - column / 2), Quaternion.identity);
+        _finishPortal.name = "FinishPortal";
+        _finishPortal.transform.SetParent(parent.transform);
+    }
+
+    public void generateLTerrain()
+    {
+        startObstacle1Z = 0;
+        endObstacle1Z = column;
+        int staticStartingZ = startingZ;
+        int staticRow = row;
+        int staticColumn = column;
+
+        for (int r = startingX; r <= row; r++)
+        {
+            x = r;
+            if(r>=row/2){
+                startingZ = staticStartingZ-staticColumn*2;
+                row = staticRow*3/4;
+            }
+
+            for (int c = startingZ; c <= column; c++)
+            {
+
+                //manage when to leave empty space to generate the obstacles
                 if (
                     ((r < startObstacle1X || r >= endObstacle1X)) &&
-                    ((r < startObstacle2X || r >= endObstacle2X))
+                    ((c < startObstacle2Z || c >= endObstacle2Z))
                     )
                 {
                     empty = false;
@@ -136,31 +202,32 @@ public class TerrainGenerator : MonoBehaviour
                 {
                     empty = true;
                 }
-
-                for (int c = startingZ; c <= column; c++)
+                
+                z = c;
+                if (!empty)
                 {
-                    z = c;
-                    if (!empty)
-                    {
-                        string name = "pavimento[" + r.ToString() + ";" + y.ToString() + ";" + c.ToString() + "]";
-                        var cube = Instantiate(floor, new Vector3(x, y, z), Quaternion.identity);
-                        cube.name = name;
-                        cube.transform.SetParent(parent.transform);
-                    }
+                    string name = "pavimento[" + r.ToString() + ";" + y.ToString() + ";" + c.ToString() + "]";
+                    var cube = Instantiate(floor, new Vector3(x, y, z), Quaternion.identity);
+                    cube.name = name;
+                    cube.transform.SetParent(parent.transform);
+                }
 
-                    if (r == row || c == column)
+                if (r == row || c == column)
+                {
+                    for (int a = y; a <= wallHeight; a++)
                     {
-                        for (int a = y; a <= wallHeight; a++)
-                        {
-                            string nameWall = "wall[" + r.ToString() + ";" + a.ToString() + ";" + c.ToString() + "]";
-                            var wallObj = Instantiate(wall, new Vector3(x, a, z), Quaternion.identity);
-                            wallObj.name = nameWall;
-                            wallObj.transform.SetParent(parent.transform);
-                        }
+                        string nameWall = "wall[" + r.ToString() + ";" + a.ToString() + ";" + c.ToString() + "]";
+                        var wallObj = Instantiate(wall, new Vector3(x, a, z), Quaternion.identity);
+                        wallObj.name = nameWall;
+                        wallObj.transform.SetParent(parent.transform);
                     }
                 }
             }
-        }    
+        }
+        var _finishPortal = Instantiate(finishPortal, new Vector3(row - 4.5f, y + 1.5f, -column*2+1), Quaternion.identity);
+        _finishPortal.transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+        _finishPortal.name = "FinishPortal";
+        _finishPortal.transform.SetParent(parent.transform);
     }
 
     public void generateEndRoom()
@@ -241,7 +308,7 @@ public class TerrainGenerator : MonoBehaviour
             }
             else if (name == obstacles[secondObstacle].name || name == "2")
             {
-                return endObstacle2X;
+                return endObstacle2X; 
             }
             else
             {
